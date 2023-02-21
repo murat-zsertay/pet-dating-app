@@ -16,7 +16,7 @@ app.use(express.static(path.join(process.cwd(), "public")));
 // middleware function to check for valid tokens
 
 // route setup
-app.use("/posts", tokenChecker,postsRouter);
+app.use("/posts", tokenChecker, postsRouter);
 app.use("/tokens", tokensRouter);
 app.use("/users", usersRouter);
 
