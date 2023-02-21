@@ -1,12 +1,12 @@
-import {Post} from "../models/post"
-import {TokenGenerator} from "../models/token_generator"
+import { Post } from "../models/post.js";
+import { TokenGenerator } from "../models/token_generator.js";
 import multer from "multer";
 
 const storage = multer.diskStorage({
-  destination: 'uploads/',
+  destination: "uploads/",
   filename: (req, file, cb) => {
-    cb(null, Date.now() + '-' + file.originalname);
-  }
+    cb(null, Date.now() + "-" + file.originalname);
+  },
 });
 const upload = multer({ storage: storage });
 export const PostsController = {
@@ -16,22 +16,22 @@ export const PostsController = {
         // TODO: Create error handler needs to be tested
         throw err;
       }
-      const token = await TokenGenerator.jsonwebtoken(req.user_id)
-      res.status(200).json({posts: posts, token: token});
+      const token = await TokenGenerator.jsonwebtoken(req.user_id);
+      res.status(200).json({ posts: posts, token: token });
     });
   },
   FindPostById: (req, res) => {
     // TODO: Find by post_id needs to be tested
     // Extract post_id from params (Taken from :post_id in the url)
-    let post_id = req.params.post_id
+    let post_id = req.params.post_id;
     // Use post_id to find particular post
-    Post.findById({_id:post_id}, async (err, post) => {
+    Post.findById({ _id: post_id }, async (err, post) => {
       if (err) {
         throw err;
       }
-      const token = await TokenGenerator.jsonwebtoken(req.user_id)
+      const token = await TokenGenerator.jsonwebtoken(req.user_id);
       // returns a body containing the post object and token string
-      res.status(200).json({post, token});
+      res.status(200).json({ post, token });
     });
   },
   Create: (req, res) => {
@@ -44,29 +44,32 @@ export const PostsController = {
         // TODO: Create error handler needs to be tested
         throw err;
       }
-      console.log(req.files)
-      const token = await TokenGenerator.jsonwebtoken(req.user_id)
-      res.status(201).json({message: 'OK', token,post_id:post._id});
+      console.log(req.files);
+      const token = await TokenGenerator.jsonwebtoken(req.user_id);
+      res.status(201).json({ message: "OK", token, post_id: post._id });
     });
   },
   CreateComment: (req, res) => {
     // TODO: CreateComment needs to have tests added
-    let {params: {post_id}, body: {user_id,content}} = req
+    let {
+      params: { post_id },
+      body: { user_id, content },
+    } = req;
     // user_id and content are the properties of a comment object and must always be sent.
-    Post.findById({_id: post_id}, async (err, post) => {
+    Post.findById({ _id: post_id }, async (err, post) => {
       if (err) {
         throw err;
       }
       // This pushes the new comment object into the comments array in the post object
-      post.comments.push({content,user_id})
+      post.comments.push({ content, user_id });
       // saves the change to the comments property in post object
-      await post.save()
-      const token = await TokenGenerator.jsonwebtoken(user_id)
-      res.status(201).json({message: 'OK', token});
+      await post.save();
+      const token = await TokenGenerator.jsonwebtoken(user_id);
+      res.status(201).json({ message: "OK", token });
     });
   },
   FormHandler: async (req, res, next) => {
-    upload.single('photoFile')(req, res, err => {
+    upload.single("photoFile")(req, res, (err) => {
       if (err) {
         next(err);
         return;
@@ -77,20 +80,24 @@ export const PostsController = {
 
       next();
     });
-  },  AddLike: (req, res) => {
+  },
+  AddLike: (req, res) => {
     // TODO: CreateComment needs to have tests added
-    let {params: {post_id}, body: {user_id}} = req
+    let {
+      params: { post_id },
+      body: { user_id },
+    } = req;
     // user_id and content are the properties of a comment object and must always be sent.
-    Post.findById({_id: post_id}, async (err, post) => {
+    Post.findById({ _id: post_id }, async (err, post) => {
       if (err) {
         throw err;
       }
       // This pushes the new comment object into the comments array in the post object
-      post.likes.push(user_id)
+      post.likes.push(user_id);
       // saves the change to the comments property in post object
-      await post.save()
-      const token = await TokenGenerator.jsonwebtoken(user_id)
-      res.status(201).json({message: 'OK', token});
+      await post.save();
+      const token = await TokenGenerator.jsonwebtoken(user_id);
+      res.status(201).json({ message: "OK", token });
     });
   },
 };
