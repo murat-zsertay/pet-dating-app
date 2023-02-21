@@ -6,11 +6,11 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "start": "pm2 start ecosystem.config.cjs && pm2 logs",
-    "start:dev": "NODE_ENV=development npm start",
+    "start": "pm2 start ecosystem.config.cjs",
+    "start:dev": "NODE_ENV=development npm start && pm2 logs",
     "start:prod": "NODE_ENV=production npm start",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
-    "start:test": "NODE_ENV=test npm start & npm run test"
+    "start:test": "NODE_ENV=test npm start & npm run test && pm2 stop ecosystem.config.cjs"
   },
   "engines": {
     "node": ">=18.1.0"
