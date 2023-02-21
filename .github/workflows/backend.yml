@@ -1,7 +1,7 @@
 name: Node.js CI Backend tests (Trial setup 1)
 
 on:
-  push:
+  pull_request:
 defaults:
   run:
     working-directory: backend
