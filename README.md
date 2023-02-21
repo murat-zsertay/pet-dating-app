@@ -1,8 +1,6 @@
-# Pet Dating 
+# Pet Dating
 
- An app for pet owners who are looking for playdates, walks, or just some good company for their furry friend. The app makes it easy for users to connect with other pet lovers in their area. This app is a two week project in our final 11th and 12th weeks of the MakersAcademy bootcamp. 
-
- ## User Stories
+An app for pet owners who are looking for playdates, walks, or just some good company for their furry friend. The app makes it easy for users to connect with other pet lovers in their area. This app is a two week project in our final 11th and 12th weeks of the MakersAcademy bootcamp.
 
 ## Features
 
@@ -11,11 +9,11 @@ A user can:
 - Sign up
 - Sign in
 - Sign out
-- View a list of posts
+- View eligible pets to date with
 
 ## Technologies
 
-Here's an overview of the technologies used to build this template application. 
+Here's an overview of the technologies used to build this template application.
 
 ### **M** is for MongoDB
 
@@ -41,7 +39,6 @@ We also used...
 - [Handlebars](https://handlebarsjs.com/) for the `home` template.
 - [ESLint](https://eslint.org) for linting.
 - [Nodemon](https://nodemon.io/) to reload the server automatically.
-- 
 
 ## Architecture
 
@@ -95,7 +92,7 @@ Here's the authentication flow for this application
 3. If a user is found, the password in the database is compared to the password that was submitted.
 4. If the passwords match, a JSON Web Token is generated and returned, as part of the response.
 5. The React front end receives the token and holds on to it.
-6. Every request to `"/posts"` must include a valid token (which is checked by the backend).
+6. Every request to an authenticated endpoint must include a valid token (which is checked by the backend).
 7. When the user logs out, the front end discards the token.
 
 ### What is a JSON Web Token?
@@ -109,11 +106,6 @@ A JSON Web Token, or JWT, is a token that comprises three parts
 The signature is created using a 'secret', which must be kept private (i.e. not put on GitHub) otherwise nefarious internet users could start to issue tokens for your application.
 
 Here, we've used an environment variable called `JWT_SECRET`, which you'll see used in the commands to start the application and run the tests (below). You can change the value of that environment variable to anything you like.
- 
-## Card wall
-
-[Sprint 1]
-
 
 ## Quickstart
 
@@ -132,9 +124,7 @@ Here, we've used an environment variable called `JWT_SECRET`, which you'll see u
 
 ### Set up your project
 
-1. Fork this repository
-2. Rename your fork to `acebook-<team name>`
-3. Clone your fork to your local machine
+3. Clone this repository
 4. Install Node.js dependencies for both FE and BE (API)
    ```
    ; cd backend
@@ -155,7 +145,7 @@ Here, we've used an environment variable called `JWT_SECRET`, which you'll see u
    ```
 8. Create and populate initial .env files on the backend for testing and development
    ```
-   cd api
+   cd backend
    touch .env.development.local .env.production.local .env.test.local
    echo "JWT_SECRET=SUPER_SECRET\nMONGODB_URL='mongodb://0.0.0.0:27017/pet_test'\nPORT=8080" >> .env.test.local
    echo "JWT_SECRET=SUPER_SECRET\nMONGODB_URL='mongodb://0.0.0.0:27017/pet_development'\nPORT=8080" >> .env.development.local
@@ -243,7 +233,6 @@ Some people occasionally experience MongoDB connection errors when running the t
 
 If you have issues that are not resolved by these tips, please reach out to a coach and, once the issue is resolved, we can add a new tip!
 
-
-# Project Owners 
+# Project Owners
 
 Charlie Jess Murat Oana
