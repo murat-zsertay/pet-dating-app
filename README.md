@@ -1,19 +1,13 @@
+# Pet Dating 
 
-# Acebook
+ An app for pet owners who are looking for playdates, walks, or just some good company for their furry friend. The app makes it easy for users to connect with other pet lovers in their area. This app is a two week project in our final 11th and 12th weeks of the MakersAcademy bootcamp. 
 
-In this project, you are tasked with working on an existing application. A significant part of the challenge will be to familiarise yourself with the codebase you've inherited, as you work to **improve and extend** it.
+ ## User Stories
 
-## Videos
+## Features
 
-These videos complement the docs below.
+A user can:
 
-* [An overview of the app](https://youtu.be/meTABGgrO2c)
-* [The backend (api)](https://youtu.be/mFczOzWW3vo)
-* [Postman](https://youtu.be/VO_kinuJngA)
-
-## Existing Features
-
-It's already possible for a user to:
 - Sign up
 - Sign in
 - Sign out
@@ -21,18 +15,22 @@ It's already possible for a user to:
 
 ## Technologies
 
-Here's an overview of the technologies used to build this template application. You don't need to do a deep dive on each one right now. Instead, try to get a feeling for the big picture and then dive into the details when a specific task pushes you in that direction.
+Here's an overview of the technologies used to build this template application. 
 
 ### **M** is for MongoDB
+
 [MongoDB](https://www.mongodb.com/) is a _NoSQL_ database program that stores data in collections of documents (in a format similar to JSON), rather than in tables. The application interacts with MongoDB using a tool called Mongoose.
 
 ### **E** is for Express
+
 [Express](https://expressjs.com/) is the Javascript equivalent of Sinatra. The structure of this application will feel quite different to what you're used to but the principles are the same.
 
 ### **R** is for React
+
 [React](https://reactjs.org/) is a hugely popular tool that is used to build engaging front ends. The basic principle is that the front end is split up into _components_, each of which _could_ include some logic, template structure (HTML) and styling (CSS).
 
 ### **N** is for Node
+
 Java script was originally designed to run exclusively in browsers, such as Chrome. [Node](https://nodejs.org/en/) is a tool that allows you to run Javascript outside the browser and its invention made it possible to build full stack Javascript apps.
 
 We also used...
@@ -43,6 +41,7 @@ We also used...
 - [Handlebars](https://handlebarsjs.com/) for the `home` template.
 - [ESLint](https://eslint.org) for linting.
 - [Nodemon](https://nodemon.io/) to reload the server automatically.
+- 
 
 ## Architecture
 
@@ -66,12 +65,12 @@ And the body of the response would look like this.
     "posts": [
         {
             "_id": "62f8ef0e6c1ffcf74cbbb181",
-            "message": "Hello, this is my first Acebook post!",
+            "message": "Hello, this is my first Pet Dating post!",
             "__v": 0
         },
         {
             "_id": "62f8ef366c1ffcf74cbbb188",
-            "message": "Welcome to Acebook! Have an Acetime :)",
+            "message": "Welcome to Pet Dating! Have an woofing time :)",
             "__v": 0
         },
         {
@@ -83,21 +82,11 @@ And the body of the response would look like this.
 }
 ```
 
-Here's a diagram of the above
-<br>
-<br>
-![a diagram of the MERN stack](./diagrams/mern_stack.png)
-<br>
-<br>
-
 Once received by the React FE, the JSON in the response body is used to render a list of posts on the page.
 
-![response body mapped onto a page](./diagrams/response_parsing.png)
-
 This architectural pattern is quite popular because it allows teams to build multiple front ends, all of which use the same backend API. You could, for example, go on to build a mobile app without needing to create another backend API.
-## Authentication
 
-Up until now, if you've implemented authentication, it will likely have been done using sessions - this is a useful point of comparison but, if you haven't implemented authentication yet, that's not going to impede you right now.
+## Authentication
 
 Here's the authentication flow for this application
 
@@ -108,8 +97,6 @@ Here's the authentication flow for this application
 5. The React front end receives the token and holds on to it.
 6. Every request to `"/posts"` must include a valid token (which is checked by the backend).
 7. When the user logs out, the front end discards the token.
-
-![authentication flow diagram](./diagrams/auth_flow.png)
 
 ### What is a JSON Web Token?
 
@@ -122,9 +109,11 @@ A JSON Web Token, or JWT, is a token that comprises three parts
 The signature is created using a 'secret', which must be kept private (i.e. not put on GitHub) otherwise nefarious internet users could start to issue tokens for your application.
 
 Here, we've used an environment variable called `JWT_SECRET`, which you'll see used in the commands to start the application and run the tests (below). You can change the value of that environment variable to anything you like.
+ 
 ## Card wall
 
-[Sprint 1](https://makers-engineering-acebook.atlassian.net/jira/software/projects/AP/boards/2)
+[Sprint 1]
+
 
 ## Quickstart
 
@@ -148,7 +137,7 @@ Here, we've used an environment variable called `JWT_SECRET`, which you'll see u
 3. Clone your fork to your local machine
 4. Install Node.js dependencies for both FE and BE (API)
    ```
-   ; cd api
+   ; cd backend
    ; npm install
    ; cd ../frontend
    ; npm install
@@ -159,7 +148,7 @@ Here, we've used an environment variable called `JWT_SECRET`, which you'll see u
    brew tap mongodb/brew
    brew install mongodb-community@5.0
    ```
-   *Note:* If you see a message that says `If you need to have mongodb-community@5.0 first in your PATH, run:`, follow the instruction. Restart your terminal after this.
+   _Note:_ If you see a message that says `If you need to have mongodb-community@5.0 first in your PATH, run:`, follow the instruction. Restart your terminal after this.
 7. Start MongoDB
    ```
    brew services start mongodb-community@5.0
@@ -168,8 +157,8 @@ Here, we've used an environment variable called `JWT_SECRET`, which you'll see u
    ```
    cd api
    touch .env.development.local .env.production.local .env.test.local
-   echo "JWT_SECRET=SUPER_SECRET\nMONGODB_URL='mongodb://0.0.0.0/acebook_test'" >> .env.test.local
-   echo "JWT_SECRET=SUPER_SECRET\nMONGODB_URL='mongodb://0.0.0.0/acebook_development'" >> .env.development.local
+   echo "JWT_SECRET=SUPER_SECRET\nMONGODB_URL='mongodb://0.0.0.0:27017/pet_test'\nPORT=8080" >> .env.test.local
+   echo "JWT_SECRET=SUPER_SECRET\nMONGODB_URL='mongodb://0.0.0.0:27017/pet_development'\nPORT=8080" >> .env.development.local
    ```
 
 ### Start
@@ -178,17 +167,18 @@ Here, we've used an environment variable called `JWT_SECRET`, which you'll see u
    **NB you wont need to pass in any variables when starting the backend dev server**
 
    ```
-   ; cd api
+   ; cd backend
    ; npm run start:dev
    ```
+
 2. Start the front end
 
 In a new terminal session...
 
-  ```
-  ; cd frontend
-  ; npm start
-  ```
+```
+; cd frontend
+; npm start
+```
 
 You should now be able to open your browser and go to `http://localhost:3000/signup` to create a new user.
 
@@ -198,28 +188,26 @@ After logging in, you won't see much but you can create posts using PostMan and 
 
 ### Testing
 
-
 #### The Backend (API)
 
 **Note the use of an environment variable for the JWT secret**
 
 **Note Environment variables (e.g. JWT secret) are set in the .env.test.local file**
 
-
 Start the server in test mode (so that it connects to the test DB)
 **NB the mongoDB server is defined in the .env.test.local file**
 
-  ```
-  ; cd api
-  ; npm run start:test
-  ```
+```
+; cd backend
+; npm run start:test
+```
 
 Then run the tests in a new terminal session
 
-  ```
-  ; cd api
-  ; npm run test
-  ```
+```
+; cd backend
+; npm run test
+```
 
 #### The frontend (React)
 
@@ -227,24 +215,24 @@ Then run the tests in a new terminal session
 
 Start the server in test mode (so that it connects to the test DB)
 
-  ```
-  ; cd api
-  ; npm run start:test
-  ```
+```
+; cd backend
+; npm run start:test
+```
 
 Then start the front end in a new terminal session
 
-  ```
-  ; cd frontend
-  ; JWT_SECRET=SUPER_SECRET npm start
-  ```
+```
+; cd frontend
+; JWT_SECRET=SUPER_SECRET npm start
+```
 
 Then run the tests in a new terminal session
 
-  ```
-  ; cd frontend
-  ; JWT_SECRET=SUPER_SECRET npm run test
-  ```
+```
+; cd frontend
+; JWT_SECRET=SUPER_SECRET npm run test
+```
 
 ## MongoDB Connection Errors?
 
@@ -256,12 +244,6 @@ Some people occasionally experience MongoDB connection errors when running the t
 If you have issues that are not resolved by these tips, please reach out to a coach and, once the issue is resolved, we can add a new tip!
 
 
-<!-- BEGIN GENERATED SECTION DO NOT EDIT -->
+# Project Owners 
 
----
-
-**How was this resource?**  
-[😫](https://airtable.com/shrUJ3t7KLMqVRFKR?prefill_Repository=makersacademy%2Facebook-mern-template&prefill_File=README.md&prefill_Sentiment=😫) [😕](https://airtable.com/shrUJ3t7KLMqVRFKR?prefill_Repository=makersacademy%2Facebook-mern-template&prefill_File=README.md&prefill_Sentiment=😕) [😐](https://airtable.com/shrUJ3t7KLMqVRFKR?prefill_Repository=makersacademy%2Facebook-mern-template&prefill_File=README.md&prefill_Sentiment=😐) [🙂](https://airtable.com/shrUJ3t7KLMqVRFKR?prefill_Repository=makersacademy%2Facebook-mern-template&prefill_File=README.md&prefill_Sentiment=🙂) [😀](https://airtable.com/shrUJ3t7KLMqVRFKR?prefill_Repository=makersacademy%2Facebook-mern-template&prefill_File=README.md&prefill_Sentiment=😀)  
-Click an emoji to tell us.
-
-<!-- END GENERATED SECTION DO NOT EDIT -->
+Charlie Jess Murat Oana
