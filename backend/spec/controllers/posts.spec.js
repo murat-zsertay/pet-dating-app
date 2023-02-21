@@ -69,7 +69,7 @@ describe("/posts", () => {
         .send({ message: "hello again world" });
       expect(response.status).toEqual(401);
     });
-  
+
     test("a post is not created", async () => {
       await request(app)
         .post("/posts")
