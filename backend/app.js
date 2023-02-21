@@ -5,6 +5,7 @@ import logger from "morgan";
 import {catch404, errorHandler} from "./expresssMiddleware.js";
 import "./utils.js"
 import {usersRouter} from "./routes/users.js";
+import {postsRouter} from "./routes/posts.js";
 
 export const app = express();
 // setup for receiving JSON
@@ -15,7 +16,7 @@ app.use(express.static(path.join(process.cwd(), "public")));
 // middleware function to check for valid tokens
 
 // route setup
-
+app.use("/posts", postsRouter);
 app.use("/tokens", tokensRouter);
 app.use("/users", usersRouter);
 
