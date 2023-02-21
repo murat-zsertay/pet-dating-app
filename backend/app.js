@@ -24,5 +24,7 @@ app.use(catch404);
 
 // error handler
 app.use(errorHandler);
-
-app.listen(process.env.PORT)
+// hi
+if(process.env.NODE_ENV !== "test") {
+    app.listen(process.env.PORT)
+}

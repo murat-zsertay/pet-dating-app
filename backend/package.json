@@ -9,8 +9,8 @@
     "start": "pm2 start ecosystem.config.cjs && pm2 logs",
     "start:dev": "NODE_ENV=development npm start",
     "start:prod": "NODE_ENV=production npm start",
-    "start:test": "NODE_ENV=test npm start & npm run test",
-    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "start:test": "NODE_ENV=test npm start & npm run test"
   },
   "engines": {
     "node": ">=18.1.0"
@@ -36,6 +36,7 @@
     "supertest": "^6.2.4"
   },
   "devDependencies": {
+    "@shelf/jest-mongodb": "^4.1.6",
     "@types/jest": "^29.4.0",
     "@types/mongoose": "5.11.97",
     "dotenv": "^16.0.3",

@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+import "../mongodb_helper";
 import {User} from "../../models/user";
 import {beforeEach, describe} from "@jest/globals"
 

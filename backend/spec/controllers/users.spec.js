@@ -37,8 +37,7 @@ describe("/users", () => {
         .send({ email: "skye@email.com" });
       expect(response.statusCode).toBe(400);
       expect(response.body).toEqual({
-        message:
-          "User validation failed: password: Path `password` is required.",
+        message: "User validation failed: password: required"
       });
     });
 
@@ -56,7 +55,7 @@ describe("/users", () => {
         .send({ password: "1234" });
       expect(response.statusCode).toBe(400);
       expect(response.body).toEqual({
-        message: "User validation failed: email: Path `email` is required."
+        message: "User validation failed: email: required"
       });
     });
 
@@ -88,7 +87,7 @@ describe("/users", () => {
       expect(response.statusCode).toBe(400);
       expect(response.body).toEqual({
         message:
-          "User validation failed: password: Path `password` (`1`) is shorter than the minimum allowed length (4).",
+            "User validation failed: password: must be at least 4 characters long",
       });
     });
   });
