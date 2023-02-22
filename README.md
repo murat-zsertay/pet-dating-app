@@ -255,6 +255,13 @@ Some people occasionally experience MongoDB connection errors when running the t
 
 If you have issues that are not resolved by these tips, please reach out to a coach and, once the issue is resolved, we can add a new tip!
 
+FYI - In the package.json dont try to audit fix the issues, it will flip to have from 6 to 80 vunerabilities
+and then if you audit fix again it will flip back to again it will go back to having 6 vunerabilities.
+
+
+
+
+
 
 <!-- BEGIN GENERATED SECTION DO NOT EDIT -->
 
