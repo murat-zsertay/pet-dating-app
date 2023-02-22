@@ -1,8 +1,8 @@
-import {app} from "../../app";
+import {app} from "../../app.js";
 import request from "supertest";
 import "../mongodb_helper";
-import {Post} from '../../models/post';
-import {User} from '../../models/user';
+import {Post} from '../../models/post.js';
+import {User} from '../../models/user.js';
 import JWT from "jsonwebtoken";
 
 const secret = process.env.JWT_SECRET;
@@ -50,7 +50,20 @@ describe("/posts", () => {
       expect(posts.length).toEqual(1);
       expect(posts[0].message).toEqual("hello world");
     });
-  
+
+    xit("has a single comment i comments", () => {
+      let user_id = "1"
+      let content = "A comment"
+      let post = new Post({ message: "some message", comments:[{user_id, content}]});
+      expect(post.comments[0].content).toEqual(content);
+    });
+
+    xit("has multiple comments", () => {
+      let user_id = "1"
+      let content = "A comment"
+      let post = new Post({ message: "some message", comments:[{user_id, content},{user_id, content}]});
+      expect(post.comments[0].content).toEqual(content);
+    });
     test("returns a new token", async () => {
       let response = await request(app)
         .post("/posts")
@@ -69,7 +82,7 @@ describe("/posts", () => {
         .send({ message: "hello again world" });
       expect(response.status).toEqual(401);
     });
-  
+
     test("a post is not created", async () => {
       await request(app)
         .post("/posts")
