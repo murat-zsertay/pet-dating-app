@@ -38,7 +38,7 @@ We also used...
 - [Mongoose](https://mongoosejs.com) to model objects in MongoDB.
 - [Handlebars](https://handlebarsjs.com/) for the `home` template.
 - [ESLint](https://eslint.org) for linting.
-- [Nodemon](https://nodemon.io/) to reload the server automatically.
+- [pm2](https://pm2.keymetrics.io/) to reload the server automatically.
 
 ## Architecture
 
