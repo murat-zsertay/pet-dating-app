@@ -1,7 +1,7 @@
-import {Post} from "../models/post"
-import {TokenGenerator} from "../models/token_generator"
+import {Post} from "../models/post.js"
+import {TokenGenerator} from "../models/token_generator.js"
 import multer from "multer";
-
+//
 const storage = multer.diskStorage({
   destination: 'uploads/',
   filename: (req, file, cb) => {

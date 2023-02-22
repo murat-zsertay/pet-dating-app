@@ -145,10 +145,10 @@ Here, we've used an environment variable called `JWT_SECRET`, which you'll see u
    ```
 8. Create and populate initial .env files on the backend for testing and development
    ```
-   cd backend
-   touch .env.development.local .env.production.local .env.test.local
-   echo "JWT_SECRET=SUPER_SECRET\nMONGODB_URL='mongodb://0.0.0.0:27017/pet_test'\nPORT=8080" >> .env.test.local
-   echo "JWT_SECRET=SUPER_SECRET\nMONGODB_URL='mongodb://0.0.0.0:27017/pet_development'\nPORT=8080" >> .env.development.local
+   cd api
+    touch .env.development.local .env.production.local .env.test.local
+   echo "JWT_SECRET=SUPER_SECRET\nMONGODB_URL='mongodb://0.0.0.0/pet_test'\nPORT=8080" >> .env.test.local
+   echo "JWT_SECRET=SUPER_SECRET\nMONGODB_URL='mongodb://0.0.0.0/pet_development'\nPORT=8080" >> .env.development.local
    ```
 
 ### Start
@@ -233,6 +233,14 @@ Some people occasionally experience MongoDB connection errors when running the t
 
 If you have issues that are not resolved by these tips, please reach out to a coach and, once the issue is resolved, we can add a new tip!
 
-# Project Owners
+FYI - In the package.json dont try to audit fix the issues, it will flip to have from 6 to 80 vunerabilities
+and then if you audit fix again it will flip back to again it will go back to having 6 vunerabilities.
+
+
+
+
+
+
+<!-- BEGIN GENERATED SECTION DO NOT EDIT -->
 
 Charlie Jess Murat Oana
