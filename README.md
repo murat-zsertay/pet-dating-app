@@ -167,9 +167,9 @@ Here, we've used an environment variable called `JWT_SECRET`, which you'll see u
 8. Create and populate initial .env files on the backend for testing and development
    ```
    cd api
-   touch .env.development.local .env.production.local .env.test.local
-   echo "JWT_SECRET=SUPER_SECRET\nMONGODB_URL='mongodb://0.0.0.0/acebook_test'" >> .env.test.local
-   echo "JWT_SECRET=SUPER_SECRET\nMONGODB_URL='mongodb://0.0.0.0/acebook_development'" >> .env.development.local
+    touch .env.development.local .env.production.local .env.test.local
+   echo "JWT_SECRET=SUPER_SECRET\nMONGODB_URL='mongodb://0.0.0.0/pet_test'\nPORT=8080" >> .env.test.local
+   echo "JWT_SECRET=SUPER_SECRET\nMONGODB_URL='mongodb://0.0.0.0/pet_development'\nPORT=8080" >> .env.development.local
    ```
 
 ### Start
