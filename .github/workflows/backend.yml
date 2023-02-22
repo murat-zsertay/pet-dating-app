@@ -1,4 +1,4 @@
-name: Node.js CI Backend tests (Trial setup 1)
+name: Node.js CI Backend tests
 
 on:
   pull_request:
