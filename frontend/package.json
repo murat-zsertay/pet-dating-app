@@ -7,20 +7,26 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+
     "cypress": "^10.7.0",
     "eslint": "^8.23.0",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4",
     "webpack": "^5.75.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts --openssl-legacy-provider start",
+    "start:dev": "sh ../bin/start_both_frontend_and_backend_dev.sh",
+    "start:test": "sh ../bin/start_backend_and_frontend_test.sh",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "npm run test:unit && npm run test:feature",
+    "test:unit": "npm run start:dev && cypress run --component",
+    "test:feature": "npm run start:test && cypress run && pm2 kill",
     "eject": "react-scripts eject"
 
   },
