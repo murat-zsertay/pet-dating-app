@@ -14,14 +14,20 @@
     "react-dom": "^18.2.0",
     "react-router": "^6.8.1",
     "react-router-dom": "^6.8.1",
-    "react-scripts": "^5.0.1",
-    "web-vitals": "^2.1.4"
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4",
+    "webpack": "^5.75.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts --openssl-legacy-provider start",
+    "start:dev": "sh ../bin/start_both_frontend_and_backend_dev.sh",
+    "start:test": "sh ../bin/start_backend_and_frontend_test.sh",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "npm run test:unit && npm run test:feature",
+    "test:unit": "npm run start:dev && cypress run --component",
+    "test:feature": "npm run start:test && cypress run && pm2 kill",
     "eject": "react-scripts eject"
+
   },
   "eslintConfig": {
     "extends": [
