@@ -158,15 +158,15 @@ Here, we've used an environment variable called `JWT_SECRET`, which you'll see u
    name, all have been listed below, these variables are listed in the ecosystem.config.js file at the project root**
 2. 
    ```sh
-   sh ./bin/startServer.sh development
+   pm2 start ecosystem.config.cjs --env development
    ```
 
   ```sh
-   sh ./bin/startServer.sh test
+   pm2 start ecosystem.config.cjs --env test
    ```
 
   ```sh
-   sh ./bin/startServer.sh production
+   pm2 start ecosystem.config.cjs --env production
    ```
 
 
