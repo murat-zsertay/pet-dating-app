@@ -145,12 +145,15 @@ Here, we've used an environment variable called `JWT_SECRET`, which you'll see u
    ```
 8. Create and populate initial .env files on the backend for testing and development
    ```
-   cd api
+   cd backend
     touch .env.development.local .env.production.local .env.test.local
    echo "JWT_SECRET=SUPER_SECRET\nMONGODB_URL='mongodb://0.0.0.0/pet_test'\nPORT=8080" >> .env.test.local
    echo "JWT_SECRET=SUPER_SECRET\nMONGODB_URL='mongodb://0.0.0.0/pet_development'\nPORT=8080" >> .env.development.local
    ```
-
+9.
+```sh 
+npm i pm2 -g
+```
 ### Start (React Frontend and Express Backend)
 
 1. Start both servers
@@ -158,15 +161,15 @@ Here, we've used an environment variable called `JWT_SECRET`, which you'll see u
    name, all have been listed below, these variables are listed in the ecosystem.config.js file at the project root**
 2. 
    ```sh
-   sh ./bin/startServer.sh development
+   pm2 start ecosystem.config.cjs --env development
    ```
 
   ```sh
-   sh ./bin/startServer.sh test
+   pm2 start ecosystem.config.cjs --env test
    ```
 
   ```sh
-   sh ./bin/startServer.sh production
+   pm2 start ecosystem.config.cjs --env production
    ```
 
 

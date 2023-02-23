@@ -6,6 +6,7 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "preinstall": "npm i -g pm2",
     "start": "sh ../bin/startSpecificServer.sh",
     "start:dev": "npm run start backend development && pm2 logs",
     "start:test": "npm run start backend test && npm run test && pm2 kill",
