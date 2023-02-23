@@ -151,24 +151,24 @@ Here, we've used an environment variable called `JWT_SECRET`, which you'll see u
    echo "JWT_SECRET=SUPER_SECRET\nMONGODB_URL='mongodb://0.0.0.0/pet_development'\nPORT=8080" >> .env.development.local
    ```
 
-### Start
+### Start (React Frontend and Express Backend)
 
-1. Start the dev server
-   **NB you wont need to pass in any variables when starting the backend dev server**
-
+1. Start both servers
+   **NB depending on the environment you would like setup then you will need to pass in that particular environment 
+   name, all have been listed below, these variables are listed in the ecosystem.config.js file at the project root**
+2. 
+   ```sh
+   sh ./bin/startServer.sh development
    ```
-   ; cd backend
-   ; npm run start:dev
+
+  ```sh
+   sh ./bin/startServer.sh test
    ```
 
-2. Start the front end
+  ```sh
+   sh ./bin/startServer.sh production
+   ```
 
-In a new terminal session...
-
-```
-; cd frontend
-; npm start
-```
 
 You should now be able to open your browser and go to `http://localhost:3000/signup` to create a new user.
 
@@ -187,14 +187,16 @@ After logging in, you won't see much but you can create posts using PostMan and 
 Start the server in test mode (so that it connects to the test DB)
 **NB the mongoDB server is defined in the .env.test.local file**
 
-```
-; cd backend
-; npm run start:test
+```sh
+cd backend
+npm run start:test
 ```
 
 #### The frontend (React)
 
 **Note the use of an environment variable for the JWT secret**
+
+**NB the environment variables for dev and testing are currently stored in the ecosystem.config.js**
 
 Start the server in test mode (so that it connects to the test DB)
 
