@@ -25,19 +25,22 @@ jobs:
 
 #      - name: install pm2 global
 #        run: npm install pm2@latest -g
-#      - name: Create .env file
-#        run: |
-#          touch .env.test.local
-#          echo "MONGODB_URL=${{ secrets.MONGODB_URL }}" >> .env.test.local
-#          echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> .env.test.local
-#          echo "PORT=${{ secrets.PORT }}" >> .env.test.local
-#          echo "NODE_ENV=test" >> .env.test.local
+      - name: Create .env file
+        run: |
+          touch .env.test.local
+          echo "MONGODB_URL=${{ secrets.MONGODB_URL }}" >> .env.test.local
+          echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> .env.test.local
+          echo "PORT=${{ secrets.PORT }}" >> .env.test.local
+          echo "NODE_ENV=test" >> .env.test.local
       - name: Install dependencies
         run: npm ci
       - name: Start MongoDB
         uses: supercharge/mongodb-github-action@1.8.0
         with:
           mongodb-version: ${{ matrix.mongodb-version }}
+#      - name: run chmod + x on scripts
+#        run: |
+#          ../bin/startServer chmod +x
       - name: Test Frontend
         run: | 
           npm run start:test
