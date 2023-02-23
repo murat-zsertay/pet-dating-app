@@ -13,7 +13,6 @@ describe("/posts", () => {
   beforeAll( async () => {
     const user = new User({email: "test@test.com", password: "12345678"});
     await user.save();
-
     token = JWT.sign({
       user_id: user.id,
       // Backdate this token of 5 minutes
@@ -51,7 +50,7 @@ describe("/posts", () => {
       expect(posts[0].message).toEqual("hello world");
     });
 
-    xit("has a single comment i comments", () => {
+   xtest("has a single comment i comments", () => {
       let user_id = "1"
       let content = "A comment"
       let post = new Post({ message: "some message", comments:[{user_id, content}]});
