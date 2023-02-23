@@ -10,35 +10,18 @@ const NavBar = () => {
     });
 
     return(
-        <>
-            <nav className='nav'>
-                <div className='nav-container'>
-                    <Link to="/" className='site-title'>Pawty Time</Link>
-                    <ul>
-                        {!token && <CustomLink to="/login">Login</CustomLink>}
-                        {!token && <CustomLink to="/signup">Sign-up</CustomLink> }
-                        {token && <CustomLink to="/posts">Posts</CustomLink>}
-                        {token && <Link to="/login" onClick={() => window.localStorage.removeItem("token")}>Logout</Link>}  
-                    </ul>
-                </div>
-            </nav>
-        </>
+        <nav className='nav'>
+            <div className='nav-container'>
+                <Link to="/" className='site-title'>Pawty Time</Link>
+                <ul>
+                    {!token && <CustomLink to="/login">Login</CustomLink>}
+                    {!token && <CustomLink to="/signup">Sign-up</CustomLink> }
+                    {token && <CustomLink to="/posts">Posts</CustomLink>}
+                    {token && <Link to="/login" onClick={() => window.localStorage.removeItem("token")}>Logout</Link>}  
+                </ul>
+            </div>
+        </nav>
     )
-// } else {
-//     return(
-//         <>
-//             <nav className='nav'>
-//                 <div className='nav-container'>
-//                     <Link to="/" className='site-title'>Pawty Time</Link>
-//                     <ul>
-//                         <CustomLink to="/login">Login</CustomLink>,
-//                         <CustomLink to="/signup">Sign-up</CustomLink>   
-//                     </ul>
-//                 </div>
-//             </nav>
-//         </>
-//     )
-// }
 }
 
 const CustomLink = ({to, children}) => {
