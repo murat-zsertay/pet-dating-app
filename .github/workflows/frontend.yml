@@ -22,9 +22,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-
-#      - name: install pm2 global
-#        run: npm install pm2@latest -g
       - name: Create .env file
         run: |
           touch .env.test.local
@@ -38,9 +35,6 @@ jobs:
         uses: supercharge/mongodb-github-action@1.8.0
         with:
           mongodb-version: ${{ matrix.mongodb-version }}
-#      - name: run chmod + x on scripts
-#        run: |
-#          ../bin/startServer chmod +x
       - name: Test Frontend
         run: | 
           npm run start:test
