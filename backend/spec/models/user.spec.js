@@ -9,24 +9,30 @@ describe("User model", () => {
 
     it("has an email address", () => {
         const user = new User({
+            firstName: "some",
+            lastName: "one",
             email: "someone1@example.com",
             password: "password",
+            postcode: "N19 0BG"
         });
         expect(user.email).toEqual("someone1@example.com");
     });
 
     it("has a password", () => {
         const user = new User({
-            email: "someone2@example.com",
+            firstName: "some",
+            lastName: "one",
+            email: "someone1@example.com",
             password: "password",
+            postcode: "N19 0BG"
         });
         expect(user.password).toEqual("password");
     });
 
 
     it("can list all users", async () => {
-        await User.create({email: "someone1@email.com", password: "password"})
-        await User.create({email: "someone2@email.com", password: "password"})
+        await User.create({firstName: "some",  lastName: "one", email: "someone1@email.com", password: "password", postcode: "N19 0BG"})
+        await User.create({firstName: "some",  lastName: "one", email: "someone2@email.com", password: "password", postcode: "LE2 2VB"})
         // Retrieve all users from the database
         const retrievedUsers = await User.find();
         // check if it is an array
@@ -40,8 +46,11 @@ describe("User model", () => {
 
     it("can save a user when both email address and password are valid", async () => {
     await User.create({
-            email: "someone3@example.com",
-            password: "password",
+          firstName: "some",
+          lastName: "one",
+          email: "someone3@example.com",
+          password: "password",
+          postcode: "N19 0BG"
         });
         // expect(user).not.toBeNull();
         let users = await User.find();
@@ -53,8 +62,11 @@ describe("User model", () => {
 
     it("throws an error message when email address is invalid", (done) => {
         const user = new User({
-            email: "invalidemail",
+            firstName: "some",
+            lastName: "one",
+            email: "someone1xample.com",
             password: "password",
+            postcode: "N19 0BG"
         });
 
         user.validate(function (err) {
@@ -67,8 +79,11 @@ describe("User model", () => {
 
     it("throws an error message when password does not meet minimum requirement of password length", (done) => {
         const user = new User({
+            firstName: "some",
+            lastName: "one",
             email: "someone6@example.com",
             password: "123",
+            postcode: "N19 0BG"
         });
 
         user.validate(function (err) {
@@ -81,8 +96,11 @@ describe("User model", () => {
 
     it("can save a new user when password length meets the requirement of minimum length of 4 or more characters", (done) => {
         const user = new User({
-            email: "someone7@example.com",
-            password: "1234",
+            firstName: "some",
+            lastName: "one",
+            email: "someone1@example.com",
+            password: "pass",
+            postcode: "N19 0BG"
         });
 
         user.validate(function (err) {
@@ -93,13 +111,16 @@ describe("User model", () => {
 
     it("throws an error message when password exceeds the maximum allowed length of 10 characters", (done) => {
         const user = new User({
-            email: "someone8@example.com",
-            password: "123567891011",
+            firstName: "some",
+            lastName: "one",
+            email: "someone1@example.com",
+            password: "passwordpassword",
+            postcode: "N19 0BG"
         });
 
         user.validate(function (err) {
             expect(err.message).toBe(
-                "User validation failed: password: Path `password` (`123567891011`) is longer than the maximum allowed length (10)."
+                "User validation failed: password: Path `password` (`passwordpassword`) is longer than the maximum allowed length (10)."
             );
             done();
         });
