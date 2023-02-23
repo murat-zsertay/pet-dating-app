@@ -8,7 +8,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
 
-    "cypress": "^10.7.0",
+    "cypress": "^11.2.0",
     "eslint": "^8.23.0",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
@@ -21,12 +21,13 @@
   },
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
-    "start:dev": "sh ../bin/start_both_frontend_and_backend_dev.sh",
-    "start:test": "sh ../bin/start_backend_and_frontend_test.sh",
+    "start:dev": "sh ../bin/startServer.sh development",
     "build": "react-scripts build",
-    "test": "npm run test:unit && npm run test:feature",
-    "test:unit": "npm run start:dev && cypress run --component",
-    "test:feature": "npm run start:test && cypress run && pm2 kill",
+    "start:test": "bash ../bin/startServer.sh test && npm run test",
+    "start:test:github": "bash ../bin/startServer.sh test && npm run test",
+    "test": "npm run test:unit && npm run test:feature && pm2 kill",
+    "test:unit": "cypress run --component",
+    "test:feature": "cypress run",
     "eject": "react-scripts eject"
 
   },
