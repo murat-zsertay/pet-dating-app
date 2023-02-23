@@ -21,15 +21,22 @@ flowchart LR
 ## Model Design
 ```mermaid
 classDiagram
-    class Animal{
-        +String Gender
-        +String Description
-        +Float Weight
+    class User {
+        +String FirstName
+        +String LastName
+        +String Email
+        +String Password
+        +Array  Pet
+        +String PostCode
 
     }
-    class Dog{
-        -int sizeInFeet
-        -canEat()
+    class Pet {
+        +String Name
+        +Int    Weight
+        +Int    Age
+        +String Gender
+        +String Description
     }
+
 
 ```
