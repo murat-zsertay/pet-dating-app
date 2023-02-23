@@ -1,7 +1,7 @@
 name: Node.js CI Frontend tests
 
 on:
-  push:
+  pull_request:
 defaults:
   run:
     working-directory: frontend
