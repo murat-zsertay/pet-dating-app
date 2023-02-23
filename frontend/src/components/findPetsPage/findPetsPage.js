@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import './findPetsPage.css'
+import './FindPetsPage.css'
+import {Pet} from '../pet/Pet.js'
 
 const FindPetsPage = ({ navigate }) => {
-  const [petProfiles, setPetProfiles] = useState([]);
+  const [pets, setPets] = useState([]);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
 
   useEffect(() => {
-    if(token && (petProfiles.length === 0)) {
+    if(token) {
         // TODO: Update fetch url
-        fetch("/petProfiles", {
+        fetch("/pets", {
             headers: {
             'Authorization': `Bearer ${token}`
             }
@@ -18,23 +19,21 @@ const FindPetsPage = ({ navigate }) => {
           window.localStorage.setItem("token", data.token)
           setToken(window.localStorage.getItem("token"))
           // TODO: Update data.{objectName}
-          setPetProfiles(data.petProfiles);
+          setPets(data.pets);
         })
     }
-  }, [token, petProfiles]);
+  }, [token, pets]);
   
     if(token) {
       return(
-        <>
-            <div className='find-pets-title-div'>
-          {/* <h2 className='post-title'>Posts</h2> */}
-          <div id='find-pets' role="find-pets">
-              {petProfiles.map(
-                (petProfile) => ( <PetProfile petProfile={ petProfile } key={ petProfile._id } /> )
-              )}
+          <div className='find-pets-title-div'>
+            <h2 className='post-title'>Find Pets</h2>
+            <div id='find-pets' role="find-pets">
+                {pets.map(
+                  (pet) => ( <Pet pet={ pet } key={ pet._id } /> )
+                )}
+            </div>
           </div>
-          </div>
-        </>
       )
     } else {
       navigate('/login')
