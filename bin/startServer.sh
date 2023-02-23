@@ -4,7 +4,7 @@
 # $1 would be the first variable and the directory where the ecosystem.js
 # Starts a server in a particular environment depending on the environment
 # variable passed in
-
+# set file permissions
 
 # Determine the directory the script is being run from
 current_dir=$(pwd)
