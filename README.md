@@ -192,13 +192,6 @@ Start the server in test mode (so that it connects to the test DB)
 ; npm run start:test
 ```
 
-Then run the tests in a new terminal session
-
-```
-; cd backend
-; npm run test
-```
-
 #### The frontend (React)
 
 **Note the use of an environment variable for the JWT secret**
@@ -206,22 +199,8 @@ Then run the tests in a new terminal session
 Start the server in test mode (so that it connects to the test DB)
 
 ```
-; cd backend
+; cd frontend
 ; npm run start:test
-```
-
-Then start the front end in a new terminal session
-
-```
-; cd frontend
-; JWT_SECRET=SUPER_SECRET npm start
-```
-
-Then run the tests in a new terminal session
-
-```
-; cd frontend
-; JWT_SECRET=SUPER_SECRET npm run test
 ```
 
 ## MongoDB Connection Errors?
