@@ -9,7 +9,7 @@ describe("/tokens", () => {
     })
 
     test("a token is returned when creds are valid", async () => {
-     await User.create({email: "test@tokens.com", password: "12345678"})
+     await User.create({firstName: "some",  lastName: "one", email: "test@tokens.com", password: "12345678", postcode: "N19 0BG"})
 
         let response = await request(app)
             .post("/tokens")

@@ -27,7 +27,7 @@ classDiagram
         +String Email
         +String Password
         +Array  Pet
-        +String PostCode
+        +String Postcode
 
     }
     class Pet {

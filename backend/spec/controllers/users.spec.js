@@ -13,7 +13,7 @@ describe("/users", () => {
     test("the response code is 201 and returns a message to say signup has been successful", async () => {
       let response = await request(app)
         .post("/users")
-        .send({ email: "poppy@email.com", password: "1234" });
+        .send({ firstName: "Poppy", lastName: "One", email: "poppy@email.com", password: "1234", postcode: "W13 3LX" });
       expect(response.statusCode).toBe(201);
       expect(response.body).toEqual({
         message: "Thanks! your account has been successfully created",
@@ -23,9 +23,10 @@ describe("/users", () => {
     test("a user is created", async () => {
       await request(app)
         .post("/users")
-        .send({ email: "scarlett@email.com", password: "1234" });
+        .send({ firstName: "Scarlett", lastName: "Two", email: "scarlett@email.com", password: "1234", postcode: "SW5 2NL" });
       let users = await User.find();
       let newUser = users[users.length - 1];
+      console.log(users);
       expect(newUser.email).toEqual("scarlett@email.com");
     });
   });
@@ -34,7 +35,7 @@ describe("/users", () => {
     test("response code is 400 and returns error message", async () => {
       let response = await request(app)
         .post("/users")
-        .send({ email: "skye@email.com" });
+        .send({ firstName: "Sky", lastName: "Three", email: "skye@email.com", postcode: "E8 8SW" });
       expect(response.statusCode).toBe(400);
       expect(response.body).toEqual({
         message: "User validation failed: password: required"
@@ -52,7 +53,7 @@ describe("/users", () => {
     test("response code is 400 and returns error message", async () => {
       let response = await request(app)
         .post("/users")
-        .send({ password: "1234" });
+        .send({ firstName: "Sky", lastName: "Three", password: "1234", postcode: "E8 8SW"});
       expect(response.statusCode).toBe(400);
       expect(response.body).toEqual({
         message: "User validation failed: email: required"
@@ -70,7 +71,7 @@ describe("/users", () => {
     test("response code is 400 and it returns an error message", async () => {
       let response = await request(app)
         .post("/users")
-        .send({ email: "helloworld", password: "1234" });
+        .send({ firstName: "Sky", lastName: "Three", email: "helloworld", password: "1234", postcode: "E8 8SW" });
       expect(response.statusCode).toBe(400);
       expect(response.body).toEqual({
         message:
@@ -83,7 +84,7 @@ describe("/users", () => {
     test("response code is 400 and it returns an error message", async () => {
       let response = await request(app)
         .post("/users")
-        .send({ email: "sky@yahoo.com", password: "1" });
+        .send({ firstName: "Sky", lastName: "Three", email: "sky@yahoo.com", password: "1",  postcode: "E8 8SW" });
       expect(response.statusCode).toBe(400);
       expect(response.body).toEqual({
         message:
@@ -97,8 +98,11 @@ describe("/users", () => {
       let response = await request(app)
         .post("/users")
         .send({
+          firstName: "Sky", 
+          lastName: "Three",
           email: "sky@yahoo.com",
           password: "ThisPasswordExceedsTheMaxPasswordLength",
+          postcode: "E8 8SW"
         });
       expect(response.statusCode).toBe(400);
       expect(response.body).toEqual({
