@@ -13,4 +13,4 @@ const Pet = ({pet}) => {
     )
 }
 
-export default Pet;
+export {Pet};
