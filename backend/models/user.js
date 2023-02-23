@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { PetSchema } from "./pet";
+import { PetSchema } from "./pet.js";
 mongoose.set("strictQuery", true);
 
 const validateEmail = (email) => {
