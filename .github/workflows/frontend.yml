@@ -22,7 +22,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+
 #      - name: install pm2 global
 #        run: npm install pm2@latest -g
 #      - name: Create .env file
