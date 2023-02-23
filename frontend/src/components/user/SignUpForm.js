@@ -7,6 +7,7 @@ const SignUpForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [postcode, setPostcode] = useState("");
   const [error, setError] = useState(null);
 
   const handleSubmit = async (event) => {
@@ -20,6 +21,7 @@ const SignUpForm = ({ navigate }) => {
           lastName: lastName,
           email: email,
           password: password,
+          postcode: postcode
         }),
         headers: {
           "Content-Type": "application/json",
@@ -60,6 +62,10 @@ const SignUpForm = ({ navigate }) => {
 
   const handleConfirmPasswordChange = (event) => {
     setConfirmPassword(event.target.value);
+  };
+
+  const handlePostcodeChange = (event) => {
+    setPostcode(event.target.value);
   };
 
   return (
@@ -134,6 +140,20 @@ const SignUpForm = ({ navigate }) => {
             />
             <label id="form_label" htmlFor="confirm-password">
               Confirm Password
+            </label>
+            <i></i>
+          </div>
+
+          <div className="input-box">
+            <input
+              className="form_field"
+              id="postcode"
+              type="text"
+              value={postcode}
+              onChange={handlePostcodeChange}
+            />
+            <label id="form_label" htmlFor="postcode">
+              Postcode
             </label>
             <i></i>
           </div>
