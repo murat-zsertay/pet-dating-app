@@ -1,3 +1,6 @@
+# Diagrams
+
+## Web Flow
 ```mermaid
 flowchart LR
     A[Homepage - MVP] --> B[Login - MVP]
@@ -13,4 +16,20 @@ flowchart LR
 
     H --> J[Chat]
     H --> K[Scheduler]
+```
+
+## Model Design
+```mermaid
+classDiagram
+    class Animal{
+        +String Gender
+        +String Description
+        +Float Weight
+
+    }
+    class Dog{
+        -int sizeInFeet
+        -canEat()
+    }
+
 ```
