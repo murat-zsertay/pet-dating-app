@@ -19,7 +19,7 @@ const App = () => {
                 <Route path='/' element={<SignUpForm navigate={useNavigate()} />} />
                 <Route path='/signup' element={<SignUpForm navigate={useNavigate()} />} />
                 <Route path='/findPetsPage' element={<FindPetsPage navigate={useNavigate()} />} />
-                <Route path='/users/user' element={<Profile navigate={useNavigate()} />} />
+                <Route path='/users/:user_id' element={<Profile navigate={useNavigate()} />} />
             </Routes> 
         </>
     );
