@@ -1,6 +1,7 @@
 import './App.css';
 import LoginForm from '../auth/LoginForm'
 import SignUpForm from '../user/SignUpForm'
+import FindPetsPage from '../findPetsPage/FindPetsPage';
 import NavBar from '../navBar/navBar';
 import {
     useNavigate,
@@ -16,6 +17,7 @@ const App = () => {
                 <Route path='/login' element={<LoginForm navigate={useNavigate()} />} />
                 <Route path='/' element={<SignUpForm navigate={useNavigate()} />} />
                 <Route path='/signup' element={<SignUpForm navigate={useNavigate()} />} />
+                <Route path='/findPetsPage' element={<FindPetsPage navigate={useNavigate()} />} />
             </Routes> 
         </>
     );
