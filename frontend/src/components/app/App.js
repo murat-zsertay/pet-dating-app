@@ -3,12 +3,8 @@ import LoginForm from '../auth/LoginForm'
 import SignUpForm from '../user/SignUpForm'
 import FindPetsPage from '../findPetsPage/FindPetsPage';
 import NavBar from '../navBar/navBar';
+import {Route, Routes, useNavigate,} from "react-router-dom";
 import Profile from '../profile/profile';
-import {
-    useNavigate,
-    Routes,
-    Route,
-} from "react-router-dom";
 
 const App = () => {
     return (

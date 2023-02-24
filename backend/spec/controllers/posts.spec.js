@@ -35,14 +35,14 @@ describe('Logger', () => {
 //     await Post.deleteMany({});
 //   })
 
-//   describe("POST, when token is present", () => {
-//     test("responds with a 201", async () => {
-//       let response = await request(app)
-//         .post("/posts")
-//         .set("Authorization", `Bearer ${token}`)
-//         .send({ message: "hello world", token: token });
-//       expect(response.status).toEqual(201);
-//     });
+// describe("POST, when token is present", () => {
+//   test("responds with a 201", async () => {
+//     let response = await request(app)
+//       .post("/posts")
+//       .set("Authorization", `Bearer ${token}`)
+//       .send({ message: "hello world", token });
+//     expect(response.status).toEqual(201);
+//   });
 
 //     test("creates a new post", async () => {
 //       await request(app)

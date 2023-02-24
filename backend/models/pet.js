@@ -1,12 +1,13 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
+
 export const PetSchema = new mongoose.Schema(
   {
     name: String,
     weight: Number,
     age: Number,
     description: String,
-    gender: String,
+    gender: String
   },
   { timestamps: true }
-);
-export let Pet = mongoose.model("Pet", PetSchema);
+)
+export const Pet = mongoose.model('Pet', PetSchema)
