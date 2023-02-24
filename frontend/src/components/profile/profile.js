@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 
+
 const Profile = () => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
