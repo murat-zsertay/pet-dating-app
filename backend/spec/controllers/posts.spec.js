@@ -8,7 +8,11 @@
 // const secret = process.env.JWT_SECRET;
 
 // let token;
+import { describe, test } from '@jest/globals'
 
+describe('Logger', () => {
+  test.todo('please pass')
+})
 // describe("/posts", () => {
 //   beforeAll( async () => {
 //     const user = new User({firstName: "some", lastName: "one", email: "test@test.com", password: "12345678", postcode: "N19 0BG"});
@@ -39,7 +43,7 @@
 //         .send({ message: "hello world", token: token });
 //       expect(response.status).toEqual(201);
 //     });
-  
+
 //     test("creates a new post", async () => {
 //       await request(app)
 //         .post("/posts")
@@ -71,9 +75,9 @@
 //       let newPayload = JWT.decode(response.body.token, process.env.JWT_SECRET);
 //       let originalPayload = JWT.decode(token, process.env.JWT_SECRET);
 //       expect(newPayload.iat > originalPayload.iat).toEqual(true);
-//     });  
+//     });
 //   });
-  
+
 //   describe("POST, when token is missing", () => {
 //     test("responds with a 401", async () => {
 //       let response = await request(app)
@@ -89,7 +93,7 @@
 //       let posts = await Post.find();
 //       expect(posts.length).toEqual(0);
 //     });
-  
+
 //     test("a token is not returned", async () => {
 //       let response = await request(app)
 //         .post("/posts")

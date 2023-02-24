@@ -1,14 +1,17 @@
 // import mongoose from "mongoose";
 // import "../mongodb_helper";
 // import {Comment} from "../../models/comment.js";
+import { describe, test } from '@jest/globals'
 
+describe('Logger', () => {
+  test.todo('please pass')
+})
 // describe("Comment model", () => {
 // 	beforeEach((done) => {
 // 		mongoose.connection.collections.comments.drop(() => {
 // 			done();
 // 		});
 // 	});
-
 
 // 	it("returns the date and time of when a comment is created", async () => {
 // 		const comment = await Comment.create({comment: "testing a comment"})
