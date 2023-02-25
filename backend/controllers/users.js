@@ -4,16 +4,14 @@ import { TokenGenerator } from "../models/token_generator.js";
 export const UsersController = {
   Create: async (req, res) => {
     const existingUser = await User.exists({ email: req.body.email });
-    const token = await TokenGenerator.jsonwebtoken(req.user_id);
     if (existingUser) {
-      return res.status(400).json({ token, message: "Email already in use" });
+      return res.status(400).json({ message: "Email already in use" });
     }
     const newUser = new User(req.body);
     newUser.save((err) => {
-      if (err) res.status(400).json({ token, message: err.message });
+      if (err) res.status(400).json({ message: err.message });
       else {
         res.status(201).json({
-          token,
           message: "Thanks! your account has been successfully created",
         });
       }
@@ -29,11 +27,12 @@ export const UsersController = {
         .json({ message: "Bad request: pet is null or undefined" });
       return;
     }
-    User.updateOne({ _id: userId }, { pet: [pet] }, (err) => {
+    User.updateOne({ _id: userId }, { pet: [pet] }, async (err) => {
       if (err) {
         res.status(400).json({ message: "Bad request" });
       } else {
-        res.status(200).json({ message: "OK" });
+        const token = await TokenGenerator.jsonwebtoken(req.user_id);
+        res.status(200).json({ token, message: "OK" });
       }
     });
   },

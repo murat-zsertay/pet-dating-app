@@ -5,6 +5,7 @@ import logger from "morgan";
 // Routes
 import { tokensRouter } from "./routes/tokens.js";
 import { usersRouter } from "./routes/users.js";
+import { usersAuthenticatedRouter } from "./routes/usersAuthenticated.js";
 // import { postsRouter } from './routes/posts.js'
 // Config
 import "./utils/envConfig.js";
@@ -34,7 +35,9 @@ app.use(express.static(path.join(process.cwd(), "public")));
 // route setup
 // app.use('/posts', tokenChecker, postsRouter)
 app.use("/tokens", tokensRouter);
-app.use("/users", tokenChecker, usersRouter);
+
+app.use("/users", usersRouter);
+app.use("/users", tokenChecker, usersAuthenticatedRouter);
 // app.use("/comments", tokenChecker, commentsRouter);
 // catch 404 and forward to error handler
 app.use(catch404);
