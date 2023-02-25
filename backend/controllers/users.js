@@ -27,14 +27,20 @@ export const UsersController = {
         .json({ message: "Bad request: pet is null or undefined" });
       return;
     }
-    User.updateOne({ _id: userId }, { pet: [pet] }, async (err) => {
-      if (err) {
-        res.status(400).json({ message: "Bad request" });
-      } else {
-        const token = await TokenGenerator.jsonwebtoken(req.user_id);
-        res.status(200).json({ token, message: "OK" });
+    User.updateOne(
+      { _id: userId },
+      {
+        $push: { pets: pet }
+      },
+      async (err) => {
+        if (err) {
+          res.status(400).json({ message: "Bad request" });
+        } else {
+          const token = await TokenGenerator.jsonwebtoken(req.user_id);
+          res.status(200).json({ token, message: "OK" });
+        }
       }
-    });
+    );
   },
 
   FindUserById: (req, res) => {

@@ -25,11 +25,11 @@ const EditProfile = ({ navigate }) => {
     event.preventDefault();
 
     const response = await fetch("/users", {
-      method: "POST",
+      method: "PUT",
       body: JSON.stringify({
         pet: {
           name: petName,
-          petWeight: petWeight,
+          weight: petWeight,
           gender: petGender,
           description: petDescription,
           age: petAge,
@@ -49,8 +49,6 @@ const EditProfile = ({ navigate }) => {
 
     if (response.ok) {
       navigate("/profile");
-      setError(null);
-      console.log("Request Submitted");
     }
   };
 
