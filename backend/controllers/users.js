@@ -16,7 +16,6 @@ export const UsersController = {
       }
     })
   },
-
   FindUserById: (req, res) => {
     // Extract user_id from params (Taken from :post_id in the url)
     const user_id = req.params.user_id
@@ -29,5 +28,8 @@ export const UsersController = {
       // returns a body containing the post object and token string
       res.status(200).json({ user })
     })
+  },
+  CreateProfile: (req, res) => {
+
   }
 }
