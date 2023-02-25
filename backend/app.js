@@ -10,7 +10,11 @@ import { usersRouter } from "./routes/users.js";
 import "./utils/envConfig.js";
 import "./utils/databaseConnection.js";
 // Middleware
-import { catch404, errorHandler } from "./utils/expresssMiddleware.js";
+import {
+  catch404,
+  errorHandler,
+  tokenChecker,
+} from "./utils/expresssMiddleware.js";
 // Listeners
 import {
   normalizePort,
@@ -30,7 +34,7 @@ app.use(express.static(path.join(process.cwd(), "public")));
 // route setup
 // app.use('/posts', tokenChecker, postsRouter)
 app.use("/tokens", tokensRouter);
-app.use("/users", usersRouter);
+app.use("/users", tokenChecker, usersRouter);
 // app.use("/comments", tokenChecker, commentsRouter);
 // catch 404 and forward to error handler
 app.use(catch404);
