@@ -1,22 +1,17 @@
 import React, { useState, useEffect } from "react";
-
+import { getUserById } from "../../api/user.js";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
-  const [token, setToken] = useState(window.localStorage.getItem("token"));
 
-  const user_id = window.localStorage.getItem("user_id");
-  const fetchUser = async (user_id) => {
-    try {
-      const response = await fetch(`/users/${user_id}`);
-      const data = await response.json();
-      setUser(data.user);
-    } catch (error) {
-      console.log(error);
-    }
+  const fetchUser = async () => {
+    const user_id = window.localStorage.getItem("user_id");
+    const userData = await getUserById(user_id);
+    setUser(userData);
   };
-  useEffect(() => { 
-    fetchUser(user_id); 
+
+  useEffect(() => {
+    fetchUser();
   }, []);
 
   if (!user) {
