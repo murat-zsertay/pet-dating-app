@@ -10,16 +10,22 @@ const EditProfile = ({ navigate }) => {
   const [error, setError] = useState(null);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
 
-  // useEffect(() => {
-  //   getUser().then((user) => {
-  //     const pet = user.pets[0];
-  //     setPetName(pet.name);
-  //     setPetWeight(pet.weight);
-  //     setPetAge(pet.age);
-  //     setPetDescription(pet.description);
-  //     setPetGender(pet.gender);
-  //   });
-  // }, []);
+  const setCurrentValues = async () => {
+    const user = await getUser();
+    if (user.pets.length === 0) {
+      return;
+    }
+    const pet = user.pets[0];
+    setPetName(pet.name);
+    setPetWeight(pet.weight);
+    setPetAge(pet.age);
+    setPetDescription(pet.description);
+    setPetGender(pet.gender);
+  };
+
+  useEffect(() => {
+    setCurrentValues();
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
