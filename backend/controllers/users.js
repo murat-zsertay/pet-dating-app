@@ -30,7 +30,7 @@ export const UsersController = {
     User.updateOne(
       { _id: userId },
       {
-        $push: { pets: pet }
+        $set: { pets: pet },
       },
       async (err) => {
         if (err) {
@@ -53,8 +53,7 @@ export const UsersController = {
       }
       // const token = await TokenGenerator.jsonwebtoken(req.user_id)
       // returns a body containing the post object and token string
-      const token = await TokenGenerator.jsonwebtoken(req.user_id);
-      res.status(200).json({ token, user });
+      res.status(200).json({ user });
     });
   },
 

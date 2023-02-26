@@ -7,5 +7,3 @@ export const usersRouter = express.Router();
 usersRouter.post("/", UsersController.Create);
 
 usersRouter.get("/:user_id", UsersController.FindUserById);
-
-usersRouter.get("/", UsersController.FindUserByToken);
