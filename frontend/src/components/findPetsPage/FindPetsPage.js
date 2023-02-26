@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
 import "./FindPetsPage.css";
 import { Pet } from "../pet/Pet.js";
-import { getPets } from "../../api/user";
+import { getUserById } from "../../api/user.js";
 
 const FindPetsPage = ({ navigate }) => {
   const [pets, setPets] = useState([]);
   const [token] = useState(window.localStorage.getItem("token"));
 
+  const fetchPets = async () => {
+    const user_id = window.localStorage.getItem("user_id");
+    const petsData = await getUserById(user_id);
+    setPets(petsData.pets);
+  };
+
   useEffect(() => {
-    getPets().then((pets) => {
-      setPets(pets);
-    });
+    fetchPets();
   }, []);
 
   if (token) {
