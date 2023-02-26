@@ -26,10 +26,20 @@ const Profile = () => {
           </h5>
           <p className="email">Email address: {user.email}</p>
           <p className="postcode">Postcode: {user.postcode}</p>
+          <p className="petName">Pet's name: {user.pets[0].name}</p>
+          <p className="petWeight">Pet's weight: {user.pets[0].weight}</p>
+          <p className="petAge">Pet's age: {user.pets[0].age}</p>
+          <p className="petDescription">Pet's description: {user.pets[0].description}</p>
+          <p className="petGender">Pet's gender: {user.pets[0].gender}</p>
         </div>
+        <>
         <a href="/findPetsPage" className="btn btn-primary ">
           See all pets
         </a>
+        </>
+        <>  <a href="/edit-profile" className="btn btn-primary ">
+          Edit your profile
+        </a></>
       </div>
     );
   }
