@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import './navBar.css';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 const NavBar = () => {
     let token = window.localStorage.getItem("token");
@@ -9,15 +9,15 @@ const NavBar = () => {
         token = window.localStorage.getItem("token");
     });
 
-    return(
+    return (
         <nav className='nav'>
             <div className='nav-container'>
                 <Link to="/" className='site-title'>Pawty Time</Link>
                 <ul>
                     {!token && <CustomLink to="/login">Login</CustomLink>}
-                    {!token && <CustomLink to="/signup">Sign-up</CustomLink> }
+                    {!token && <CustomLink to="/signup">Sign-up</CustomLink>}
                     {token && <CustomLink to="/findPetsPage">Find Pets</CustomLink>}
-                    {token && <Link to="/login" onClick={() => window.localStorage.removeItem("token")}>Logout</Link>}  
+                    {token && <Link to="/login" onClick={() => window.localStorage.removeItem("token")}>Logout</Link>}
                 </ul>
             </div>
         </nav>

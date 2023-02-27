@@ -13,20 +13,20 @@ const SignUpForm = ({ navigate }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (password === confirmPassword) {
-      const response = await fetch("/users", {
-        method: "POST",
-        body: JSON.stringify({
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
-          password: password,
-          postcode: postcode
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+        if (password === confirmPassword) {
+            const response = await fetch("/users", {
+                method: "POST",
+                body: JSON.stringify({
+                    firstName,
+                    lastName,
+                    email,
+                    password,
+                    postcode
+                }),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
 
       const json = await response.json();
 
