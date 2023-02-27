@@ -19,6 +19,8 @@ const Profile = () => {
     fetchUser(user_id); 
   }, []);
 
+  console.log(user)
+
   if (!user) {
     return <div></div>;
   } else {

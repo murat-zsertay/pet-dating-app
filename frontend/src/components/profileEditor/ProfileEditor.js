@@ -2,13 +2,23 @@ import React, { useState, useEffect } from "react";
 import PetForm from "../petForm/PetForm";
 
 
-const ProfileEditor = (user) => {
+const ProfileEditor = () => {
+  //TODO: Take this out when testing is done and pass down user instead
+  const user = {
+    "_id": "63f78c6af22d52bf97f37477",
+    "email": "hello@there.com",
+    "firstName": "hello",
+    "lastName": "there",
+    "postcode": "LE1 7NB",
+    "password": "12345",
+    "pets": [],
+    "createdAt": "2023-02-23T15:55:22.601Z",
+    "updatedAt": "2023-02-23T15:55:22.601Z",
+    "__v": 0
+}
   const [token, setToken] = useState(window.localStorage.getItem("token"));
   const [updatedUser, setUpdatedUser] = useState(user)
-
-  useEffect(() => {
-      console.log(updatedUser.pets.length)
-  }, [updatedUser.pets])
+  console.log(updatedUser)
 
   const updateUser = async (user) => {
     try {
@@ -34,9 +44,9 @@ const ProfileEditor = (user) => {
   };
 
   const handlePetChange = (updatedPet, index) => {
-    const updatedPets = [...user.pets];
+    const updatedPets = [...updatedUser.pets];
     updatedPets[index] = updatedPet;
-    setUpdatedUser({ ...user, pets: updatedPets });
+    setUpdatedUser({ ...updatedUser, pets: updatedPets });
   };
 
   const handleSubmit = (event) => {
@@ -47,40 +57,33 @@ const ProfileEditor = (user) => {
 
   const handleAddPetClick = () => {
     const emptyPet = {name:'', weight: 0, age: 0, description:'', gender: ''}
-    setUpdatedUser({...updateUser, pets: [...updatedUser.pets, emptyPet]})
-    
+    setUpdatedUser({...updatedUser, pets: [...updatedUser.pets, emptyPet]})
   }
 
-  if (!user) {
-    return <div></div>;
-  } else {
     return (
       <div className="profile-editor">
         <form className="editor-form" onSubmit={handleSubmit}>
-          <input className="form_field" id="email" name="email" type="text" value={user.email} onChange={handleInputChange} />
           <label className="form_label" htmlFor="email">Email</label>
-          <input className="form_field" id="first-name" name="first-name" type="text" value={user.firstName} onChange={handleInputChange} />
+          <input className="form_field" id="email" name="email" type="text" value={updatedUser.email} onChange={handleInputChange} />
           <label className="form_label" htmlFor="first-name">First Name</label>
-          <input className="form_field" id="last-name"  name="last-name" type="text" value={user.lastName} onChange={handleInputChange} />
-          <label className="form_label" htmlFor="last-name">First Name</label>
-          <input className="form_field" id="postcode" name="postcode" type="text" value={user.postcode} onChange={handleInputChange} />
+          <input className="form_field" id="first-name" name="firstName" type="text" value={updatedUser.firstName} onChange={handleInputChange} />
+          <label className="form_label" htmlFor="last-name">Last Name</label>
+          <input className="form_field" id="last-name"  name="lastName" type="text" value={updatedUser.lastName} onChange={handleInputChange} />
           <label className="form_label" htmlFor="postcode">Postcode</label>
-          <input className="form_field" id="password" name="password" type="password" value={user.password} onChange={handleInputChange} />
+          <input className="form_field" id="postcode" name="postcode" type="text" value={updatedUser.postcode} onChange={handleInputChange} />
           <label className="form_label" htmlFor="password">Password</label>
+          <input className="form_field" id="password" name="password" type="password" value={updatedUser.password} onChange={handleInputChange} />
           <div className="user-pets">
-            {user.pets.map((pet, index) => (
+            {updatedUser.pets.map((pet, index) => (
               <PetForm key={index} pet={pet} index={index} handlePetChange={handlePetChange} />
             ))};
           </div>
-            
-            <button type="submit">Save</button>
-          
+          <button className="add-pet" onClick={handleAddPetClick}>Add pet</button>
+          <button type="submit">Save</button>
         </form>
         
-        <button className="add-pet" onClick={handleAddPetClick}>Add pet</button>
       </div>
     );
-  }
 };
 
 export default ProfileEditor;
