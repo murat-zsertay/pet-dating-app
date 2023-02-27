@@ -6,7 +6,6 @@ export const TokensController = {
   Create: (req, res) => {
     const email = req.body.email
     const password = req.body.password
-
     User.findOne({ email }).then(async (user) => {
       if (!user) {
         // TODO: User.findOne error handler needs to be tested
