@@ -16,7 +16,7 @@ const FindPetsPage = ({navigate}) => {
         fetchPets();
     }, []);
 
-    const handlePlaydateRequest = async () => {
+    const handlePlaydateRequest = async (pet) => {
       try {
         const response = await fetch(`/pets/request`, {
           method: "post",
@@ -24,13 +24,7 @@ const FindPetsPage = ({navigate}) => {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ 
-            petId: pets[0]._id,
-            petName: pets[0].name, 
-            petWeight: pets[0].weight, 
-            petAge: pets[0].age, 
-            petGender: pets[0].gender, 
-          }),
+          body: pet
         });
     
         if (response.ok) {
@@ -51,12 +45,7 @@ const FindPetsPage = ({navigate}) => {
                 <h2 className="post-title">Find Pets</h2>
                 <div id="find-pets" role="find-pets">
                   {pets.map((pet) => (
-<>
-                    <Pet pet={pet} key={pet._id.toString()}/>
-                    <div className="playdateButton">
-                    <button id="playdate" onClick={()=>handlePlaydateRequest()}>Request playdate</button>
-                    </div>
-</>
+                    <Pet pet={pet} handlePlaydateRequest={handlePlaydateRequest} key={pet._id}/>
                   ))}
                 </div>
             </div>
