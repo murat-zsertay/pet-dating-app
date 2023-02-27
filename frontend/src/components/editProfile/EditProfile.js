@@ -11,18 +11,18 @@ const EditProfile = ({navigate}) => {
     const [token, setToken] = useState(window.localStorage.getItem("token"));
     const [userId, setUserId] = useState(window.localStorage.getItem("setUserId"));
 
-  const setCurrentValues = async () => {
-    const user = await getUser();
-    if (user.pets.length === 0) {
-      return;
-    }
-    const pet = user.pets[0];
-    setPetName(pet.name);
-    setPetWeight(pet.weight);
-    setPetAge(pet.age);
-    setPetDescription(pet.description);
-    setPetGender(pet.gender);
-  };
+    const setCurrentValues = async () => {
+        const user = await getUserInfoById(userId);
+        if (user.pets.length === 0) {
+            return;
+        }
+        const pet = user.pets[0];
+        setPetName(pet.name);
+        setPetWeight(pet.weight);
+        setPetAge(pet.age);
+        setPetDescription(pet.description);
+        setPetGender(pet.gender);
+    };
 
   useEffect(() => {
     setCurrentValues();
