@@ -7,8 +7,13 @@ export const getAllPets = async (token) => {
                     "Authorization": `Bearer ${token}`
                 }
             });
-            const data = await res.json();
-            return data.pets;
+            const data = await res.json()
+            console.log(data)
+            if (!data.pets) {
+                return []
+            } else {
+                return data.pets;
+            }
         } catch (error) {
             console.log(error);
         }

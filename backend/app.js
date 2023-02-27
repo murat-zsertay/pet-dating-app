@@ -5,7 +5,6 @@ import logger from 'morgan'
 // Routes
 import { tokensRouter } from './routes/tokens.js'
 import { usersRouter } from './routes/users.js'
-// import { postsRouter } from './routes/posts.js'
 // Config
 import './utils/envConfig.js'
 import './utils/databaseConnection.js'
