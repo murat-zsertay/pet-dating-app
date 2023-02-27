@@ -11,6 +11,7 @@ const EditProfile = ({navigate}) => {
     const [token, setToken] = useState(window.localStorage.getItem("token"));
     const [userId, setUserId] = useState(window.localStorage.getItem("user_id"));
     const [petProfileImage, setPetProfileImage] = useState(null)
+    const [petImageFormData, setPetImageFormData] = useState(null)
 
     const setCurrentValues = async () => {
         const user = await getUserInfoById(userId);
@@ -30,39 +31,40 @@ const EditProfile = ({navigate}) => {
         setCurrentValues();
     }, []);
 
-    const handlePetProfileImageEdit = () => {
-
+    const handlePetProfileImageEdit = (event) => {
+        const file = event.target.files[0];
+        const formData = new FormData();
+        formData.append("image", file);
+        setPetImageFormData(formData) 
     }
 
-    const handleImageSubmit = async (event) => {
-        const file = event.target.files[0];
+    const handleImageUpload = async (event) => {
         try {
-            const formData = new FormData();
-            formData.append("image", file);
-      
-            const response = await fetch(`/pet/profile-image`, {
+            const response = await fetch(`/user/pet-profile-image-upload`, {
               method: "POST",
               headers: {
                 Authorization: `Bearer ${token}`,
               },
-              body: formData,
+              body: petImageFormData,
             });
       
             const data = await response.json()
-            setPetProfileImage(data.profileImage);
+            const imageURL = data.url.toString();
       
-            // await fetch(`/users/profile-picture/${user.userId}`, {
-            //   method: "PUT",
-            //   headers: {
-            //     Authorization: `Bearer ${token}`,
-            //     "Content-Type": "application/json",
-            //   },
-            //   body: JSON.stringify({ profilePicture: imageURL }),
-            // });
+            await fetch(`/users/pet-profile-image-edit`, {
+              method: "PUT",
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ profileImage: imageURL }),
+            });
+
+            await setCurrentValues();
       
-          } catch (error) {
+        } catch (error) {
             console.error(error);
-          }
+        }
     }
 
     const handleSubmit = async (event) => {
@@ -128,7 +130,7 @@ const EditProfile = ({navigate}) => {
                 />
                 <div>
                     <input type="file" accept="image/*" onChange={handlePetProfileImageEdit} />
-                    <button onClick={handleImageSubmit}>Submit Image</button>
+                    <button onClick={handleImageUpload}>Submit Image</button>
                 </div>
                 <form className="editProfile" onSubmit={handleSubmit}>
                     <div className="input-box">
