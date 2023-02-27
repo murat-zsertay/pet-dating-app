@@ -16,7 +16,10 @@
     "pm2": "^5.2.2",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4",
-    "webpack": "^5.75.0"
+    "webpack": "^5.75.0",
+    "http-proxy-middleware": "2.0.1"
+  },
+  "devDependencies": {
   },
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
@@ -28,7 +31,6 @@
     "test:unit": "cypress run --component",
     "test:feature": "cypress run",
     "eject": "react-scripts eject"
-
   },
   "eslintConfig": {
     "extends": [
