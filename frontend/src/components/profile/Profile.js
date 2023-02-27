@@ -6,8 +6,8 @@ const Profile = () => {
     const [token, setToken] = useState(window.localStorage.getItem("token"));
     const fetchUser = async () => {
         const user_id = window.localStorage.getItem("user_id");
-        const userData = await getUserInfoById(user_id);
-        setUser(userData.user);
+        const user = await getUserInfoById(user_id);
+        setUser(user);
     };
 
     useEffect(() => {

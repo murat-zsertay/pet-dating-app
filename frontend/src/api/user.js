@@ -6,7 +6,6 @@ export const getUserInfoById = async (user_id) => {
             }
         });
         const data = await response.json();
-        console.log(data)
         window.localStorage.setItem("token", data.token);
         return data.user;
     } catch (error) {
