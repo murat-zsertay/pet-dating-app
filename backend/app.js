@@ -5,6 +5,7 @@ import logger from 'morgan'
 // Routes
 import { tokensRouter } from './routes/tokens.js'
 import { usersRouter } from './routes/users.js'
+// import { postsRouter } from './routes/posts.js'
 // Config
 import './utils/envConfig.js'
 import './utils/databaseConnection.js'
@@ -19,13 +20,16 @@ export const app = express()
 app.use(express.json())
 app.use(logger('dev'))
 app.use(express.static(path.join(process.cwd(), 'public')))
+// app.get('/', (req, res) => {
+//     res.send('Hello World!')
+// })
 
 // route setup
-
+// app.use('/posts', tokenChecker, postsRouter)
 app.use('/tokens', tokensRouter)
 app.use('/users', usersRouter)
 app.use('/pets', petsRouter)
-
+// app.use("/comments", tokenChecker, commentsRouter);
 // catch 404 and forward to error handler
 app.use(catch404)
 

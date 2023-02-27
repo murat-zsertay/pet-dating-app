@@ -5,6 +5,7 @@ import '../mongodb_helper'
 import { User } from '../../models/user.js'
 import { TokenGenerator } from '../../models/token_generator.js'
 import { PetsController } from '../../controllers/pets.js'
+import { setupMockUser } from '../utils.js'
 
 const sendRequest = async (method, route, token) => {
   return await request(app)
@@ -20,7 +21,7 @@ describe('/pets', () => {
 
   describe('GET, when token is present', () => {
     test('responds with a 201', async () => {
-      const { user, token } = await setupMock()
+      const { user, token } = await setupMockUser()
       const response = await request(app)
         .get('/pets')
         .set('Authorization', `Bearer ${token}`)
