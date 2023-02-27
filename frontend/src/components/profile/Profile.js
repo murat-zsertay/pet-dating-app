@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
-import {getUserById} from "../../api/user.js";
+import {getUserInfoById} from "../../api/user.js";
 
 const Profile = () => {
     const [user, setUser] = useState(null);
 
     const fetchUser = async () => {
         const user_id = window.localStorage.getItem("user_id");
-        const userData = await getUserById(user_id);
+        const userData = await getUserInfoById(user_id);
         setUser(userData);
     };
 
