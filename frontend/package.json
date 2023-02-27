@@ -19,7 +19,6 @@
     "webpack": "^5.75.0"
   },
   "scripts": {
-    "preinstall": "npm i -g pm2",
     "start": "react-scripts --openssl-legacy-provider start",
     "start:dev": "sh ../bin/startServer.sh development",
     "build": "react-scripts build",
