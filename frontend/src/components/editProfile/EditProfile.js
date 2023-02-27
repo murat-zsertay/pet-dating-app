@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {getUserById} from "../../api/user";
+import {getUserInfoById} from "../../api/user";
 
 const EditProfile = ({navigate}) => {
     const [petName, setPetName] = useState("");
