@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import PetForm from "../petForm/PetForm";
+import PetForm from "../petForm/PetFormInput";
 
 
 const ProfileEditor = () => {
