@@ -1,19 +1,24 @@
 import React, { useState, useEffect } from "react";
-import PetForm
+import PetForm from "../petForm/PetForm";
 
 
 const ProfileEditor = (user) => {
   const [token, setToken] = useState(window.localStorage.getItem("token"));
   const [updatedUser, setUpdatedUser] = useState(user)
 
-  const updateUser = async (user_id) => {
+  useEffect(() => {
+      console.log(updatedUser.pets.length)
+  }, [updatedUser.pets])
+
+  const updateUser = async (user) => {
     try {
-      const response = await fetch(`/users/${user_id}`,{
+      const response = await fetch(`/users/${user.user_id}`,{
       method: "post",
       headers: {
         "Content-Type": "application/json",
+        'Authorization': `Bearer ${token}`
       },
-      body: JSON.stringify({ updateUser }),
+      body: JSON.stringify({ updatedUser }),
       });
       const data = await response.json();
       console.log(data)
@@ -23,11 +28,28 @@ const ProfileEditor = (user) => {
     }
   };
 
+  const handleInputChange = (event) => {
+    const newUserInfo = { ...updatedUser, [event.target.name]: event.target.value };
+    setUpdatedUser(newUserInfo)
+  };
+
+  const handlePetChange = (updatedPet, index) => {
+    const updatedPets = [...user.pets];
+    updatedPets[index] = updatedPet;
+    setUpdatedUser({ ...user, pets: updatedPets });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(user);
-    updateUser(user.user_id)
+    console.log(updatedUser);
+    updateUser(updatedUser)
   };
+
+  const handleAddPetClick = () => {
+    const emptyPet = {name:'', weight: 0, age: 0, description:'', gender: ''}
+    setUpdatedUser({...updateUser, pets: [...updatedUser.pets, emptyPet]})
+    
+  }
 
   if (!user) {
     return <div></div>;
@@ -35,15 +57,15 @@ const ProfileEditor = (user) => {
     return (
       <div className="profile-editor">
         <form className="editor-form" onSubmit={handleSubmit}>
-          <input className="form_field" id="email" type="text" value={user.email} onChange={handleEmailChange} />
+          <input className="form_field" id="email" name="email" type="text" value={user.email} onChange={handleInputChange} />
           <label className="form_label" htmlFor="email">Email</label>
-          <input className="form_field" id="first-name" type="text" value={user.firstName} onChange={handleFirstNameChange} />
+          <input className="form_field" id="first-name" name="first-name" type="text" value={user.firstName} onChange={handleInputChange} />
           <label className="form_label" htmlFor="first-name">First Name</label>
-          <input className="form_field" id="last-name" type="text" value={user.lastName} onChange={handleLastNameChange} />
+          <input className="form_field" id="last-name"  name="last-name" type="text" value={user.lastName} onChange={handleInputChange} />
           <label className="form_label" htmlFor="last-name">First Name</label>
-          <input className="form_field" id="postcode" type="text" value={user.postcode} onChange={handlePostcodeChange} />
+          <input className="form_field" id="postcode" name="postcode" type="text" value={user.postcode} onChange={handleInputChange} />
           <label className="form_label" htmlFor="postcode">Postcode</label>
-          <input className="form_field" id="postcode" type="password" value={user.password} onChange={handlePasswordChange} />
+          <input className="form_field" id="password" name="password" type="password" value={user.password} onChange={handleInputChange} />
           <label className="form_label" htmlFor="password">Password</label>
           <div className="user-pets">
             {user.pets.map((pet, index) => (
@@ -54,17 +76,8 @@ const ProfileEditor = (user) => {
             <button type="submit">Save</button>
           
         </form>
-        <h2 className="profile-title">Profile</h2>
-        <div className="user-info">
-          <h5 className="usernames">
-            {user.firstName} {user.lastName}
-          </h5>
-          <p className="email">Email address: {user.email}</p>
-          <p className="postcode">Postcode: {user.postcode}</p>
-        </div>
-        <a href="/findPetsPage" className="btn btn-primary ">
-          See all pets
-        </a>
+        
+        <button className="add-pet" onClick={handleAddPetClick}>Add pet</button>
       </div>
     );
   }
