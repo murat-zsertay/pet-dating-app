@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { getUser } from "../../api/user";
+import React, {useEffect, useState} from "react";
+import {getUserById} from "../../api/user";
 
-const EditProfile = ({ navigate }) => {
-  const [petName, setPetName] = useState("");
-  const [petWeight, setPetWeight] = useState("");
-  const [petAge, setPetAge] = useState("");
-  const [petGender, setPetGender] = useState("");
-  const [petDescription, setPetDescription] = useState("");
-  const [error, setError] = useState(null);
-  const [token, setToken] = useState(window.localStorage.getItem("token"));
+const EditProfile = ({navigate}) => {
+    const [petName, setPetName] = useState("");
+    const [petWeight, setPetWeight] = useState("");
+    const [petAge, setPetAge] = useState("");
+    const [petGender, setPetGender] = useState("");
+    const [petDescription, setPetDescription] = useState("");
+    const [error, setError] = useState(null);
+    const [token, setToken] = useState(window.localStorage.getItem("token"));
+    const [userId, setUserId] = useState(window.localStorage.getItem("setUserId"));
 
   const setCurrentValues = async () => {
     const user = await getUser();
