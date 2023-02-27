@@ -6,7 +6,7 @@
 *.pnp.js
 
 # testing
-/coverage
+backend/coverage
 
 # production
 */build
@@ -23,3 +23,10 @@
 *yarn-error.log*
 /frontend/cypress/videos/
 /frontend/cypress/screenshots/
+/.idea/inspectionProfiles/
+/.idea/runConfigurations/
+.idea
+/.idea/modules.xml
+/.idea/other.xml
+/.idea/pet-dating-app.iml
+/.idea/vcs.xml
