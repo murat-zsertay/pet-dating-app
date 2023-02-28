@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from "react";
-import {getUserInfoById} from "../../api/user.js";
+import { getUserInfoById } from "../../api/user.js";
+import { getPlaydates } from "../../api/playdates.js";
 
 const Profile = () => {
     const [user, setUser] = useState(null);
+    const [playdates, setPlaydates] = useState(null);
     const [token, setToken] = useState(window.localStorage.getItem("token"));
     const fetchUser = async () => {
         const user_id = window.localStorage.getItem("user_id");
@@ -10,8 +12,15 @@ const Profile = () => {
         setUser(user);
     };
 
+    const fetchPlaydates = async () => {
+        const playdates = await getPlaydates();
+        console.log(playdates)
+        setPlaydates(playdates)
+    };
+
     useEffect(() => {
         fetchUser();
+        fetchPlaydates();
     }, []);
 
     if (!user) {
@@ -43,6 +52,26 @@ const Profile = () => {
                     ) : (
                         <div>No pets!</div>
                     )}
+                <div  className="requestedPlaydates">
+                    {playdates && playdates?.requestsMadeDetails.map(playdate => (
+                        <div>
+                            <p>PlayDate</p>
+                            <p>{playdate.recipientPet.name}</p>
+                            <p>{playdate.requesterPet.name}</p>
+                            <p>Status: {playdate.playdate.accepted}</p>
+                        </div>
+                    ))}
+                </div>
+                <div  className="recievedPlaydates">
+                    {playdates && playdates?.requestsRecievedDetails.map(playdate => (
+                        <div>
+                            <p>PlayDate</p>
+                            <p>{playdate.recipientPet.name}</p>
+                            <p>{playdate.requesterPet.name}</p>
+                            <p>Status: {playdate.playdate.accepted}</p>
+                        </div>
+                    ))}
+                </div>
                 </div>
                 <>
                     <a href="/findPetsPage" className="btn btn-primary ">

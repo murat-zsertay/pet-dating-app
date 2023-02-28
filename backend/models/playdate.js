@@ -14,6 +14,10 @@ const PlaydateSchema = new mongoose.Schema(
       type: String,
       required: [true, 'required']
     },
+    requestor_user_id: {
+      type: String,
+      required: [true, 'required']
+    },
     accepted: {
       type: String,
       required: [true, 'required']

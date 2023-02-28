@@ -6,6 +6,7 @@ export const PlaydateController = {
   Create: async (req, res) => {
     const playdateInfo = req.body.playdate_request
     playdateInfo.accepted = 'pending'
+    playdateInfo.requestor_user_id = req.user_id
     const newPlaydate = new Playdate(playdateInfo)
     newPlaydate.save(async (err) => {
       if (err) res.status(400).json({ message: err.message })
@@ -38,8 +39,8 @@ export const PlaydateController = {
     }))
 
     const requestsRecievedDetails = await Promise.all(requestsRecieved.map(async (request) => {
-      const requestorUser = await User.findById({ _id: request.recipient_user_id })
-      const recipientPet = user.pets.filter(pet => pet._id.toString() === request.requester_pet_id)[0]
+      const requestorUser = await User.findById({ _id: request.requestor_user_id })
+      const recipientPet = user.pets.filter(pet => pet._id.toString() === request.recipient_pet_id)[0]
       const requesterPet = requestorUser.pets.filter(pet => pet._id.toString() === request.requester_pet_id)[0]
       const requestInfo = {
         playdate: request,
