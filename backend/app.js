@@ -35,11 +35,9 @@ app.use(catch404)
 // error handler
 app.use(errorHandler)
 // TODO: See why we need to do the below check and if it needs to be done
-if (process.env.NODE_ENV !== 'test') {
-  const PORT = normalizePort(process.env.PORT)
-  const server = app.listen(PORT)
-  server.on('error', onError)
-  server.on('listening', onListening)
-}
+const PORT = normalizePort(process.env.PORT)
+const server = app.listen(PORT)
+server.on('error', onError)
+server.on('listening', onListening)
 
 // TODO: Ensuring PM2 is clear and how to use it
