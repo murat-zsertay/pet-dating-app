@@ -14,7 +14,6 @@ const Profile = () => {
 
     const fetchPlaydates = async () => {
         const playdates = await getPlaydates();
-        console.log(playdates)
         setPlaydates(playdates)
     };
 
@@ -36,6 +35,7 @@ const Profile = () => {
                     <p className="email">Email address: {user.email}</p>
                     <p className="postcode">Postcode: {user.postcode}</p>
                 </div>
+                <h2>Your Pets</h2>
                 <div className="pets">
                     {user.pets.length > 0 ? (
                         user.pets.map((pet) => (
@@ -52,6 +52,7 @@ const Profile = () => {
                     ) : (
                         <div>No pets!</div>
                     )}
+                {playdates && playdates?.requestsMadeDetails.length > 0 && <h2>Playdates you've requested</h2>}
                 <div  className="requestedPlaydates">
                     {playdates && playdates?.requestsMadeDetails.map(playdate => (
                         <div>
@@ -62,6 +63,7 @@ const Profile = () => {
                         </div>
                     ))}
                 </div>
+                {playdates && playdates?.requestsRecievedDetails.length > 0 && <h2>Playdates you've recieved</h2>}
                 <div  className="recievedPlaydates">
                     {playdates && playdates?.requestsRecievedDetails.map(playdate => (
                         <div>
