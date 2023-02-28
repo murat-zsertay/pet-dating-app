@@ -17,6 +17,7 @@ const NavBar = () => {
                     {!token && <CustomLink to="/login" id="login-navbar">Login</CustomLink>}
                     {!token && <CustomLink to="/signup" id="signup-navbar">Sign-up</CustomLink>}
                     {token && <CustomLink to="/findPetsPage" id="findpets-navbar">Find Pets</CustomLink>}
+                    {token && <CustomLink to="/profile" id="profile-navbar">Profile</CustomLink>}
                     {token && <Link to="/login" id ="logout-navbar" onClick={() => window.localStorage.removeItem("token")}>Logout</Link>}
                 </ul>
             </div>
