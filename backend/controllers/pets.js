@@ -103,20 +103,10 @@ export const PetsController = {
       const imageURL = req.body.profileImage;
 
       const user = await User.findById(userId)
-      user.pets[0] = { ...user.pets[0], profileImage: imageURL }
+      user.pets[0].profileImage = imageURL
       user.save()
 
       res.status(200).json({ message: 'OK' })
-
-      // //User.updateOne({ _id: userId }, { pets:  }, (err) => {
-      //   if (err) {
-      //     res.status(400).json({ message: "Bad request" });
-      //   } else {
-      //     res.status(200).json({ message: "OK" });
-      //   }
-      // //});
-      
-  
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: error.message });
