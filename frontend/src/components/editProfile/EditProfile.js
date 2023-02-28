@@ -10,6 +10,8 @@ const EditProfile = ({navigate}) => {
     const [error, setError] = useState(null);
     const [token, setToken] = useState(window.localStorage.getItem("token"));
     const [userId, setUserId] = useState(window.localStorage.getItem("user_id"));
+    const [petProfileImage, setPetProfileImage] = useState(null)
+    const [petImageFormData, setPetImageFormData] = useState(null)
 
     const setCurrentValues = async () => {
         const user = await getUserInfoById(userId);
@@ -22,11 +24,48 @@ const EditProfile = ({navigate}) => {
         setPetAge(pet.age);
         setPetDescription(pet.description);
         setPetGender(pet.gender);
+        setPetProfileImage(pet.profileImage)
     };
 
     useEffect(() => {
         setCurrentValues();
     }, []);
+
+    const handlePetProfileImageEdit = (event) => {
+        const file = event.target.files[0];
+        const formData = new FormData();
+        formData.append("image", file);
+        setPetImageFormData(formData) 
+    }
+
+    const handleImageUpload = async (event) => {
+        try {
+            const response = await fetch(`/user/pet-profile-image-upload`, {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+              body: petImageFormData,
+            });
+      
+            const data = await response.json()
+            const imageURL = data.url.toString();
+      
+            await fetch(`/users/pet-profile-image-edit`, {
+              method: "PUT",
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ profileImage: imageURL }),
+            });
+
+            await setCurrentValues();
+      
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -84,6 +123,15 @@ const EditProfile = ({navigate}) => {
             <h2 id="sign-up-title">Edit Profile</h2>
 
             <div className="container">
+                <img
+                className="petProfileImage"
+                src={petProfileImage}
+                alt="profile"
+                />
+                <div>
+                    <input type="file" accept="image/*" onChange={handlePetProfileImageEdit} />
+                    <button onClick={handleImageUpload}>Submit Image</button>
+                </div>
                 <form className="editProfile" onSubmit={handleSubmit}>
                     <div className="input-box">
                         <input
