@@ -103,7 +103,7 @@ export const PetsController = {
       const imageURL = req.body.profileImage;
 
       const user = await User.findById(userId)
-      user.pets[0] = { ...user.pets, profileImage: imageURL }
+      user.pets[0] = { ...user.pets[0], profileImage: imageURL }
       user.save()
 
       res.status(200).json({ message: 'OK' })
