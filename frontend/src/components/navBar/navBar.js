@@ -18,18 +18,19 @@ const NavBar = () => {
                     {!token && <CustomLink to="/signup" id="signup-navbar">Sign-up</CustomLink>}
                     {token && <CustomLink to="/findPetsPage" id="findpets-navbar">Find Pets</CustomLink>}
                     {token && <CustomLink to="/profile" id="profile-navbar">Profile</CustomLink>}
-                    {token && <Link to="/login" id ="logout-navbar" onClick={() => window.localStorage.removeItem("token")}>Logout</Link>}
+                    {token && <CustomLink to="/login" id="logout-navbar"
+                                          onClick={() => window.localStorage.removeItem("token")}>Logout</CustomLink>}
                 </ul>
             </div>
         </nav>
     )
 }
 
-const CustomLink = ({to, children}) => {
+const CustomLink = ({to, id, children}) => {
     const path = window.location.pathname;
     return (
         <li className={path === to ? 'active' : ''}>
-            <Link to={to}>
+            <Link to={to} id={id}>
                 {children}
             </Link>
         </li>
