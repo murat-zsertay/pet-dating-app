@@ -14,6 +14,9 @@ import { catch404, errorHandler } from './utils/expresssMiddleware.js'
 import { normalizePort, onError, onListening } from './utils/serverListensers.js'
 import { petsRouter } from './routes/pets.js'
 
+// import cloudinary
+import { v2 as cloudinary } from 'cloudinary';
+
 export const app = express()
 // setup for receiving JSON
 app.use(express.json())
@@ -41,5 +44,14 @@ if (process.env.NODE_ENV !== 'test') {
   server.on('error', onError)
   server.on('listening', onListening)
 }
+
+
+// Cloudinary Configuration detials
+cloudinary.config({
+  cloud_name: 'dco5jma0q',
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET
+});
+
 
 // TODO: Ensuring PM2 is clear and how to use it

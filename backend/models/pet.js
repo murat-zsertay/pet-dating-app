@@ -7,7 +7,8 @@ export const PetSchema = new mongoose.Schema(
     age: Number,
     description: String,
     gender: String,
-    requested: Boolean
+    requested: Boolean,
+    profileImage: String
   },
   { timestamps: true }
 )

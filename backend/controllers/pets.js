@@ -1,5 +1,6 @@
 import { TokenGenerator } from '../models/token_generator.js'
 import { User } from '../models/user.js'
+import { v2 as cloudinary } from 'cloudinary';
 
 const updateUser = (userId, obj, res, req) => {
   User.updateOne(
@@ -80,6 +81,35 @@ export const PetsController = {
       // await updateUser(owner_user_id, { $set: { meetPartner: requester_user_id } }, res, req)
     } catch (error) {
       res.status(500).json({ error: error.message })
+    }
+  }, 
+  UploadImage: async (req, res) => {
+    try {
+      if (!req.file) {
+        throw new Error("No file uploaded");
+      }
+
+      const result = await cloudinary.uploader.upload(req.file.path);
+      res.json({message : "Image uploaded successfully", url: result.secure_url })
+
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: error.message });
+    }
+  },
+  UpdateImage: async (req, res) => {
+    try {
+      const userId = req.user_id;
+      const imageURL = req.body.profileImage;
+
+      const user = await User.findById(userId)
+      user.pets[0].profileImage = imageURL
+      user.save()
+
+      res.status(200).json({ message: 'OK' })
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: error.message });
     }
   }
 }
