@@ -8,7 +8,7 @@ const ProfileEditor = ({navigate}) => {
   const [userId, setUserId] = useState(window.localStorage.getItem("user_id"));
   const [token, setToken] = useState(window.localStorage.getItem("token"));
   const [petImageFormData, setPetImageFormData] = useState([])
-  const [imageReloadCounter, setImageReloadCounter] = useState([])
+  const [imageReloadCounter, setImageReloadCounter] = useState({})
 
 
   const setCurrentValues = async () => {
@@ -18,7 +18,7 @@ const ProfileEditor = ({navigate}) => {
 
   useEffect(() => {
     setCurrentValues();
-  }, [setImageReloadCounter]);
+  }, []);
 
   console.log(updatedUser);
 
@@ -60,14 +60,13 @@ const ProfileEditor = ({navigate}) => {
     const file = event.target.files[0];
     const formData = new FormData();
     formData.append("image", file);
-    const arrayToSet = []
-    setPetImageFormData([[formData, index]]) 
+    setPetImageFormData({...petImageFormData, [index]: formData}) 
 }
 
   const handleImageUpload = async (event, index) => {
     console.log('Upload index ' + index)
     console.log(petImageFormData)
-    const correctFormData = petImageFormData.find(elem => elem[1] === index)[0]
+    const correctFormData = petImageFormData[index.toString()]
     console.log(correctFormData)
     try {
         const response = await fetch(`/pets/profile-image-upload`, {
@@ -91,10 +90,9 @@ const ProfileEditor = ({navigate}) => {
           body: JSON.stringify({ profileImage: imageURL, index: index }),
         })
 
-        const uploadResData = await uploadRes.json()
+        //const uploadResData = await uploadRes.json()
 
         setCurrentValues();
-        setImageReloadCounter(imageReloadCounter.push('Reload'))
   
     } catch (error) {
         console.error(error);
