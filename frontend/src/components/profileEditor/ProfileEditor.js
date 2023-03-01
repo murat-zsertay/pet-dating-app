@@ -8,7 +8,6 @@ const ProfileEditor = ({navigate}) => {
   const [userId, setUserId] = useState(window.localStorage.getItem("user_id"));
   const [token, setToken] = useState(window.localStorage.getItem("token"));
   const [petImageFormData, setPetImageFormData] = useState([])
-  const [imageReloadCounter, setImageReloadCounter] = useState({})
 
 
   const setCurrentValues = async () => {
@@ -89,8 +88,6 @@ const ProfileEditor = ({navigate}) => {
           },
           body: JSON.stringify({ profileImage: imageURL, index: index }),
         })
-
-        //const uploadResData = await uploadRes.json()
 
         setCurrentValues();
   

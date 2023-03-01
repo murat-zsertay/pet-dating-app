@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Pet.css';
 
 const Pet = ({pet, currentUserPets, handlePlaydateRequest}) => {
+    //TODO: Check this! Thought we changed this so it wouldn't error out if the user had no pets such as after signup
     const [selectedOwnerPet, setSelectedOwnerPet] = useState(currentUserPets[0]._id)
 
     const requestDateClicked = () => {
