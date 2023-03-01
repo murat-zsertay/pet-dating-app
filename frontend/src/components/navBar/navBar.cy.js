@@ -1,26 +1,40 @@
+import React from "react";
+import {BrowserRouter as Router} from 'react-router-dom';
 import NavBar from "./navBar";
 
-describe("NavBar", () => {
-  it("Directs to Find pets page", () => {
-    cy.mount(<NavBar />);
-    const token = true;
+describe("NavBar component", () => {
+    it("displays correct links when there is a token", () => {
 
-    const pages = ["signup", "petPages", "contact"];
+        cy.mount(
+            <Router>
+                <NavBar/>
+            </Router>
+        );
 
-    cy.visit("/");
+        window.localStorage.setItem("token", "fakeToken")
 
-    pages.forEach((page) => {
-      cy.contains(page).then((link) => {
-        cy.request(link.prop("href"));
-      });
-    });
-  });
+        cy.get('.site-title').should('have.text', 'Pawty Time')
+        cy.get('li > #login-navbar').should('not.exist');
+        cy.get('li > #signup-navbar').should('not.exist');
+        cy.get('li > #findpets-navbar').should('exist');
+        cy.get('li > #profile-navbar').should('exist');
+        cy.get('li > #logout-navbar').should('exist');
+    })
 
-  it("Directs to login page", () => {
-    
-  });
+    it("displays correct links when there is no token", () => {
+        window.localStorage.removeItem("token");
 
-  it("Directs to sign up page", () => {
-    
-  });
+        cy.mount(
+            <Router>
+                <NavBar/>
+            </Router>
+        );
+
+        cy.get('li > #login-navbar').should('exist');
+        cy.get('li > #signup-navbar').should('exist');
+        cy.get('li > #findpets-navbar').should('not.exist');
+        cy.get('li > #profile-navbar').should('not.exist');
+        cy.get('li > #logout-navbar').should('not.exist');
+    })
 });
+
