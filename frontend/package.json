@@ -27,9 +27,9 @@
     "start:test:github": "bash ../bin/startServer.sh test && npm run test",
     "test": "npm run test:unit && npm run test:feature && pm2 kill",
     "test:unit": "cypress run --component",
+    "test:component": "bash ../bin/test_cypress_component.sh",
     "test:feature": "cypress run",
     "eject": "react-scripts eject"
-
   },
   "eslintConfig": {
     "extends": [
@@ -53,3 +53,4 @@
     "autoprefixer": "10.4.5"
   }
 }
+

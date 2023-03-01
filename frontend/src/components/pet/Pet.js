@@ -25,7 +25,13 @@ const Pet = ({pet, currentUserPets, handlePlaydateRequest}) => {
             <p data-cy='pet-description' className='pet-description'>{pet.description}</p>
             <p data-cy='pet-gender' className='pet-gender'>{pet.gender}</p>
             <div className ="playdateButton">
-            <select name="your pets" id="your-pets" onChange={handleOwnerSelectedPetChange}>{currentUserPets.map(pet => (<option value={pet._id}>{pet.name}</option>))}</select>
+            <select name="your pets" id="your-pets" onChange={handleOwnerSelectedPetChange}>
+                {currentUserPets.map(pet => (
+                <option value={pet._id}>
+                    {pet.name}
+                </option>)
+                )}
+            </select>
             <button id="playdate" onClick={requestDateClicked}>Request playdate</button>
             </div>
         </div>
