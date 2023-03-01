@@ -8,12 +8,12 @@ main {
 }
 
 #sign-up-title{
-    color:#0d67b5;
+    color:#174F78;
 }
 
 
 #login-title{
-    color:#0d67b5;
+    color:#174F78;
 }
 
 .middleLogo {
@@ -27,7 +27,7 @@ main {
 #submit {
     align-items: center;
     appearance: button;
-    background-color: #0d67b5;
+    background-color: #E56C55;
     border-radius: 8px;
     border-style: none;
     box-shadow: rgba(255, 255, 255, 0.26) 0 1px 2px inset;
@@ -37,7 +37,7 @@ main {
     display: flex;
     flex-direction: row;
     flex-shrink: 0;
-    font-family: "RM Neue",sans-serif;
+    font-family: 'Patrick Hand', cursive;
     font-size: 100%;
     line-height: 1.15;
     margin: 0;
@@ -117,16 +117,16 @@ main {
     width: 100%;
     height: 3px;
     border-radius: 1.5px;
-    background: linear-gradient(45deg, #0d67b5, #ff4685);
+    background: linear-gradient(45deg, #F1C3C3, #FEEBA8);
     transition: 0.5s;
     z-index: 1;
     pointer-events: none;
 }
 
-.input-box input:focus ~ i {
+.input-box input:focus ~ i, .input-box input[value]:not([value=""]) ~ i {
     height: 100%;
     border-radius: 6px;
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 div.error  {
