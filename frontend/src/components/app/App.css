@@ -2,10 +2,8 @@ body {
     display: flex;
     height:100%;
     width:100%;
-    background-color: #F8F4E3;
+    background-color:#FEEBA8;
 }
-
-
 
  header {
     width:100%;
@@ -14,3 +12,7 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+
+form input {
+    font-family: 'Patrick Hand', cursive;
+  }

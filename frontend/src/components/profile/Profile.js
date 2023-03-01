@@ -45,7 +45,7 @@ const Profile = () => {
                             </div>
                         ))
                     ) : (
-                        <div className="noPets"><i> 🐾 No pets! 😭</i></div>
+                        <div className="no-pets"><i> 🐾 No pets! 😭</i></div>
                     )}
                 </div>
                 <>
