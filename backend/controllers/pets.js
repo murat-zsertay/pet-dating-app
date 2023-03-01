@@ -101,12 +101,12 @@ export const PetsController = {
     try {
       const userId = req.user_id;
       const imageURL = req.body.profileImage;
-
+      const index = req.body.index
       const user = await User.findById(userId)
-      user.pets[0].profileImage = imageURL
+      user.pets[index].profileImage = imageURL
       user.save()
 
-      res.status(200).json({ message: 'OK' })
+      res.status(200).json({ message: 'Image URL set on pet' })
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: error.message });

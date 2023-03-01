@@ -7,7 +7,8 @@ const ProfileEditor = ({navigate}) => {
   const [updatedUser, setUpdatedUser] = useState(null);
   const [userId, setUserId] = useState(window.localStorage.getItem("user_id"));
   const [token, setToken] = useState(window.localStorage.getItem("token"));
-  const [petImageFormData, setPetImageFormData] = useState(null)
+  const [petImageFormData, setPetImageFormData] = useState([])
+  const [imageReloadCounter, setImageReloadCounter] = useState([])
 
 
   const setCurrentValues = async () => {
@@ -17,7 +18,7 @@ const ProfileEditor = ({navigate}) => {
 
   useEffect(() => {
     setCurrentValues();
-  }, []);
+  }, [setImageReloadCounter]);
 
   console.log(updatedUser);
 
@@ -54,25 +55,31 @@ const ProfileEditor = ({navigate}) => {
     setUpdatedUser({ ...updatedUser, pets: updatedPets });
   };
 
-  const handlePetProfileImageEdit = (event) => {
+  const handlePetProfileImageEdit = (event, index) => {
+    console.log('Edit index:' + index)
     const file = event.target.files[0];
     const formData = new FormData();
     formData.append("image", file);
-    setPetImageFormData(formData) 
+    const arrayToSet = []
+    setPetImageFormData([[formData, index]]) 
 }
 
   const handleImageUpload = async (event, index) => {
-    console.log(index)
+    console.log('Upload index ' + index)
+    console.log(petImageFormData)
+    const correctFormData = petImageFormData.find(elem => elem[1] === index)[0]
+    console.log(correctFormData)
     try {
         const response = await fetch(`/pets/profile-image-upload`, {
           method: "POST",
           headers: {
             Authorization: `Bearer ${token}`,
           },
-          body: {petImageFormData},
+          body: correctFormData,
         });
   
         const data = await response.json()
+        console.log(data)
         const imageURL = data.url.toString();
   
         const uploadRes = await fetch(`/pets/profile-image-edit`, {
@@ -85,9 +92,9 @@ const ProfileEditor = ({navigate}) => {
         })
 
         const uploadResData = await uploadRes.json()
-        console.log(uploadResData.pet)
 
         setCurrentValues();
+        setImageReloadCounter(imageReloadCounter.push('Reload'))
   
     } catch (error) {
         console.error(error);
@@ -127,7 +134,7 @@ const ProfileEditor = ({navigate}) => {
                   pet={pet} 
                   index={index} 
                   handlePetChange={handlePetChange} 
-                  handleImageUpload={(e, index) => handleImageUpload(e, index)} 
+                  handleImageUpload={handleImageUpload} 
                   handlePetProfileImageEdit={handlePetProfileImageEdit}
                 />
               ))};
