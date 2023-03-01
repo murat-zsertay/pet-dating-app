@@ -42,7 +42,7 @@ const PetForm = (props) => {
         value={pet.description}
         onChange={handleInputChange}
       />
-      <label htmlFor={`pet-gender-${index}`}>Age</label>
+      <label htmlFor={`pet-gender-${index}`}>Gender</label>
       <input
         type="text"
         id={`pet-gender-${index}`}
