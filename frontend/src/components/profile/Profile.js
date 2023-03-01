@@ -31,13 +31,13 @@ const Profile = () => {
                     {user.pets.length > 0 ? (
                         user.pets.map((pet) => (
                             <div data-cy="pet-info" className="pet-info">
-                                <p className="petName">Pet's name: {user.pets[0].name}</p>
-                                <p className="petWeight">Pet's weight: {user.pets[0].weight}</p>
-                                <p className="petAge">Pet's age: {user.pets[0].age}</p>
+                                <p className="petName">Pet's name: {pet.name}</p>
+                                <p className="petWeight">Pet's weight: {pet.weight}</p>
+                                <p className="petAge">Pet's age: {pet.age}</p>
                                 <p className="petDescription">
-                                    Pet's description: {user.pets[0].description}
+                                    Pet's description: {pet.description}
                                 </p>
-                                <p className="petGender">Pet's gender: {user.pets[0].gender}</p>
+                                <p className="petGender">Pet's gender: {pet.gender}</p>
                             </div>
                         ))
                     ) : (

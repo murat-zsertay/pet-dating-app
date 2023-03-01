@@ -1,7 +1,7 @@
 import React from 'react';
 
 const PetForm = (props) => {
-  const { pet, index, handlePetChange } = props;
+  const { pet, index, handlePetChange, handlePetProfileImageEdit, handleImageUpload } = props;
 
   const handleInputChange = (event) => {
     const newPet = { ...pet, [event.target.name]: event.target.value };
@@ -50,6 +50,17 @@ const PetForm = (props) => {
         value={pet.gender}
         onChange={handleInputChange}
       />
+      <div className="container">
+        <img
+          className="petProfileImage"
+          src={pet.profileImage}
+          alt="profile"
+          width={200}
+          height={200}
+        />
+        <input type="file" accept="image/*" onChange={handlePetProfileImageEdit} />
+        <button type='button' onClick={(event) => handleImageUpload(event, index)}>Submit Image</button>
+      </div>
     </div>
   );
 }
