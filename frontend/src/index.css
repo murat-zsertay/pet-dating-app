@@ -17,3 +17,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.petProfileImage {
+  max-height: 200px;
+  max-width: 200px;
+  height:auto;
+  width:auto;
+}

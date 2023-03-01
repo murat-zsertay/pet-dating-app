@@ -32,6 +32,11 @@ const Profile = () => {
                         user.pets.map((pet) => (
                             <div data-cy="pet-info" className="pet-info">
                                 <p className="petName">Pet's name: {pet.name}</p>
+                                <img
+                                className="petProfileImage"
+                                src={pet.profileImage}
+                                alt="pet-profile"
+                                />
                                 <p className="petWeight">Pet's weight: {pet.weight}</p>
                                 <p className="petAge">Pet's age: {pet.age}</p>
                                 <p className="petDescription">
