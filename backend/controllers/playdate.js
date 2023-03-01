@@ -27,30 +27,36 @@ export const PlaydateController = {
       const recipientUser = await User.findById({ _id: request.recipient_user_id })
       const recipientPet = recipientUser.pets.filter(pet => pet._id.toString() === request.recipient_pet_id)[0]
       const requesterPet = user.pets.filter(pet => pet._id.toString() === request.requester_pet_id)[0]
-      const requestInfo = {
+      const requestId = request._id
+      const recipientInfo = {
         playdate: request,
         recipientPet,
-        requesterPet
+        requesterPet,
+        requestId
       }
       if (request.accepted === 'true') {
-        requestInfo.contact = recipientUser.email
+        recipientInfo.firstName = recipientUser.firstName
+        recipientInfo.email = recipientUser.email
       }
-      return requestInfo
+      return recipientInfo
     }))
 
     const requestsRecievedDetails = await Promise.all(requestsRecieved.map(async (request) => {
       const requestorUser = await User.findById({ _id: request.requestor_user_id })
       const recipientPet = user.pets.filter(pet => pet._id.toString() === request.recipient_pet_id)[0]
       const requesterPet = requestorUser.pets.filter(pet => pet._id.toString() === request.requester_pet_id)[0]
-      const requestInfo = {
+      const requestId = request._id
+      const requestorInfo = {
         playdate: request,
         recipientPet,
-        requesterPet
+        requesterPet,
+        requestId
       }
       if (request.accepted === 'true') {
-        requestInfo.contact = requestorUser.email
+        requestorInfo.firstName = requestorUser.firstName
+        requestorInfo.email = requestorUser.email
       }
-      return requestInfo
+      return requestorInfo
     }))
 
 
@@ -58,5 +64,47 @@ export const PlaydateController = {
     res.status(200).json({
       requests: { requestsMadeDetails, requestsRecievedDetails }, token
     })
+  },
+  UpdateRequest: async (req, res) => {
+    //const userId = req.user_id
+    const requestId = req.body.requestId
+    const requestResponse = req.body.answer
+
+    if (!requestId) {
+      res
+        .status(400)
+        .json({ message: `Passed id = ${requestId}, Passed answer = ${requestResponse}` })
+      return
+    }
+
+    if (requestResponse === 'true') {
+      Playdate.updateOne(
+        { _id : requestId },
+        {
+          // the pets property is an array of objects rather than a single object
+          $set: { accepted: 'true' }
+        },
+        async (err) => {
+          if (err) {
+            res.status(400).json({ message: 'Bad request' })
+          } else {
+            const token = await TokenGenerator.jsonwebtoken(req.user_id)
+            res.status(200).json({ token, message: 'Request accepted' })
+          }
+        }
+      )
+    } else {
+      Playdate.deleteOne(
+        { _id: requestId },
+        async (err) => {
+          if (err) {
+            res.status(400).json({ message: 'Bad request' })
+          } else {
+            const token = await TokenGenerator.jsonwebtoken(req.user_id)
+            res.status(200).json({ token, message: 'Request rejected and deleted' })
+          }
+        }
+      )
+    }
   }
 }

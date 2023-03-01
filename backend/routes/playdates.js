@@ -7,4 +7,4 @@ export const playdatesRouter = express.Router()
 
 playdatesRouter.post('/request', tokenChecker, PlaydateController.Create)
 playdatesRouter.get('/requests', tokenChecker, PlaydateController.Index)
-
+playdatesRouter.put('/requests-response', tokenChecker, PlaydateController.UpdateRequest)
