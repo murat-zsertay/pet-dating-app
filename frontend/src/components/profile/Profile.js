@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from "react";
-import {getUserInfoById} from "../../api/user.js";
+import { getUserInfoById } from "../../api/user.js";
+import { getPlaydates } from "../../api/playdates.js";
 
 const Profile = () => {
     const [user, setUser] = useState(null);
+    const [playdates, setPlaydates] = useState(null);
     const [token, setToken] = useState(window.localStorage.getItem("token"));
     const fetchUser = async () => {
         const user_id = window.localStorage.getItem("user_id");
@@ -10,8 +12,14 @@ const Profile = () => {
         setUser(user);
     };
 
+    const fetchPlaydates = async () => {
+        const playdates = await getPlaydates();
+        setPlaydates(playdates)
+    };
+
     useEffect(() => {
         fetchUser();
+        fetchPlaydates();
     }, []);
 
     if (!user) {
@@ -27,6 +35,7 @@ const Profile = () => {
                     <p className="email">Email address: {user.email}</p>
                     <p className="postcode">Postcode: {user.postcode}</p>
                 </div>
+                <h2>Your Pets</h2>
                 <div className="pets">
                     {user.pets.length > 0 ? (
                         user.pets.map((pet) => (
@@ -43,6 +52,28 @@ const Profile = () => {
                     ) : (
                         <div>No pets!</div>
                     )}
+                {playdates && playdates?.requestsMadeDetails.length > 0 && <h2>Playdates you've requested</h2>}
+                <div  className="requestedPlaydates">
+                    {playdates && playdates?.requestsMadeDetails.map(playdate => (
+                        <div>
+                            <p>PlayDate</p>
+                            <p>{playdate.recipientPet.name}</p>
+                            <p>{playdate.requesterPet.name}</p>
+                            <p>Status: {playdate.playdate.accepted}</p>
+                        </div>
+                    ))}
+                </div>
+                {playdates && playdates?.requestsRecievedDetails.length > 0 && <h2>Playdates you've recieved</h2>}
+                <div  className="recievedPlaydates">
+                    {playdates && playdates?.requestsRecievedDetails.map(playdate => (
+                        <div>
+                            <p>PlayDate</p>
+                            <p>{playdate.recipientPet.name}</p>
+                            <p>{playdate.requesterPet.name}</p>
+                            <p>Status: {playdate.playdate.accepted}</p>
+                        </div>
+                    ))}
+                </div>
                 </div>
                 <>
                     <a href="/findPetsPage" className="btn btn-primary ">
