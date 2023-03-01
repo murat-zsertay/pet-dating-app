@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import './Profile.css'
 import {getUserInfoById} from "../../api/user.js";
 
 const Profile = () => {
@@ -19,13 +20,16 @@ const Profile = () => {
     } else {
         return (
             <div className="profile">
-                <h2 className="profile-title">Profile</h2>
+                <h2 className="profile-title"><b>Hooman's Profile</b></h2>
                 <div data-cy="user-info" className="user-info">
                     <h5 className="usernames">
+                        <span className="profile-photo">
+                             👾
+                        </span>
                         {user.firstName} {user.lastName}
                     </h5>
-                    <p className="email">Email address: {user.email}</p>
-                    <p className="postcode">Postcode: {user.postcode}</p>
+                    <p className="email"><b>📧 Email address:</b> {user.email}</p>
+                    <p className="postcode"><b>🏠 Postcode:</b> {user.postcode}</p>
                 </div>
                 <div className="pets">
                     {user.pets.length > 0 ? (
@@ -41,17 +45,17 @@ const Profile = () => {
                             </div>
                         ))
                     ) : (
-                        <div>No pets!</div>
+                        <div className="noPets"><i> 🐾 No pets! 😭</i></div>
                     )}
                 </div>
                 <>
-                    <a href="/findPetsPage" className="btn btn-primary ">
+                <a className="btn btn-primary" href="/findPetsPage" role="button">
                         See all pets
                     </a>
                 </>
                 <>
                     {" "}
-                    <a href="/edit-profile" className="btn btn-primary ">
+                    <a className="btn btn-primary" href="/edit-profile" role="button">
                         Edit your profile
                     </a>
                 </>

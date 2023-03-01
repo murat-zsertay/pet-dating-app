@@ -1,0 +1,22 @@
+.profile-title {
+    font-size: 2.5rem;
+    color: #11354e;
+}
+
+.usernames {
+    font-size: 2.2rem;
+    color: #174F78;
+    vertical-align: middle;
+}
+
+.profile-photo {
+    font-size: 5rem;
+}
+
+.email, .postcode {
+    font-size: 1.5rem;
+}
+
+.noPets {
+    font-size: 1.2rem;
+}
