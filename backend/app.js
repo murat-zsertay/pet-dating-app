@@ -5,6 +5,7 @@ import logger from 'morgan'
 // Routes
 import { tokensRouter } from './routes/tokens.js'
 import { usersRouter } from './routes/users.js'
+import { playdatesRouter } from './routes/playdates.js'
 // Config
 import './utils/envConfig.js'
 import './utils/databaseConnection.js'
@@ -31,7 +32,7 @@ app.use(express.static(path.join(process.cwd(), 'public')))
 app.use('/tokens', tokensRouter)
 app.use('/users', usersRouter)
 app.use('/pets', petsRouter)
-
+app.use('/playdates', playdatesRouter)
 // catch 404 and forward to error handler
 app.use(catch404)
 

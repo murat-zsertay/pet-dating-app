@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import './Pet.css';
 
 const Pet = ({pet, currentUserPets, handlePlaydateRequest}) => {
-    //TODO: Check this! Thought we changed this so it wouldn't error out if the user had no pets such as after signup
-    const [selectedOwnerPet, setSelectedOwnerPet] = useState(currentUserPets[0]._id)
+    //TODO: Check this! We will probbaly need to make sure we can't send a request if currentUserPets is undefined or []
+    const [selectedOwnerPet, setSelectedOwnerPet] = useState(currentUserPets ? currentUserPets[0]._id : 'You have no pets')
 
     const requestDateClicked = () => {
         handlePlaydateRequest(pet, selectedOwnerPet)
