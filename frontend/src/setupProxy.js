@@ -1,6 +1,6 @@
 import {createProxyMiddleware} from 'http-proxy-middleware';
 
-export const setupProxy = app => {
+export default (app) => {
     app.use(
         '/api',
         createProxyMiddleware({

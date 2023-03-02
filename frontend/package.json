@@ -8,6 +8,8 @@
     "@testing-library/user-event": "^13.5.0",
     "cypress": "^11.2.0",
     "eslint": "^8.23.0",
+    "@sentry/tracing": "^7.40.0",
+    "@sentry/react": "^7.40.0",
     "pm2": "^5.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -16,9 +18,7 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4",
     "webpack": "^5.75.0",
-    "http-proxy-middleware": "2.0.1"
-  },
-  "devDependencies": {
+    "http-proxy-middleware": "2.0.6"
   },
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
