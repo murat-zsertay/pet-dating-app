@@ -12,14 +12,42 @@
   height: 200px;
 }
 
+.pet-info-container select {
+  background-color: #E56C55;
+  color: white;
+  margin-right: 5px;
+  height: 25px;
+}
+
+.pet-info-container select:hover {
+  background-color: #b9442c;
+}
+
+.pet-info-container button {
+  background-color: #E56C55;
+  color: white;
+  height: 25px;
+}
+
+.pet-info-container button:hover {
+  background-color: #b9442c;
+}
+
+.pet-name {
+  margin-top: 0px;
+}
+
+
+.pet-image-container {
+  height: 200px
+}
+
 .pet-image-container img {
   object-fit: cover;
   width: 200px;
   height: 200px;
 }
-.pet-name{
 
-}
 .pet-attributes{
   display: flex;
   flex-direction: row;

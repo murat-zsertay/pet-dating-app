@@ -29,9 +29,7 @@ const Pet = ({pet, currentUserPets, handlePlaydateRequest}) => {
                 />
             </div>
             <div className='pet-info-container'>
-                <div className='pet-name'>
-                    <p data-cy='pet-name' className='pet-name'>Name: {pet.name}</p>
-                </div>
+                <h3 data-cy='pet-name' className='pet-name'>{pet.name}</h3>
                 <div className='pet-attributes'>
                 <p data-cy='pet-weight' className='pet-attribute'>Weight: {pet.weight}</p>
                 <p data-cy='pet-age' className='pet-attribute'>Age: {pet.age}</p>
