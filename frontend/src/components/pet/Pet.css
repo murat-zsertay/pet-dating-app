@@ -3,8 +3,29 @@
   border: #b9442c;
   border-style: solid;
   margin: 5px;
+  flex: 1;
 }
 
 .pet-info-container{
   padding: 5px;
+  flex: 1;
+  height: 200px;
+}
+
+.pet-image-container img {
+  object-fit: cover;
+  width: 200px;
+  height: 200px;
+}
+.pet-name{
+
+}
+.pet-attributes{
+  display: flex;
+  flex-direction: row;
+}
+.pet-attribute{
+  margin-right: 5px;
+  display: flex;
+  flex-direction: column;
 }

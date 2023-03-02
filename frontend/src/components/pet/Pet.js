@@ -20,6 +20,7 @@ const Pet = ({pet, currentUserPets, handlePlaydateRequest}) => {
 
     return (
         <div className='pet-container'>
+
             <div className='pet-image-container'>
             <img
                 className="petProfileImage"
@@ -28,11 +29,15 @@ const Pet = ({pet, currentUserPets, handlePlaydateRequest}) => {
                 />
             </div>
             <div className='pet-info-container'>
-                <p data-cy='pet-name' className='pet-name'>Name: {pet.name}</p>
-                <p data-cy='pet-weight' className='pet-weight'>Weight: {pet.weight}</p>
-                <p data-cy='pet-age' className='pet-age'>Age: {pet.age}</p>
+                <div className='pet-name'>
+                    <p data-cy='pet-name' className='pet-name'>Name: {pet.name}</p>
+                </div>
+                <div className='pet-attributes'>
+                <p data-cy='pet-weight' className='pet-attribute'>Weight: {pet.weight}</p>
+                <p data-cy='pet-age' className='pet-attribute'>Age: {pet.age}</p>
+                <p data-cy='pet-gender' className='pet-attribute'>Gender: {pet.gender}</p>
+                </div>
                 <p data-cy='pet-description' className='pet-description'>{pet.description}</p>
-                <p data-cy='pet-gender' className='pet-gender'>Gender: {pet.gender}</p>
                 <div className ="playdateButton">
                 <select name="your pets" id="your-pets" onChange={handleOwnerSelectedPetChange}>
                     {currentUserPets.map(pet => (
