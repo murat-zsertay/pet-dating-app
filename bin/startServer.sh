@@ -14,6 +14,7 @@ if [[ $current_dir == *"/frontend"* || $current_dir == *"/backend"* ]]; then
   cd ..
   pm2 start ecosystem.config.cjs --env "$1"
   pm2 save
+  pm2 logs
 
   # shellcheck disable=SC2164
   cd "$(basename "$current_dir")"
