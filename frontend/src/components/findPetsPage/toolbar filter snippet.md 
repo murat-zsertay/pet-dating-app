@@ -1,0 +1,101 @@
+<>
+<div className="results-filters ">
+  <div className="filter-bar-mobile">
+    <div className="filter-title-container">
+      <span className="title">Find a pet</span>
+      </div><div className="btn-default btn-white btn-open-filters">Filter results</div>
+      </div>
+      </div>
+        <div className="filter-modal  filter-modal--close">
+          <div className="filter-modal-container">
+            <button className="close"></button>
+          <div className="filter-modal-selects">
+              <div className="select-box-wrapper weight ">
+          <div className="select-box-label">Weight:</div>
+          <div className="select-box-custom">
+          <div className="display-value">Weight</div>
+          <select name="weight" className="select-box-filter " required="" aria-label="Weight">
+          <option value="0.0-1.0">Extra small - less than 1 kg</option>
+          <option value="3.0-10.0">Small - Less than 3 kg</option>
+          <option value="11.0-26.0"> Medium 11-26 kg</option>
+          <option value="27.0-45.0">Large 27-45 kg</option>
+          <option value="45.0-100.0">Extra large - Over 46 kg</option>
+        </select>
+        </div>
+        </div>
+        <div className="select-box-wrapper age ">
+          <div className="select-box-label">Age:</div>
+          <div className="select-box-custom">
+            <div className="display-value">Less than 1 year</div>
+        <select name="age" className="select-box-filter " required="" aria-label="Age">
+              <option value="0.0"> 0-8 months </option>
+              <option value="1.0"> 8 - 12 months </option>
+              <option value="2.0-3.0"> 1 - 2 years </option>
+              <option value="3.0-4.0"> 3 - 4 years </option>
+              <option value="5.0-7.0"> 5 - 7 years </option>
+              <option value="8.0-9.0"> 8 - 9 years </option>
+              <option value="10.0-12.0"> 10 - 12 years </option>
+              <option value="13.0-16.0"> 13 - 16 years </option>
+              <option value="17.0-30.0"> Over 17 years </option>
+</select>
+</div>
+</div>
+<div className="select-box-wrapper gender ">
+  <div className="select-box-label">Gender:</div>
+  <div className="select-box-custom">
+  <div className="display-value">Gender</div>
+<select name="gender" className="select-box-filter " required="" aria-label="Gender">
+<option value="FEMALE"> Female </option>
+<option value="MALE"> Male </option>
+</select>
+</div>
+</div>
+</div>
+<div className="filter-modal-done">
+  <div className="btn-default btn-white btn-reset-filters">Clear</div>
+<div className="btn-default btn-close-filters">Done</div></div></div>
+          <div className="filter-bar">  
+          <span className="label">Filter: </span>
+          <div className="select-box-wrapper weight ">
+            <div className="select-box-label">Weight:</div>
+            <div className="select-box-custom">
+              <div className="display-value">Less than 1kg</div>
+              <select name="weight" className="select-box-filter " required="" aria-label="Weight">
+                <option value="0.0-1.0">Extra small - less than 1 kg</option>
+                <option value="3.0-10.0">Small - Less than 3 kg</option>
+                <option value="11.0-26.0"> Medium 11-26 kg</option>
+                <option value="27.0-45.0">Large 27-45 kg</option>
+                <option value="45.0-100.0">Extra large - Over 46 kg</option>
+              </select>
+              </div>
+            </div>
+            </div>
+            <div className="select-box-wrapper age ">
+            <div className="select-box-label">Age:</div>
+            <div className="select-box-custom">
+              <div className="display-value">Less than 1 year</div>
+              <select name="age" className="select-box-filter " required="" aria-label="Age">
+                <option value="0.0"> 0-8 months </option>
+                <option value="1.0"> 8 - 12 months </option>
+                <option value="2.0-3.0"> 1 - 2 years </option>
+                <option value="3.0-4.0"> 3 - 4 years </option>
+                <option value="5.0-7.0"> 5 - 7 years </option>
+                <option value="8.0-9.0"> 8 - 9 years </option>
+                <option value="10.0-12.0"> 10 - 12 years </option>
+                <option value="13.0-16.0"> 13 - 16 years </option>
+                <option value="17.0-30.0"> Over 17 years </option>
+              </select>
+              </div>
+            </div>
+            <div className="select-box-wrapper gender ">
+            <div className="select-box-label">Gender:</div>
+            <div className="select-box-custom">
+              <div className="display-value">Gender</div>
+              <select name="gender" className="select-box-filter " required="" aria-label="Gender">
+                <option value="FEMALE"> Female </option>
+                <option value="MALE"> Male </option>
+              </select>
+              </div>
+              </div>
+            </div>
+</>
