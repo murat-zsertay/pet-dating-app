@@ -81,7 +81,7 @@ const Profile = () => {
                             {console.log(playdate)}
                             <p>PlayDate</p>
                             <p>My pet: {playdate.requesterPet.name}</p>
-                            <p>Requester pet: {playdate.recipientPet.name}</p>
+                            <p>Requested pet: {playdate.recipientPet.name}</p>
                             <img
                                 className="petProfileImage"
                                 src={playdate.recipientPet?.profileImage}
