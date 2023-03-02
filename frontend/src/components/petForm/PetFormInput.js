@@ -56,7 +56,7 @@ const PetForm = (props) => {
           src={pet.profileImage}
           alt="pet-profile"
         />
-        <input type="file" accept="image/*" onChange={(event) => handlePetProfileImageEdit(event, index)} />
+        <input type="file" maxSize="10485760" accept="image/*" onChange={(event) => handlePetProfileImageEdit(event, index)} />
         <button type='button' onClick={(event) => handleImageUpload(event, index)}>Submit Image</button>
       </div>
     </div>

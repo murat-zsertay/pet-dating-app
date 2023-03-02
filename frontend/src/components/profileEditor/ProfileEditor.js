@@ -55,16 +55,19 @@ const ProfileEditor = ({navigate}) => {
   };
 
   const handlePetProfileImageEdit = (event, index) => {
-    console.log('Edit index:' + index)
     const file = event.target.files[0];
+    const maxSize = 10485760; // 10 megabyte in bytes
+    if (file.size > maxSize) {
+      alert('The image is too large! Max size is 10MB');
+      return;
+    }
     const formData = new FormData();
     formData.append("image", file);
     setPetImageFormData({...petImageFormData, [index]: formData}) 
 }
 
   const handleImageUpload = async (event, index) => {
-    console.log('Upload index ' + index)
-    console.log(petImageFormData)
+    
     const correctFormData = petImageFormData[index.toString()]
     console.log(correctFormData)
     try {
