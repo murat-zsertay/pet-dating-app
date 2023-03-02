@@ -51,9 +51,9 @@ const FindPetsPage = ({navigate}) => {
 
     if (token) {
         return (
-            <div className="find-pets-title-div">
+            <div className="find-pets-body">
                 <h2 className="post-title">Find Pets</h2>
-                <div id="find-pets" role="find-pets">
+                <div className="find-pets" id="find-pets" role="find-pets">
 
                 {pets.map((pet) => (
                     <Pet pet={pet} currentUserPets={myPets} handlePlaydateRequest={handlePlaydateRequest} key={pet._id}/>

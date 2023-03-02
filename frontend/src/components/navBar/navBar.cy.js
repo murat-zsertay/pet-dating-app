@@ -18,7 +18,7 @@ describe("NavBar component", () => {
         cy.get('li > #signup-navbar').should('not.exist');
         cy.get('li > #findpets-navbar').should('exist');
         cy.get('li > #profile-navbar').should('exist');
-        cy.get('li > #logout-navbar').should('exist');
+        cy.get('#logout-navbar').should('exist');
     })
 
     it("displays correct links when there is no token", () => {

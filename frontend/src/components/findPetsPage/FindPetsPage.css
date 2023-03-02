@@ -3,3 +3,18 @@
     color: #11354e;
     padding-left: 1rem;
 }
+
+.find-pets-body {
+    display: flex;
+    margin: 20px auto 20px auto;
+    align-items: center;
+    flex-direction: column;
+}
+
+.find-pets {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1024px;
+}
+

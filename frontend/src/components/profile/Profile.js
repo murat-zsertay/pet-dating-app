@@ -19,22 +19,6 @@ const Profile = () => {
         const playdates = await getPlaydates();
         setPlaydates(playdates)
     };
-    // TODO: delete this
-    // export const updatePlaydates = async (answer, request) => {
-    //     try {
-    //         const response = await fetch(`/playdates/requests-response`, {
-    //             method: 'PUT',
-    //             headers: {
-    //                 Authorization: `Bearer ${window.localStorage.getItem("token")}`,
-    //             }, 
-    //             body: {answer: answer, requestID: request._id}
-    //         });
-    //         const data = await response.json();
-    //         window.localStorage.setItem("token", data.token);
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // }
 
     const handleRequestUpdate = async (answer, request) => {
         console.log(request)
@@ -71,14 +55,19 @@ const Profile = () => {
                 <div className="pets">
                     {user.pets.length > 0 ? (
                         user.pets.map((pet) => (
-                            <div data-cy="pet-info" className="pet-info">
-                                <p className="petName">Pet's name: {user.pets[0].name}</p>
-                                <p className="petWeight">Pet's weight: {user.pets[0].weight}</p>
-                                <p className="petAge">Pet's age: {user.pets[0].age}</p>
+                            <div data-cy="pet-info" key={pet._id} className="pet-info">
+                                <p className="petName">Pet's name: {pet.name}</p>
+                                <img
+                                className="petProfileImage"
+                                src={pet.profileImage}
+                                alt="pet-profile"
+                                />
+                                <p className="petWeight">Pet's weight: {pet.weight}</p>
+                                <p className="petAge">Pet's age: {pet.age}</p>
                                 <p className="petDescription">
-                                    Pet's description: {user.pets[0].description}
+                                    Pet's description: {pet.description}
                                 </p>
-                                <p className="petGender">Pet's gender: {user.pets[0].gender}</p>
+                                <p className="petGender">Pet's gender: {pet.gender}</p>
                             </div>
                         ))
                     ) : (
@@ -86,11 +75,18 @@ const Profile = () => {
                     )}
                 {playdates && playdates?.requestsMadeDetails.length > 0 && <h2>Playdates you've requested</h2>}
                 <div  className="requestedPlaydates">
+                    
                     {playdates && playdates?.requestsMadeDetails.filter(elem => elem.playdate.accepted !== 'true').map(playdate => (
-                        <div>
+                        <div key={`Request made ${playdate._id}`}>
+                            {console.log(playdate)}
                             <p>PlayDate</p>
-                            <p>My pet: {playdate.recipientPet.name}</p>
-                            <p>Requestor pet: {playdate.requesterPet.name}</p>
+                            <p>My pet: {playdate.requesterPet.name}</p>
+                            <p>Requested pet: {playdate.recipientPet.name}</p>
+                            <img
+                                className="petProfileImage"
+                                src={playdate.recipientPet?.profileImage}
+                                alt="pet-profile"
+                                />
                             <p>Status: {playdate.playdate.accepted}</p>
                         </div>
                     ))}
@@ -98,10 +94,15 @@ const Profile = () => {
                 {playdates && playdates?.requestsRecievedDetails.length > 0 && <h2>Playdates you've recieved</h2>}
                 <div  className="recievedPlaydates">
                     {playdates && playdates?.requestsRecievedDetails.filter(elem => elem.playdate.accepted !== 'true').map(playdate => (
-                        <div>
+                        <div key={`Request received ${playdate._id}`}>
                             <p>PlayDate</p>
                             <p>My pet: {playdate.recipientPet.name}</p>
-                            <p>Requestor pet: {playdate.requesterPet.name}</p>
+                            <p>Requester pet: {playdate.requesterPet.name}</p>
+                            <img
+                                className="petProfileImage"
+                                src={playdate.requesterPet?.profileImage}
+                                alt="pet-profile"
+                                />
                             <p>Status: {playdate.playdate.accepted}</p>
                             <button onClick={() => handleRequestUpdate('accept', playdate)} value='accept'>Accept</button>
                             <button onClick={() => handleRequestUpdate('reject', playdate)} value='reject'>Reject</button>
@@ -110,25 +111,31 @@ const Profile = () => {
                 </div>
                 {playdates && <h2>Matched Pets</h2>}
                 <div  className="matchedPlaydates">
-                    {playdates?.requestsRecievedDetails.filter(elem => elem.playdate.accepted === 'true').map(playdate => (
-                        <div>
-                            {console.log(playdate)}
-                            {console.log(playdates?.requestsRecievedDetails.filter(elem => elem.playdate.accepted === 'true'))}
+                    {playdates && playdates?.requestsRecievedDetails.filter(elem => elem.playdate.accepted === 'true').map(playdate => (
+                        <div key={`Matched received ${playdate.playdate._id}`}>
                             <p>PlayDate</p>
                             <p>My pet: {playdate.recipientPet.name}</p>
                             <p>Matched pet: {playdate.requesterPet.name}</p>
+                            <img
+                                className="petProfileImage"
+                                src={playdate.requesterPet.profileImage}
+                                alt="pet-profile"
+                                />
                             <p>Status: {playdate.playdate.accepted}</p>
                             <p>Owner name: {playdate.firstName}</p>
                             <p>Owner Email: {playdate.email}</p>
                         </div>
                     ))}
-                    {playdates?.requestsMadeDetails.filter(elem => elem.playdate.accepted === 'true').map(playdate => (
-                        <div>
-                            {console.log(playdate)}
-                            {console.log(playdates?.requestsRecievedDetails.filter(elem => elem.playdate.accepted === 'true'))}
+                    {playdates && playdates?.requestsMadeDetails.filter(elem => elem.playdate.accepted === 'true').map(playdate => (
+                        <div key={`Matched made ${playdate.playdate._id}`}>
                             <p>PlayDate</p>
                             <p>My pet: {playdate.requesterPet.name}</p>
                             <p>Matched pet: {playdate.recipientPet.name}</p>
+                            <img
+                                className="petProfileImage"
+                                src={playdate.recipientPet.profileImage}
+                                alt="pet-profile"
+                                />
                             <p>Status: {playdate.playdate.accepted}</p>
                             <p>Owner name: {playdate.firstName}</p>
                             <p>Owner Email: {playdate.email}</p>

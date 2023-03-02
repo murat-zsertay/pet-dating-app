@@ -107,7 +107,7 @@ export const PetsController = {
       user.pets[index].profileImage = imageURL
       user.save()
 
-      res.status(200).json({ message: 'OK', pet: user.pets[index] })
+      res.status(200).json({ message: 'Image URL set on pet', pet: user.pets[index] })
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: error.message });
