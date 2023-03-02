@@ -3,10 +3,15 @@ import './Pet.css';
 
 const Pet = ({pet, currentUserPets, handlePlaydateRequest}) => {
     //TODO: Check this! We will probbaly need to make sure we can't send a request if currentUserPets is undefined or []
-    const [selectedOwnerPet, setSelectedOwnerPet] = useState(currentUserPets ? currentUserPets[0]._id : 'You have no pets')
+    const [selectedOwnerPet, setSelectedOwnerPet] = useState(currentUserPets.length > 0 ? currentUserPets[0]._id : 'You have no pets')
 
     const requestDateClicked = () => {
-        handlePlaydateRequest(pet, selectedOwnerPet)
+        if(!currentUserPets.length > 0){
+            alert('You have no pets so can not request.')
+            return 
+        } else {
+            handlePlaydateRequest(pet, selectedOwnerPet)
+        }
     }
 
     const handleOwnerSelectedPetChange = (event) => {
