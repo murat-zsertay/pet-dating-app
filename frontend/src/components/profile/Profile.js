@@ -74,8 +74,13 @@ const Profile = () => {
                     {playdates && playdates?.requestsMadeDetails.filter(elem => elem.playdate.accepted !== 'true').map(playdate => (
                         <div>
                             <p>PlayDate</p>
-                            <p>My pet: {playdate.recipientPet.name}</p>
-                            <p>Requestor pet: {playdate.requesterPet.name}</p>
+                            <p>My pet: {playdate.requestorPet.name}</p>
+                            <p>Requestor pet: {playdate.recipientPet.name}</p>
+                            <img
+                                className="petProfileImage"
+                                src={playdate.recipientPet?.profileImage}
+                                alt="pet-profile"
+                                />
                             <p>Status: {playdate.playdate.accepted}</p>
                         </div>
                     ))}
@@ -87,6 +92,11 @@ const Profile = () => {
                             <p>PlayDate</p>
                             <p>My pet: {playdate.recipientPet.name}</p>
                             <p>Requestor pet: {playdate.requesterPet.name}</p>
+                            <img
+                                className="petProfileImage"
+                                src={playdate.requestorPet?.profileImage}
+                                alt="pet-profile"
+                                />
                             <p>Status: {playdate.playdate.accepted}</p>
                             <button onClick={() => handleRequestUpdate('accept', playdate)} value='accept'>Accept</button>
                             <button onClick={() => handleRequestUpdate('reject', playdate)} value='reject'>Reject</button>
@@ -95,15 +105,35 @@ const Profile = () => {
                 </div>
                 {playdates && <h2>Matched Pets</h2>}
                 <div  className="matchedPlaydates">
-                    {playdates && [...playdates.requestsRecievedDetails, ...playdates.requestsMadeDetails]
-                    .filter(elem => elem.playdate.accepted === 'true')
-                    .map(playdate => (
+                    {playdates?.requestsRecievedDetails.filter(elem => elem.playdate.accepted === 'true').map(playdate => (
+                        <div>
+                            {console.log(playdate)}
+                            {console.log(playdates?.requestsRecievedDetails.filter(elem => elem.playdate.accepted === 'true'))}
+                            <p>PlayDate</p>
+                            <p>My pet: {playdate.recipientPet.name}</p>
+                            <p>Matched pet: {playdate.requesterPet.name}</p>
+                            <img
+                                className="petProfileImage"
+                                src={playdate.requestorPet?.profileImage}
+                                alt="pet-profile"
+                                />
+                            <p>Status: {playdate.playdate.accepted}</p>
+                            <p>Owner name: {playdate.firstName}</p>
+                            <p>Owner Email: {playdate.email}</p>
+                        </div>
+                    ))}
+                    {playdates?.requestsMadeDetails.filter(elem => elem.playdate.accepted === 'true').map(playdate => (
                         <div>
                             {console.log(playdate)}
                             {console.log(playdates?.requestsRecievedDetails.filter(elem => elem.playdate.accepted === 'true'))}
                             <p>PlayDate</p>
                             <p>My pet: {playdate.requesterPet.name}</p>
                             <p>Matched pet: {playdate.recipientPet.name}</p>
+                            <img
+                                className="petProfileImage"
+                                src={playdate.recipientPet.profileImage}
+                                alt="pet-profile"
+                                />
                             <p>Status: {playdate.playdate.accepted}</p>
                             <p>Owner name: {playdate.firstName}</p>
                             <p>Owner Email: {playdate.email}</p>
