@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import './Profile.css'
-import {getUserInfoById} from "../../api/user.js";
+import { getUserInfoById } from "../../api/user.js";
+import { getPlaydates } from "../../api/playdates.js";
+import { updatePlaydates } from '../../api/playdates.js'
 
 const Profile = () => {
     const [user, setUser] = useState(null);
