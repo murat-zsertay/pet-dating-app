@@ -55,7 +55,7 @@ const Profile = () => {
         return <div></div>;
     } else {
         return (
-            <div className="profile">
+            <div data-cy="profile" className="profile">
                 <h2 className="profile-title"><b>Hooman's Profile</b></h2>
                 <div data-cy="user-info" className="user-info">
                     <h1 className="usernames">
