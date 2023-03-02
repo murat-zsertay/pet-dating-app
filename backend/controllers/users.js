@@ -21,18 +21,25 @@ export const UsersController = {
 
   Update: (req, res) => {
     const userId = req.user_id
-    const pet = req.body.pet
-    if (!pet) {
+    const user = req.body.updatedUser
+    if (!user) {
       res
         .status(400)
-        .json({ message: 'Bad request: pet is null or undefined' })
+        .json({ message: 'Bad request: user is null or undefined' })
       return
     }
     User.updateOne(
       { _id: userId },
       {
         // the pets property is an array of objects rather than a single object
-        $set: { pets: [pet] }
+        $set: {
+              email : user.email,
+              firstName : user.firstName,
+              lastName : user.lastName,
+              password: user.password,
+              postcode: user.postcode,
+              pets: user.pets
+            }
       },
       async (err) => {
         if (err) {
