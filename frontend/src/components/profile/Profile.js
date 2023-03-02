@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import './Profile.css'
 import { getUserInfoById } from "../../api/user.js";
 import { getPlaydates } from "../../api/playdates.js";
 import { updatePlaydates } from '../../api/playdates.js'
@@ -39,13 +40,16 @@ const Profile = () => {
     } else {
         return (
             <div className="profile">
-                <h2 className="profile-title">Profile</h2>
+                <h2 className="profile-title"><b>Hooman's Profile</b></h2>
                 <div data-cy="user-info" className="user-info">
                     <h5 className="usernames">
+                        <span className="profile-photo">
+                             👾
+                        </span>
                         {user.firstName} {user.lastName}
                     </h5>
-                    <p className="email">Email address: {user.email}</p>
-                    <p className="postcode">Postcode: {user.postcode}</p>
+                    <p className="email"><b>📧 Email address:</b> {user.email}</p>
+                    <p className="postcode"><b>🏠 Postcode:</b> {user.postcode}</p>
                 </div>
                 <h2>Your Pets</h2>
                 <div className="pets">
@@ -67,7 +71,7 @@ const Profile = () => {
                             </div>
                         ))
                     ) : (
-                        <div>No pets!</div>
+                        <div className="no-pets"><i> 🐾 No pets! 😭</i></div>
                     )}
                 {playdates && playdates?.requestsMadeDetails.length > 0 && <h2>Playdates you've requested</h2>}
                 <div  className="requestedPlaydates">
@@ -140,13 +144,13 @@ const Profile = () => {
                 </div>
                 </div>
                 <>
-                    <a href="/findPetsPage" className="btn btn-primary ">
+                <a className="btn btn-primary" href="/findPetsPage" role="button">
                         See all pets
                     </a>
                 </>
                 <>
                     {" "}
-                    <a href="/edit-profile" className="btn btn-primary ">
+                    <a className="btn btn-primary" href="/edit-profile" role="button">
                         Edit your profile
                     </a>
                 </>

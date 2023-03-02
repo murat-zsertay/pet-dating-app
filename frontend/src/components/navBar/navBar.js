@@ -12,7 +12,7 @@ const NavBar = () => {
     return (
         <nav className='nav'>
             <div className='nav-container'>
-                <Link to="/" className='site-title'>Pawty Time</Link>
+                <Link to="/" className='site-title'>🐶 PAWTY TIME 🐱</Link>
                 <ul>
                     {!token && <CustomLink to="/login" id="login-navbar">Login</CustomLink>}
                     {!token && <CustomLink to="/signup" id="signup-navbar">Sign-up</CustomLink>}

@@ -13,7 +13,7 @@ describe("NavBar component", () => {
 
         window.localStorage.setItem("token", "fakeToken")
 
-        cy.get('.site-title').should('have.text', 'Pawty Time')
+        cy.get('.site-title').should('have.text', '🐶 PAWTY TIME 🐱')
         cy.get('li > #login-navbar').should('not.exist');
         cy.get('li > #signup-navbar').should('not.exist');
         cy.get('li > #findpets-navbar').should('exist');
