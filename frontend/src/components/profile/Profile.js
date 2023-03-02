@@ -18,22 +18,6 @@ const Profile = () => {
         const playdates = await getPlaydates();
         setPlaydates(playdates)
     };
-    // TODO: delete this
-    // export const updatePlaydates = async (answer, request) => {
-    //     try {
-    //         const response = await fetch(`/playdates/requests-response`, {
-    //             method: 'PUT',
-    //             headers: {
-    //                 Authorization: `Bearer ${window.localStorage.getItem("token")}`,
-    //             }, 
-    //             body: {answer: answer, requestID: request._id}
-    //         });
-    //         const data = await response.json();
-    //         window.localStorage.setItem("token", data.token);
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // }
 
     const handleRequestUpdate = async (answer, request) => {
         console.log(request)
@@ -111,19 +95,9 @@ const Profile = () => {
                 </div>
                 {playdates && <h2>Matched Pets</h2>}
                 <div  className="matchedPlaydates">
-                    {playdates?.requestsRecievedDetails.filter(elem => elem.playdate.accepted === 'true').map(playdate => (
-                        <div>
-                            {console.log(playdate)}
-                            {console.log(playdates?.requestsRecievedDetails.filter(elem => elem.playdate.accepted === 'true'))}
-                            <p>PlayDate</p>
-                            <p>My pet: {playdate.recipientPet.name}</p>
-                            <p>Matched pet: {playdate.requesterPet.name}</p>
-                            <p>Status: {playdate.playdate.accepted}</p>
-                            <p>Owner name: {playdate.firstName}</p>
-                            <p>Owner Email: {playdate.email}</p>
-                        </div>
-                    ))}
-                    {playdates?.requestsMadeDetails.filter(elem => elem.playdate.accepted === 'true').map(playdate => (
+                    {playdates && [...playdates.requestsRecievedDetails, ...playdates.requestsMadeDetails]
+                    .filter(elem => elem.playdate.accepted === 'true')
+                    .map(playdate => (
                         <div>
                             {console.log(playdate)}
                             {console.log(playdates?.requestsRecievedDetails.filter(elem => elem.playdate.accepted === 'true'))}
