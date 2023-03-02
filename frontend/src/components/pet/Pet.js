@@ -14,7 +14,7 @@ const Pet = ({pet, currentUserPets, handlePlaydateRequest}) => {
     }
 
     return (
-        <div key={pet._id}>
+        <div>
             <p data-cy='pet-name' className='pet-name'>{pet.name}</p>
             <img
                 className="petProfileImage"
@@ -28,7 +28,7 @@ const Pet = ({pet, currentUserPets, handlePlaydateRequest}) => {
             <div className ="playdateButton">
             <select name="your pets" id="your-pets" onChange={handleOwnerSelectedPetChange}>
                 {currentUserPets.map(pet => (
-                <option value={pet._id}>
+                <option value={pet._id} key={pet._id}>
                     {pet.name}
                 </option>)
                 )}
