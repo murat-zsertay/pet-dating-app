@@ -1,0 +1,10 @@
+.pet-container{
+  display: flex;
+  border: #b9442c;
+  border-style: solid;
+  margin: 5px;
+}
+
+.pet-info-container{
+  padding: 5px;
+}
