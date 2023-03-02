@@ -19,27 +19,31 @@ const Pet = ({pet, currentUserPets, handlePlaydateRequest}) => {
     }
 
     return (
-        <div>
-            <p data-cy='pet-name' className='pet-name'>{pet.name}</p>
+        <div className='pet-container'>
+            <div className='pet-image-container'>
             <img
                 className="petProfileImage"
                 src={pet.profileImage}
                 alt="pet-profile"
                 />
-            <p data-cy='pet-weight' className='pet-weight'>{pet.weight}</p>
-            <p data-cy='pet-age' className='pet-age'>{pet.age}</p>
-            <p data-cy='pet-description' className='pet-description'>{pet.description}</p>
-            <p data-cy='pet-gender' className='pet-gender'>{pet.gender}</p>
-            <div className ="playdateButton">
-            <select name="your pets" id="your-pets" onChange={handleOwnerSelectedPetChange}>
-                {currentUserPets.map(pet => (
-                <option value={pet._id} key={pet._id}>
-                    {pet.name}
-                </option>)
-                )}
-            </select>
-            <button id="playdate" onClick={requestDateClicked}>Request playdate</button>
             </div>
+            <div className='pet-info-container'>
+                <p data-cy='pet-name' className='pet-name'>Name: {pet.name}</p>
+                <p data-cy='pet-weight' className='pet-weight'>Weight: {pet.weight}</p>
+                <p data-cy='pet-age' className='pet-age'>Age: {pet.age}</p>
+                <p data-cy='pet-description' className='pet-description'>{pet.description}</p>
+                <p data-cy='pet-gender' className='pet-gender'>Gender: {pet.gender}</p>
+                <div className ="playdateButton">
+                <select name="your pets" id="your-pets" onChange={handleOwnerSelectedPetChange}>
+                    {currentUserPets.map(pet => (
+                    <option value={pet._id} key={pet._id}>
+                        {pet.name}
+                    </option>)
+                    )}
+                </select>
+                <button id="playdate" onClick={requestDateClicked}>Request playdate</button>
+              </div>
+              </div>
         </div>
     )
 }
