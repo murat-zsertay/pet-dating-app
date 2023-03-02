@@ -1,72 +1,72 @@
-import React, { useState } from "react";
-import "./signUpForm.css";
+import React, { useState } from 'react'
+import './signUpForm.css'
 
 const SignUpForm = ({ navigate }) => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [postcode, setPostcode] = useState("");
-  const [error, setError] = useState(null);
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [postcode, setPostcode] = useState('')
+  const [error, setError] = useState(null)
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
-        if (password === confirmPassword) {
-            const response = await fetch("/users", {
-                method: "POST",
-                body: JSON.stringify({
-                    firstName,
-                    lastName,
-                    email,
-                    password,
-                    postcode
-                }),
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
+    if (password === confirmPassword) {
+      const response = await fetch('/users', {
+        method: 'POST',
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          password,
+          postcode
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
 
-      const json = await response.json();
+      const json = await response.json()
 
       if (!response.ok) {
-        setError(json.message);
+        setError(json.message)
       }
 
       if (response.ok) {
-        navigate("/login");
-        setError(null);
-        console.log("Request Submitted");
+        navigate('/login')
+        setError(null)
+        console.log('Request Submitted')
       }
     } else {
-      setError("Passwords do not match.");
+      setError('Passwords do not match.')
     }
-  };
+  }
 
   const handleFirstNameChange = (event) => {
-    setFirstName(event.target.value);
-  };
+    setFirstName(event.target.value)
+  }
 
   const handleLastNameChange = (event) => {
-    setLastName(event.target.value);
-  };
+    setLastName(event.target.value)
+  }
 
   const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
+    setEmail(event.target.value)
+  }
 
   const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
+    setPassword(event.target.value)
+  }
 
   const handleConfirmPasswordChange = (event) => {
-    setConfirmPassword(event.target.value);
-  };
+    setConfirmPassword(event.target.value)
+  }
 
   const handlePostcodeChange = (event) => {
-    setPostcode(event.target.value);
-  };
+    setPostcode(event.target.value)
+  }
 
   return (
     <main>
@@ -158,13 +158,13 @@ const SignUpForm = ({ navigate }) => {
             <i></i>
           </div>
 
-          <input id="submit" type="submit" value="Sign Up" />
+          <input id="submit" type="submit" value="Sign Up"/>
         </form>
 
         {error && <div className="error">{error}</div>}
       </div>
     </main>
-  );
-};
+  )
+}
 
-export default SignUpForm;
+export default SignUpForm

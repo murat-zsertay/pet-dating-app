@@ -1,15 +1,14 @@
-import './App.css';
-import LoginForm from '../auth/LoginForm'
-import SignUpForm from '../user/SignUpForm'
-import FindPetsPage from '../findPetsPage/FindPetsPage';
-import NavBar from '../navBar/navBar';
-import {Route, Routes, useNavigate,} from "react-router-dom";
-import Profile from '../profile/Profile';
-import EditProfile from '../editProfile/EditProfile';
-
+import './App.css'
+import LoginForm from '../auth/LoginForm.js'
+import SignUpForm from '../user/SignUpForm.js'
+import FindPetsPage from '../findPetsPage/FindPetsPage.js'
+import NavBar from '../navBar/navBar.js'
+import { Route, Routes, useNavigate } from 'react-router-dom'
+import Profile from '../profile/Profile.js'
+import EditProfile from '../editProfile/EditProfile.js'
 
 const App = () => {
-    return (
+  return (
         <>
             <NavBar/>
             <Routes>
@@ -21,7 +20,7 @@ const App = () => {
                 <Route path='/edit-profile' element={<EditProfile navigate={useNavigate()}/>}/>
             </Routes>
         </>
-    );
+  )
 }
 
-export default App;
+export default App
