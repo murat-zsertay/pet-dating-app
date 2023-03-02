@@ -12,9 +12,7 @@ export const PlaydateController = {
       if (err) res.status(400).json({ message: err.message })
       else {
         const token = await TokenGenerator.jsonwebtoken(req.user_id)
-        res.status(201).json({
-          message: 'Playdate request sent', token
-        })
+        res.status(201).json({ message: 'Playdate request sent', token })
       }
     })
   },
@@ -59,14 +57,13 @@ export const PlaydateController = {
       return requestorInfo
     }))
 
-
     const token = await TokenGenerator.jsonwebtoken(req.user_id)
     res.status(200).json({
       requests: { requestsMadeDetails, requestsRecievedDetails }, token
     })
   },
   UpdateRequest: async (req, res) => {
-    //const userId = req.user_id
+    // const userId = req.user_id
     const requestId = req.body.requestId
     const requestResponse = req.body.answer
 
@@ -79,7 +76,7 @@ export const PlaydateController = {
 
     if (requestResponse === 'true') {
       Playdate.updateOne(
-        { _id : requestId },
+        { _id: requestId },
         {
           // the pets property is an array of objects rather than a single object
           $set: { accepted: 'true' }

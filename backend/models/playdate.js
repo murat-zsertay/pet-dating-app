@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 
+mongoose.set('strictQuery', true)
 const PlaydateSchema = new mongoose.Schema(
   {
     requester_pet_id: {
@@ -19,8 +20,7 @@ const PlaydateSchema = new mongoose.Schema(
       required: [true, 'required']
     },
     accepted: {
-      type: String,
-      required: [true, 'required']
+      type: String
     }
   },
   { timestamps: true }

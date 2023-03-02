@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 
+mongoose.set('strictQuery', true)
 export const PetSchema = new mongoose.Schema(
   {
     name: String,
