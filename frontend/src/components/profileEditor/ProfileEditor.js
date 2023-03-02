@@ -55,18 +55,22 @@ const ProfileEditor = ({navigate}) => {
   };
 
   const handlePetProfileImageEdit = (event, index) => {
+    event.preventDefault();
     const file = event.target.files[0];
     const maxSize = 10485760; // 10 megabyte in bytes
     if (file.size > maxSize) {
       alert('The image is too large! Max size is 10MB');
       return;
-    }
-    const formData = new FormData();
-    formData.append("image", file);
-    setPetImageFormData({...petImageFormData, [index]: formData}) 
+    } else {
+      console.log('File is good, adding to form data')
+      const formData = new FormData();
+      formData.append("image", file);
+      setPetImageFormData({...petImageFormData, [index]: formData})
+    } 
 }
 
   const handleImageUpload = async (event, index) => {
+    event.preventDefault();
     
     const correctFormData = petImageFormData[index.toString()]
     console.log(correctFormData)

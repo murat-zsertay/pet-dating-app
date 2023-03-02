@@ -7,7 +7,11 @@ const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
   folder: 'pet-dating-uploads',
-  format: async (req, file) => 'png', // or any other format you like
+  format: async (req, file) => {
+    const allowedFormats = ['png', 'jpg', 'jpeg'];
+    const fileFormat = file.originalname.split('.').pop();
+    return allowedFormats.includes(fileFormat) ? fileFormat : allowedFormats[0];
+  }, // or any other format you like
   public_id: (req, file) => (Date.now() + "-" + file.originalname)
   }
   });
