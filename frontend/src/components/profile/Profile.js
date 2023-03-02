@@ -105,7 +105,7 @@ const Profile = () => {
                 </div>
                 {playdates && <h2>Matched Pets</h2>}
                 <div  className="matchedPlaydates">
-                    {playdates?.requestsRecievedDetails.filter(elem => elem.playdate.accepted === 'true').map(playdate => (
+                    {playdates && playdates?.requestsRecievedDetails.filter(elem => elem.playdate.accepted === 'true').map(playdate => (
                         <div>
                             <p>PlayDate</p>
                             <p>My pet: {playdate.recipientPet.name}</p>
@@ -120,7 +120,7 @@ const Profile = () => {
                             <p>Owner Email: {playdate.email}</p>
                         </div>
                     ))}
-                    {playdates?.requestsMadeDetails.filter(elem => elem.playdate.accepted === 'true').map(playdate => (
+                    {playdates && playdates?.requestsMadeDetails.filter(elem => elem.playdate.accepted === 'true').map(playdate => (
                         <div>
                             <p>PlayDate</p>
                             <p>My pet: {playdate.requesterPet.name}</p>

@@ -102,7 +102,8 @@ const ProfileEditor = ({navigate}) => {
     updateUser(updatedUser)
   };
 
-  const handleAddPetClick = () => {
+  const handleAddPetClick = (event) => {
+    event.preventDefault();
     const emptyPet = {name:'', weight: 0, age: 0, description:'', gender: ''}
     setUpdatedUser({...updatedUser, pets: [...updatedUser.pets, emptyPet]})
   }
