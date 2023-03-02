@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Pet.css';
 
 const Pet = ({pet, currentUserPets, handlePlaydateRequest}) => {
-    const [selectedOwnerPet, setSelectedOwnerPet] = useState(currentUserPets[0]._id)
+    const [selectedOwnerPet, setSelectedOwnerPet] = useState(currentUserPets ? currentUserPets[0]._id : 'You have no pets')
 
     const requestDateClicked = () => {
         handlePlaydateRequest(pet, selectedOwnerPet)
