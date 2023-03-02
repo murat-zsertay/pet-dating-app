@@ -99,7 +99,15 @@ const ProfileEditor = ({navigate}) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(updatedUser);
-    updateUser(updatedUser)
+    const requiredFields = ['name', 'description', 'gender'];
+    const hasEmptyFields = updatedUser.pets.some((pet) => requiredFields.some((field) => !pet[field]));
+    if(hasEmptyFields){
+      alert('Please fill in all pet fields.');
+      return;
+    } else {
+      updateUser(updatedUser)
+    }
+    
   };
 
   const handleAddPetClick = (event) => {
