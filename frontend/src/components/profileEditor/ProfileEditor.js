@@ -67,8 +67,7 @@ const ProfileEditor = ({navigate}) => {
     } else if(!allowedFormats.includes(fileFormat)){
       alert('Please upload a png or a jpg file')
       return;
-    } 
-    else {
+    } else {
       console.log('File is good, adding to form data')
       const formData = new FormData();
       formData.append("image", file);
