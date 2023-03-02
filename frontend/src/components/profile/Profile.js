@@ -68,19 +68,23 @@ const Profile = () => {
                 <div className="pets">
                     {user.pets.length > 0 ? (
                         user.pets.map((pet) => (
-                            <div data-cy="pet-info" key={pet._id} className="pet-info">
-                                <p className="petName"><b>Pet's name:</b> {pet.name}</p>
-                                <img
-                                className="petProfileImage"
-                                src={pet.profileImage}
-                                alt="pet-profile"
-                                />
-                                <p className="petWeight"><b>Pet's weight:</b> {pet.weight}</p>
-                                <p className="petAge"><b>Pet's age:</b> {pet.age}</p>
-                                <p className="petDescription">
-                                    <b>Pet's description:</b> {pet.description}
-                                </p>
-                                <p className="petGender"><b>Pet's gender:</b> {pet.gender}</p>
+                            <div data-cy="pet-info" key={pet._id} className="pet-container">
+                                <div className="pet-image-container">
+                                    <img
+                                        className="petProfileImage"
+                                        src={pet.profileImage}
+                                        alt="pet-profile"
+                                    />
+                                </div>
+                                <div className="pet-info-container">
+                                    <p className="petName"><b>Pet's name:</b> {pet.name}</p>
+                                    <p className="petWeight"><b>Pet's weight:</b> {pet.weight}</p>
+                                    <p className="petAge"><b>Pet's age:</b> {pet.age}</p>
+                                    <p className="petDescription">
+                                        <b>Pet's description:</b> {pet.description}
+                                    </p>
+                                    <p className="petGender"><b>Pet's gender:</b> {pet.gender}</p>
+                                </div>
                             </div>
                         ))
                     ) : (
