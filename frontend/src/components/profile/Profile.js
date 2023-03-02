@@ -71,11 +71,13 @@ const Profile = () => {
                     )}
                 {playdates && playdates?.requestsMadeDetails.length > 0 && <h2>Playdates you've requested</h2>}
                 <div  className="requestedPlaydates">
+                    
                     {playdates && playdates?.requestsMadeDetails.filter(elem => elem.playdate.accepted !== 'true').map(playdate => (
                         <div key={`Request made ${playdate._id}`}>
+                            {console.log(playdate)}
                             <p>PlayDate</p>
-                            <p>My pet: {playdate.requestorPet.name}</p>
-                            <p>Requestor pet: {playdate.recipientPet.name}</p>
+                            <p>My pet: {playdate.requesterPet.name}</p>
+                            <p>Requester pet: {playdate.recipientPet.name}</p>
                             <img
                                 className="petProfileImage"
                                 src={playdate.recipientPet?.profileImage}
@@ -91,10 +93,10 @@ const Profile = () => {
                         <div key={`Request received ${playdate._id}`}>
                             <p>PlayDate</p>
                             <p>My pet: {playdate.recipientPet.name}</p>
-                            <p>Requestor pet: {playdate.requesterPet.name}</p>
+                            <p>Requester pet: {playdate.requesterPet.name}</p>
                             <img
                                 className="petProfileImage"
-                                src={playdate.requestorPet?.profileImage}
+                                src={playdate.requesterPet?.profileImage}
                                 alt="pet-profile"
                                 />
                             <p>Status: {playdate.playdate.accepted}</p>
