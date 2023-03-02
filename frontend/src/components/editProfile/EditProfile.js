@@ -13,23 +13,25 @@ const EditProfile = ({navigate}) => {
     const [userId, setUserId] = useState(window.localStorage.getItem("user_id"));
     const [petProfileImage, setPetProfileImage] = useState(null)
     const [petImageFormData, setPetImageFormData] = useState(null)
+    const [user, setUser] = useState()
+    const [pet, setPet] = useState()
 
-    const setCurrentValues = async () => {
-        const user = await getUserInfoById(userId);
-        if (user.pets.length === 0) {
-            return;
-        }
-        const pet = user.pets[0];
-        setPetName(pet.name);
-        setPetWeight(pet.weight);
-        setPetAge(pet.age);
-        setPetDescription(pet.description);
-        setPetGender(pet.gender);
-        setPetProfileImage(pet.profileImage)
-    };
+    
 
     useEffect(() => {
+        const setCurrentValues = async () => {
+            const user = await getUserInfoById(userId);
+            if (user.pets.length === 0) {
+                return;
+            }
+            const pet = user.pets[0];
+            await setUser(user)
+            await setPet(pet)
+            console.log(user)
+            console.log(pet)
+        };
         setCurrentValues();
+        console.log(user, 'yay')
     }, []);
 
     const handlePetProfileImageEdit = (event) => {
@@ -41,7 +43,7 @@ const EditProfile = ({navigate}) => {
 
     const handleImageUpload = async (event) => {
         try {
-            const response = await fetch(`/user/pet-profile-image-upload`, {
+            const response = await fetch(`/pets/profile-image-upload`, {
               method: "POST",
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -52,7 +54,7 @@ const EditProfile = ({navigate}) => {
             const data = await response.json()
             const imageURL = data.url.toString();
       
-            await fetch(`/users/pet-profile-image-edit`, {
+            await fetch(`/pets/profile-image-edit`, {
               method: "PUT",
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -60,8 +62,6 @@ const EditProfile = ({navigate}) => {
               },
               body: JSON.stringify({ profileImage: imageURL }),
             });
-
-            await setCurrentValues();
       
         } catch (error) {
             console.error(error);
@@ -128,11 +128,13 @@ const EditProfile = ({navigate}) => {
                 className="petProfileImage"
                 src={petProfileImage}
                 alt="profile"
+                width={200}
+                height={200}
                 />
-                <div>
-                    <input type="file" accept="image/*" onChange={handlePetProfileImageEdit} />
-                    <button onClick={handleImageUpload}>Submit Image</button>
-                </div>
+            <div>
+            <input type="file" accept="image/*" onChange={handlePetProfileImageEdit} />
+            <button onClick={handleImageUpload}>Submit Image</button>
+            </div>
                 <form className="editProfile" onSubmit={handleSubmit}>
                     <div className="input-box">
                         <input

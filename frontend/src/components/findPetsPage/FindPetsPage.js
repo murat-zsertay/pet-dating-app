@@ -24,7 +24,7 @@ const FindPetsPage = ({navigate}) => {
 
     const handlePlaydateRequest = async (pet, myPetId) => {
         try {
-          const response = await fetch(`/pets/request`, {
+          const response = await fetch(`/playdates/request`, {
             method: "post",
             headers: {
               Authorization: `Bearer ${token}`,
