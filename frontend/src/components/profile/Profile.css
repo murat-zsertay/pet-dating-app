@@ -2,7 +2,7 @@
     padding-left: 1rem;
 }
 
-.profile-title, .your-pets-title {
+.profile-title, .your-pets-title, .requested-playdates-title, .received-playdates-title, .matched-pets-title {
     color: #11354e;
 }
 
@@ -20,7 +20,7 @@
     vertical-align: middle;
 }
 
-.usernames, .profile-photo, .email, .postcode, .no-pets, .pets {
+.usernames, .profile-photo, .email, .postcode, .no-pets, .pet-info, .requestedPlaydates, .recievedPlaydates {
     color: #174F78;
 }
 
