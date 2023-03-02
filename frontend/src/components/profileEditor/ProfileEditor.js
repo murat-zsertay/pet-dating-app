@@ -57,15 +57,17 @@ const ProfileEditor = ({navigate}) => {
   const handlePetProfileImageEdit = (event, index) => {
     event.preventDefault();
     const allowedFormats = ['png', 'jpg', 'jpeg'];
-    const file = event.target.files[0];
+    let file = event.target.files[0];
     console.log(file)
     const fileFormat = file.name.split('.').pop();
     const maxSize = 10485760; // 10 megabyte in bytes
     if (file.size > maxSize) {
       alert('The image is too large! Max size is 10MB');
+      file = ''
       return;
     } else if(!allowedFormats.includes(fileFormat)){
       alert('Please upload a png or a jpg file')
+      file = ''
       return;
     } else {
       console.log('File is good, adding to form data')
@@ -76,10 +78,13 @@ const ProfileEditor = ({navigate}) => {
 }
 
   const handleImageUpload = async (event, index) => {
-    event.preventDefault();
-    
+    event.preventDefault();    
     const correctFormData = petImageFormData[index.toString()]
-    console.log(correctFormData)
+    const user = await getUserInfoById(userId);
+    if(user.pets.length - 1 < index){
+      alert('Please save your new pets before uploading their image!')
+      return;
+    }
     try {
         const response = await fetch(`/pets/profile-image-upload`, {
           method: "POST",
