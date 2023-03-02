@@ -2,7 +2,6 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "dependencies": {
     "@sentry/react": "^7.40.0",
     "@sentry/tracing": "^7.40.0",
