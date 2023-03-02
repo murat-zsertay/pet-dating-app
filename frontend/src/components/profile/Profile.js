@@ -107,14 +107,12 @@ const Profile = () => {
                 <div  className="matchedPlaydates">
                     {playdates?.requestsRecievedDetails.filter(elem => elem.playdate.accepted === 'true').map(playdate => (
                         <div>
-                            {console.log(playdate)}
-                            {console.log(playdates?.requestsRecievedDetails.filter(elem => elem.playdate.accepted === 'true'))}
                             <p>PlayDate</p>
                             <p>My pet: {playdate.recipientPet.name}</p>
                             <p>Matched pet: {playdate.requesterPet.name}</p>
                             <img
                                 className="petProfileImage"
-                                src={playdate.requestorPet?.profileImage}
+                                src={playdate.requesterPet.profileImage}
                                 alt="pet-profile"
                                 />
                             <p>Status: {playdate.playdate.accepted}</p>
@@ -124,8 +122,6 @@ const Profile = () => {
                     ))}
                     {playdates?.requestsMadeDetails.filter(elem => elem.playdate.accepted === 'true').map(playdate => (
                         <div>
-                            {console.log(playdate)}
-                            {console.log(playdates?.requestsRecievedDetails.filter(elem => elem.playdate.accepted === 'true'))}
                             <p>PlayDate</p>
                             <p>My pet: {playdate.requesterPet.name}</p>
                             <p>Matched pet: {playdate.recipientPet.name}</p>
