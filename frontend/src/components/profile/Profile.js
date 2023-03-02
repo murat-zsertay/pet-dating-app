@@ -58,16 +58,16 @@ const Profile = () => {
             <div className="profile">
                 <h2 className="profile-title"><b>Hooman's Profile</b></h2>
                 <div data-cy="user-info" className="user-info">
-                    <h5 className="usernames">
+                    <h1 className="usernames">
                         <span className="profile-photo">
                              👾
                         </span>
                         {user.firstName} {user.lastName}
-                    </h5>
+                    </h1>
                     <p className="email"><b>📧 Email address:</b> {user.email}</p>
                     <p className="postcode"><b>🏠 Postcode:</b> {user.postcode}</p>
                 </div>
-                <h2>Your Pets</h2>
+                <h2 className="your-pets-title">Your Pets</h2>
                 <div className="pets">
                     {user.pets.length > 0 ? (
                         user.pets.map((pet) => (
@@ -84,63 +84,70 @@ const Profile = () => {
                     ) : (
                         <div className="no-pets"><i> 🐾 No pets! 😭</i></div>
                     )}
-                {playdates && playdates?.requestsMadeDetails.length > 0 && <h2>Playdates you've requested</h2>}
-                <div  className="requestedPlaydates">
-                    {playdates && playdates?.requestsMadeDetails.filter(elem => elem.playdate.accepted !== 'true').map(playdate => (
-                        <div>
-                            <p>PlayDate</p>
-                            <p>My pet: {playdate.recipientPet.name}</p>
-                            <p>Requestor pet: {playdate.requesterPet.name}</p>
-                            <p>Status: {playdate.playdate.accepted}</p>
-                        </div>
-                    ))}
+
+                    {playdates && playdates?.requestsMadeDetails.length > 0 && <h2>Playdates you've requested</h2>}
+
+                    <div  className="requestedPlaydates">
+                        {playdates && playdates?.requestsMadeDetails.filter(elem => elem.playdate.accepted !== 'true').map(playdate => (
+                            <div>
+                                <p>PlayDate</p>
+                                <p>My pet: {playdate.recipientPet.name}</p>
+                                <p>Requestor pet: {playdate.requesterPet.name}</p>
+                                <p>Status: {playdate.playdate.accepted}</p>
+                            </div>
+                        ))}
+                    </div>
+
+                    {playdates && playdates?.requestsRecievedDetails.length > 0 && <h2>Playdates you've received</h2>}
+                    
+                    <div  className="recievedPlaydates">
+                        {playdates && playdates?.requestsRecievedDetails.filter(elem => elem.playdate.accepted !== 'true').map(playdate => (
+                            <div>
+                                <p>PlayDate</p>
+                                <p>My pet: {playdate.recipientPet.name}</p>
+                                <p>Requestor pet: {playdate.requesterPet.name}</p>
+                                <p>Status: {playdate.playdate.accepted}</p>
+                                <button onClick={() => handleRequestUpdate('accept', playdate)} value='accept'>Accept</button>
+                                <button onClick={() => handleRequestUpdate('reject', playdate)} value='reject'>Reject</button>
+                            </div>
+                        ))}
+                    </div>
+                    {playdates && <h2>Matched Pets</h2>}
+                    
+                    <div  className="matchedPlaydates">
+                        {playdates?.requestsRecievedDetails.filter(elem => elem.playdate.accepted === 'true').map(playdate => (
+                            <div>
+                                {console.log(playdate)}
+                                {console.log(playdates?.requestsRecievedDetails.filter(elem => elem.playdate.accepted === 'true'))}
+                                <p>PlayDate</p>
+                                <p>My pet: {playdate.recipientPet.name}</p>
+                                <p>Matched pet: {playdate.requesterPet.name}</p>
+                                <p>Status: {playdate.playdate.accepted}</p>
+                                <p>Owner name: {playdate.firstName}</p>
+                                <p>Owner Email: {playdate.email}</p>
+                            </div>
+                        ))}
+                        {playdates?.requestsMadeDetails.filter(elem => elem.playdate.accepted === 'true').map(playdate => (
+                            <div>
+                                {console.log(playdate)}
+                                {console.log(playdates?.requestsRecievedDetails.filter(elem => elem.playdate.accepted === 'true'))}
+                                <p>PlayDate</p>
+                                <p>My pet: {playdate.requesterPet.name}</p>
+                                <p>Matched pet: {playdate.recipientPet.name}</p>
+                                <p>Status: {playdate.playdate.accepted}</p>
+                                <p>Owner name: {playdate.firstName}</p>
+                                <p>Owner Email: {playdate.email}</p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-                {playdates && playdates?.requestsRecievedDetails.length > 0 && <h2>Playdates you've recieved</h2>}
-                <div  className="recievedPlaydates">
-                    {playdates && playdates?.requestsRecievedDetails.filter(elem => elem.playdate.accepted !== 'true').map(playdate => (
-                        <div>
-                            <p>PlayDate</p>
-                            <p>My pet: {playdate.recipientPet.name}</p>
-                            <p>Requestor pet: {playdate.requesterPet.name}</p>
-                            <p>Status: {playdate.playdate.accepted}</p>
-                            <button onClick={() => handleRequestUpdate('accept', playdate)} value='accept'>Accept</button>
-                            <button onClick={() => handleRequestUpdate('reject', playdate)} value='reject'>Reject</button>
-                        </div>
-                    ))}
-                </div>
-                {playdates && <h2>Matched Pets</h2>}
-                <div  className="matchedPlaydates">
-                    {playdates?.requestsRecievedDetails.filter(elem => elem.playdate.accepted === 'true').map(playdate => (
-                        <div>
-                            {console.log(playdate)}
-                            {console.log(playdates?.requestsRecievedDetails.filter(elem => elem.playdate.accepted === 'true'))}
-                            <p>PlayDate</p>
-                            <p>My pet: {playdate.recipientPet.name}</p>
-                            <p>Matched pet: {playdate.requesterPet.name}</p>
-                            <p>Status: {playdate.playdate.accepted}</p>
-                            <p>Owner name: {playdate.firstName}</p>
-                            <p>Owner Email: {playdate.email}</p>
-                        </div>
-                    ))}
-                    {playdates?.requestsMadeDetails.filter(elem => elem.playdate.accepted === 'true').map(playdate => (
-                        <div>
-                            {console.log(playdate)}
-                            {console.log(playdates?.requestsRecievedDetails.filter(elem => elem.playdate.accepted === 'true'))}
-                            <p>PlayDate</p>
-                            <p>My pet: {playdate.requesterPet.name}</p>
-                            <p>Matched pet: {playdate.recipientPet.name}</p>
-                            <p>Status: {playdate.playdate.accepted}</p>
-                            <p>Owner name: {playdate.firstName}</p>
-                            <p>Owner Email: {playdate.email}</p>
-                        </div>
-                    ))}
-                </div>
-                </div>
+
                 <>
-                <a className="btn btn-primary" href="/findPetsPage" role="button">
+                    <a className="btn btn-primary" href="/findPetsPage" role="button">
                         See all pets
                     </a>
                 </>
+
                 <>
                     {" "}
                     <a className="btn btn-primary" href="/edit-profile" role="button">

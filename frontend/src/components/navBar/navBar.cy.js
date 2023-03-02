@@ -14,11 +14,11 @@ describe("NavBar component", () => {
         window.localStorage.setItem("token", "fakeToken")
 
         cy.get('.site-title').should('have.text', '🐶 PAWTY TIME 🐱')
-        cy.get('li > #login-navbar').should('not.exist');
-        cy.get('li > #signup-navbar').should('not.exist');
-        cy.get('li > #findpets-navbar').should('exist');
-        cy.get('li > #profile-navbar').should('exist');
-        cy.get('li > #logout-navbar').should('exist');
+        cy.get('#login-navbar').should('not.exist');
+        cy.get('#signup-navbar').should('not.exist');
+        cy.get('#findpets-navbar').should('exist');
+        cy.get('#profile-navbar').should('exist');
+        cy.get('#logout-navbar').should('exist');
     })
 
     it("displays correct links when there is no token", () => {
@@ -30,11 +30,11 @@ describe("NavBar component", () => {
             </Router>
         );
 
-        cy.get('li > #login-navbar').should('exist');
-        cy.get('li > #signup-navbar').should('exist');
-        cy.get('li > #findpets-navbar').should('not.exist');
-        cy.get('li > #profile-navbar').should('not.exist');
-        cy.get('li > #logout-navbar').should('not.exist');
+        cy.get('#login-navbar').should('exist');
+        cy.get('#signup-navbar').should('exist');
+        cy.get('#findpets-navbar').should('not.exist');
+        cy.get('#profile-navbar').should('not.exist');
+        cy.get('#logout-navbar').should('not.exist');
     })
 });
 

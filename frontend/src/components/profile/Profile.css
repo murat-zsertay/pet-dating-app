@@ -2,9 +2,16 @@
     padding-left: 1rem;
 }
 
+.profile-title, .your-pets-title {
+    color: #11354e;
+}
+
 .profile-title {
     font-size: 2.5rem;
-    color: #11354e;
+}
+
+.your-pets-title {
+    font-size: 2rem;
 }
 
 .usernames {
@@ -13,7 +20,7 @@
     vertical-align: middle;
 }
 
-.usernames, .profile-photo, .email, .postcode, .no-pets {
+.usernames, .profile-photo, .email, .postcode, .no-pets, .pets {
     color: #174F78;
 }
 
@@ -21,7 +28,7 @@
     font-size: 5rem;
 }
 
-.email, .postcode {
+.email, .postcode, .pets {
     font-size: 1.5rem;
 }
 
