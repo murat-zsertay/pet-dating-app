@@ -12,7 +12,7 @@
   }
   
   .nav {
-    background-color: #0d67b5;
+    background-color: #E56C55;
   }
   
   .nav-container {
@@ -44,13 +44,16 @@
     height: 100%;
     display: flex;
     align-items: center;
-    padding: .25rem;
+    padding: 1rem;
+    font-size: 1.6rem;
   }
   
   .nav li.active {
-    background-color: #1970dc;
+    background-color: #b9442c;
+    transition: all 700ms ease-in-out;
   }
   
   .nav li:hover {
-    background-color: #1C84FF;
+    background-color: #b9442c;
+    transition: all 700ms ease-in-out;
   }

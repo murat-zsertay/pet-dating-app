@@ -1,0 +1,39 @@
+.profile {
+    padding-left: 1rem;
+}
+
+.profile-title {
+    font-size: 2.5rem;
+    color: #11354e;
+}
+
+.usernames {
+    font-size: 2.2rem;
+    
+    vertical-align: middle;
+}
+
+.usernames, .profile-photo, .email, .postcode, .no-pets {
+    color: #174F78;
+}
+
+.profile-photo {
+    font-size: 5rem;
+}
+
+.email, .postcode {
+    font-size: 1.5rem;
+}
+
+.no-pets {
+    font-size: 1.2rem;
+}
+
+span {
+    display: inline-block;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  span:hover {
+    transform: translateY(-5px);
+  }

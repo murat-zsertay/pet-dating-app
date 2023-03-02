@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import './EditProfile.css'
 import {getUserInfoById} from "../../api/user";
 
 const EditProfile = ({navigate}) => {
