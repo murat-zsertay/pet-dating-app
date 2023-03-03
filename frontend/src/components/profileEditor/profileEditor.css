@@ -1,0 +1,48 @@
+button {
+    background-color: #E56C55;
+    color: white;
+    height: 25px;
+  }
+
+button:hover {
+    background-color: #b9442c;
+}
+
+.profile-editor{
+    margin: 0 10px;
+    font-size: 1.01em;
+}
+
+.user-input {
+    display: flex;
+    border: #b9442c;
+    border-style: solid;
+    margin: 5px;
+    color: #174F78;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 10px;
+    padding:10px;
+}
+
+.user-attribute {
+    display:flex;
+    gap: 0 5px;
+}
+
+.pet-input {
+    display: flex;
+    border: #b9442c;
+    border-style: solid;
+    margin: 5px;
+    color: #174F78;
+    padding:10px;
+}
+
+.pet-input-attributes {
+    display:grid;
+    grid: 50% / auto auto auto;
+    width: 80%;
+    align-items: center;
+    justify-content: space-evenly;
+}

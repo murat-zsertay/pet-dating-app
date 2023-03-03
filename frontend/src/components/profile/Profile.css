@@ -6,7 +6,65 @@
     color: #11354e;
 }
 
+.pet-name {
+    font-style: bold;
+}
 
+h5 {
+    display: block;
+    font-size: 0.83em;
+    margin: 0 0 10px 0;
+    font-weight: bold;
+}
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin: 0.4em 0 0.4em 0;
+    font-weight: bold;
+}
+
+p {
+    display: block;
+    margin: 0px;
+}
+
+.pet-info-container {
+    padding: 10px 0 10px 0;
+    display: inline-flex;
+    align-items: left;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.pet-attributes {
+    gap: 0 20px;
+}
+
+.playdate-div {
+    font-size: 1.2em;
+}
+
+.profile-links {
+    margin-top: 10px;
+    display: flex;
+    gap: 0 10px;
+}
+
+.profile-links > a {
+    background-color: #E56C55;
+    color: white;
+    padding:2px;
+    text-decoration: none;
+}
+
+.profile-links > a:hover {
+    background-color: #b9442c;
+}
+
+.pets{
+    display: ;
+}
 
 .profile-title {
     font-size: 2.5rem;
@@ -46,3 +104,14 @@ span {
   span:hover {
     transform: translateY(-5px);
   }
+
+.request-buttons {
+    background-color: #E56C55;
+    color: white;
+    height: 25px;
+    margin: 0 5px;
+}
+
+.request-buttons:hover {
+    background-color: #b9442c;
+}

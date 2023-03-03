@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {getUserInfoById} from "../../api/user.js";
 import PetForm from "../petForm/PetFormInput.js"; 
+import './profileEditor.css'
 
 
 const ProfileEditor = ({navigate}) => {
@@ -139,19 +140,33 @@ const ProfileEditor = ({navigate}) => {
       return (
         <div className="profile-editor">
           <form className="editor-form" onSubmit={handleSubmit}>
-            <label className="form_label" htmlFor="email">Email</label>
-            <input className="form_field" id="email" name="email" type="text" value={updatedUser.email} onChange={handleInputChange} />
-            <label className="form_label" htmlFor="first-name">First Name</label>
-            <input className="form_field" id="first-name" name="firstName" type="text" value={updatedUser.firstName} onChange={handleInputChange} />
-            <label className="form_label" htmlFor="last-name">Last Name</label>
-            <input className="form_field" id="last-name"  name="lastName" type="text" value={updatedUser.lastName} onChange={handleInputChange} />
-            <label className="form_label" htmlFor="postcode">Postcode</label>
-            <input className="form_field" id="postcode" name="postcode" type="text" value={updatedUser.postcode} onChange={handleInputChange} />
-            <label className="form_label" htmlFor="password">Password</label>
-            <input className="form_field" id="password" name="password" type="password" value={updatedUser.password} onChange={handleInputChange} />
+            <h2 className="user-details">Hooman details</h2>
+            <div className="user-input">
+              <div className="user-attribute">
+                <label className="form_label" htmlFor="email">Email</label>
+                <input className="form_field" id="email" name="email" type="text" value={updatedUser.email} onChange={handleInputChange} />
+              </div>
+              <div className="user-attribute">
+                <label className="form_label" htmlFor="first-name">First Name</label>
+                <input className="form_field" id="first-name" name="firstName" type="text" value={updatedUser.firstName} onChange={handleInputChange} />
+              </div>
+              <div className="user-attribute">
+                <label className="form_label" htmlFor="last-name">Last Name</label>
+                <input className="form_field" id="last-name"  name="lastName" type="text" value={updatedUser.lastName} onChange={handleInputChange} />
+              </div>
+                <div className="user-attribute">
+                <label className="form_label" htmlFor="postcode">Postcode</label>
+              <input className="form_field" id="postcode" name="postcode" type="text" value={updatedUser.postcode} onChange={handleInputChange} />
+              </div>
+              <div className="user-attribute">
+                <label className="form_label" htmlFor="password">Password</label>
+                <input className="form_field" id="password" name="password" type="password" value={updatedUser.password} onChange={handleInputChange} />
+              </div>
+            </div>
+            <h2 className="pet-details">Pets</h2>
             <div className="user-pets">
               {updatedUser.pets.map((pet, index) => (
-                <PetForm 
+                <PetForm
                   key={index} 
                   pet={pet} 
                   index={index} 
@@ -159,7 +174,7 @@ const ProfileEditor = ({navigate}) => {
                   handleImageUpload={handleImageUpload} 
                   handlePetProfileImageEdit={handlePetProfileImageEdit}
                 />
-              ))};
+              ))}
             </div>
             <button className="add-pet" onClick={handleAddPetClick}>Add pet</button>
             <button type="submit">Save</button>

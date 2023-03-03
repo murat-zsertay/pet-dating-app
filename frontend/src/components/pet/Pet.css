@@ -4,12 +4,14 @@
   border-style: solid;
   margin: 5px;
   flex: 1;
+  color: #174F78;
 }
 
 .pet-info-container{
   padding: 5px;
   flex: 1;
   height: 200px;
+  margin-left: 10px;
 }
 
 .pet-info-container select {

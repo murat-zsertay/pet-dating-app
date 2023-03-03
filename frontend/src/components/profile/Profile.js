@@ -41,6 +41,14 @@ const Profile = () => {
     } else {
         return (
             <div data-cy="profile" className="profile">
+                <div className="profile-links">
+                    <a className="btn btn-primary" href="/findPetsPage" role="button">
+                        See all pets
+                    </a>
+                    <a className="btn btn-primary" href="/edit-profile" role="button">
+                        Edit your profile
+                    </a>
+                </div>
                 <h2 className="profile-title"><b>Hooman's Profile</b></h2>
                 <div data-cy="user-info" className="user-info">
                     <div className="row">
@@ -77,24 +85,27 @@ const Profile = () => {
                                     />
                                 </div>
                                 <div className="pet-info-container">
-                                    <p className="petName"><b>Pet's name:</b> {pet.name}</p>
-                                    <p className="petWeight"><b>Pet's weight:</b> {pet.weight}</p>
-                                    <p className="petAge"><b>Pet's age:</b> {pet.age}</p>
-                                    <p className="petDescription">
-                                        <b>Pet's description:</b> {pet.description}
+                                    <p className='pet-name'><b>{pet.name}</b></p>
+                                    <div className="pet-attributes">
+                                        <p className='pet-attribute'>Weight: {pet.weight}</p>
+                                        <p className='pet-attribute'>Age: {pet.age}</p>
+                                        <p className='pet-attribute'>Gender: {pet.gender}</p>
+                                    </div>
+                                    <p className='pet-description'>
+                                        {pet.description}
                                     </p>
-                                    <p className="petGender"><b>Pet's gender:</b> {pet.gender}</p>
                                 </div>
                             </div>
                         ))
                     ) : (
                         <div className="no-pets"><i> 🐾 No pets! 😭</i></div>
                     )}
+                </div>
                 {playdates && playdates?.requestsMadeDetails.length > 0 && <h2 className="requested-playdates-title">Playdates you've requested</h2>}
                 <div  className="requestedPlaydates">
                     
                     {playdates && playdates?.requestsMadeDetails.filter(elem => elem.playdate.accepted !== 'true').map(playdate => (
-                        <div key={`Request made ${playdate._id}`}>
+                        <div key={`Request made ${playdate._id}`} className='playdate-div'>
                             {console.log(playdate)}
                             <p><b>My pet:</b> {playdate.requesterPet.name}</p>
                             <p><b>Requested pet:</b> {playdate.recipientPet.name}</p>
@@ -110,7 +121,7 @@ const Profile = () => {
                 {playdates && playdates?.requestsRecievedDetails.length > 0 && <h2 className="received-playdates-title">Playdates you've received</h2>}
                 <div  className="recievedPlaydates">
                     {playdates && playdates?.requestsRecievedDetails.filter(elem => elem.playdate.accepted !== 'true').map(playdate => (
-                        <div key={`Request received ${playdate._id}`}>
+                        <div key={`Request received ${playdate._id}`} className='playdate-div'>
                             <p><b>My pet:</b> {playdate.recipientPet.name}</p>
                             <p><b>Requester pet:</b> {playdate.requesterPet.name}</p>
                             <img
@@ -119,15 +130,15 @@ const Profile = () => {
                                 alt="pet-profile"
                                 />
                             <p><b>Status:</b> {playdate.playdate.accepted.charAt(0).toUpperCase() + playdate.playdate.accepted.slice(1)}</p>
-                            <button onClick={() => handleRequestUpdate('accept', playdate)} value='accept'>Accept</button>
-                            <button onClick={() => handleRequestUpdate('reject', playdate)} value='reject'>Reject</button>
+                            <button className="request-buttons" onClick={() => handleRequestUpdate('accept', playdate)} value='accept'>Accept</button>
+                            <button className="request-buttons" onClick={() => handleRequestUpdate('reject', playdate)} value='reject'>Reject</button>
                         </div>
                     ))}
                 </div>
                 {playdates && <h2 className="matched-pets-title">Matched Pets</h2>}
                 <div  className="matchedPlaydates">
                     {playdates && playdates?.requestsRecievedDetails.filter(elem => elem.playdate.accepted === 'true').map(playdate => (
-                        <div key={`Matched received ${playdate.playdate._id}`}>
+                        <div key={`Matched received ${playdate.playdate._id}`} className='playdate-div'>
                             <p>PlayDate</p>
                             <p>My pet: {playdate.recipientPet.name}</p>
                             <p>Matched pet: {playdate.requesterPet.name}</p>
@@ -142,7 +153,7 @@ const Profile = () => {
                         </div>
                     ))}
                     {playdates && playdates?.requestsMadeDetails.filter(elem => elem.playdate.accepted === 'true').map(playdate => (
-                        <div key={`Matched made ${playdate.playdate._id}`}>
+                        <div key={`Matched made ${playdate.playdate._id}`} className='playdate-div'>
                             <p>PlayDate</p>
                             <p>My pet: {playdate.requesterPet.name}</p>
                             <p>Matched pet: {playdate.recipientPet.name}</p>
@@ -157,20 +168,6 @@ const Profile = () => {
                         </div>
                     ))}
                 </div>
-                </div>
-
-                <>
-                    <a className="btn btn-primary" href="/findPetsPage" role="button">
-                        See all pets
-                    </a>
-                </>
-
-                <>
-                    {" "}
-                    <a className="btn btn-primary" href="/edit-profile" role="button">
-                        Edit your profile
-                    </a>
-                </>
             </div>
         );
     }
