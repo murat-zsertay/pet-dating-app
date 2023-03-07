@@ -1,20 +1,79 @@
+.pet-form{ 
+  display: flex;
+  border: #b9442c;
+  border-style: solid;
+  margin: 5px;
+  flex: 1;
+}
+
+.pet-input-form  {
+    position: relative;
+    padding: 5px;
+    background-color: #FEEBA8;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    border-radius: 8px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.pet-input-form textarea {
+  position: relative;
+  left: 0;
+  padding: 10px 0;
+  pointer-events: none;
+  font-size: 1rem;
+  letter-spacing: 0.05rem;
+  color: #333;
+  transition: 0.5s;
+}
+
+.pet-input-form label {
+  position: relative;
+  left: 0;
+  padding: 10px 0;
+  pointer-events: none;
+  align-items: top;
+  font-size: 1rem;
+  letter-spacing: 0.05rem;
+  color: #333;
+  transition: 0.5s;
+}
+
 .pet-form-image-container img {
-  align-self: flex-start;
+  align-self: start;
   float: left;
-  object-fit: cover;
-  width: 150px;
-  height: 150px;
+  object-fit:  cover;
+  width: 200px;
+  height: 200px;
   margin-top: 0px;
 }
 
+
 .pet-form-image-container button {
-  background-color: #E56C55;
+  /* background-color: #E56C55;
   color: white;
   height: 25px;
-  
-}
-.pet-image-button {
   text-align:center;
+  align-self: end; */
+
+  /* position: absolute;
+	padding: 16px;
+	background-color: green;
+	border-radius: 16px;
+	bottom: 10px;
+	left: 10px;
+	width: 100px; */
+
+  background-color: #E56C55;
+  color: white; 
+  height: 25px;
+  text-align:center;
+  position: absolute;
+  bottom: 10px;
+	left: 10px;
 }
 
 input::file-selector-button {
@@ -22,6 +81,7 @@ input::file-selector-button {
   color: white; 
   height: 25px;
   text-align:center;
+  position: absolute;
 }
 
 input[type="file"]::file-selector-button:hover {
@@ -29,18 +89,8 @@ input[type="file"]::file-selector-button:hover {
 }
 .pet-form-image-container button:hover {
   background-color: #b9442c;
-}
-.pet-form{ 
-  display: flex;
-  border: #b9442c;
-  border-style: solid;
-  margin: 5px;
-  flex: 1;
-}g
 
-/* .pet-input-form  {
-  flex: 1 1 auto;
-  align-self: flex;
-} */
+}
+
 
 

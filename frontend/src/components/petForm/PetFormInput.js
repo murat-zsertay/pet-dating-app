@@ -11,6 +11,15 @@ const PetForm = (props) => {
 
   return (
     <div className='pet-form'>
+        <div className="pet-form-image-container">
+        <img
+          className="petProfileImage"
+          src={pet.profileImage}
+          alt="pet-profile"
+        />
+        <input type="file" maxsize="10485760" accept="image/*" onChange={(event) => handlePetProfileImageEdit(event, index)} />
+         <button type='button' onClick={(event) => handleImageUpload(event, index)}>Submit Image</button>
+      </div>
       <div className='pet-input-form'>
         <label htmlFor={`pet-name-${index}`}>Name</label>
         <input
@@ -58,15 +67,6 @@ const PetForm = (props) => {
           onChange={handleInputChange}
         />
         </div>
-      </div>
-      <div className="pet-form-image-container">
-        <img
-          className="petProfileImage"
-          src={pet.profileImage}
-          alt="pet-profile"
-        />
-        <input type="file" maxsize="10485760" accept="image/*" onChange={(event) => handlePetProfileImageEdit(event, index)} />
-        <div className='pet-image-button'><button type='button' onClick={(event) => handleImageUpload(event, index)}>Submit Image</button></div>
       </div>
     </div>
   );
