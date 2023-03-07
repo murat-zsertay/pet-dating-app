@@ -164,8 +164,10 @@ const ProfileEditor = ({navigate}) => {
                 />
               ))}
             </div>
-            <button className="add-pet" onClick={handleAddPetClick}>Add pet</button>
-            <button type="submit">Save</button>
+            <div className="add-pets-buttons">
+              <button type="file" onClick={handleAddPetClick}>Add pet</button>
+              <button type="submit">Save</button>
+            </div>
           </form>
           </div>
         </div>

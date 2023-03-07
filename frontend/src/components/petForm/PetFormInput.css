@@ -38,7 +38,7 @@
   height: 200px;
 }
 
-button {
+.pet-form-image-container button {
   background-color: #E56C55;
   color: white; 
   height: 25px;
@@ -46,7 +46,7 @@ button {
   margin-right: 5px;
 }
 
-button:hover {
+.pet-form-image-container button:hover {
   background-color: #b9442c;
 }
 
@@ -56,9 +56,22 @@ input::file-selector-button {
   height: 25px;
 }
 
-input[type="file"]::file-selector-button:hover {
+ input[type="file"]::file-selector-button:hover {
   background-color: #b9442c;
 }
+
+.add-pets-buttons button {
+  background-color: #E56C55;
+  color: white; 
+  height: 25px;
+  width: 97.5px;
+  margin-right: 5px;
+}
+
+.add-pets-buttons button:hover {
+  background-color: #b9442c;
+}
+
 .pet-input-form {
   margin-top: 10px;
 }
