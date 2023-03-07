@@ -18,7 +18,7 @@ const PetForm = (props) => {
           alt="pet-profile"
         />
         <input type="file" maxsize="10485760" accept="image/*" onChange={(event) => handlePetProfileImageEdit(event, index)} />
-         <button type='button' onClick={(event) => handleImageUpload(event, index)}>Submit Image</button>
+        <button type='button' onClick={(event) => handleImageUpload(event, index)}>Submit Image</button>
       </div>
       <div className='pet-input-form'>
         <label htmlFor={`pet-name-${index}`}>Name</label>
@@ -58,12 +58,14 @@ const PetForm = (props) => {
           onChange={handleInputChange}
         />
         <div className='textarea'>
-        <label htmlFor={`pet-description-${index}`}>Description</label>
+        <label className="pet-description-label" htmlFor={`pet-description-${index}`}>Description</label>
         <textarea
           type="text"
           id={`pet-description-${index}`}
           name="description"
           value={pet.description}
+          rows="8"
+          cols="80"
           onChange={handleInputChange}
         />
         </div>
