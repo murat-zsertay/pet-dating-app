@@ -1,0 +1,86 @@
+.profile-editor {
+  display: flex;
+  margin: 20px auto 20px auto;
+  align-items: center;
+  flex-direction: column;
+}
+
+.profile-editor label {
+  margin-right: 5px;
+  margin-top: 10px;
+}
+
+.profile-editor input {
+  margin-right: 10px;
+}
+
+.pet-form{ 
+  display: flex;
+  border: #b9442c;
+  border-style: solid;
+  margin-bottom: 10px;
+  flex: 1;
+}
+
+.profile-editor-container {
+  margin: 0px 20px;
+}
+
+.pet-form-image-container {
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pet-form-image-container img {
+  object-fit: cover;
+  width: 200px;
+  height: 200px;
+}
+
+.pet-form-image-container button {
+  background-color: #E56C55;
+  color: white; 
+  height: 25px;
+  width: 200px;
+  margin-right: 5px;
+}
+
+.pet-form-image-container button:hover {
+  background-color: #b9442c;
+}
+
+input::file-selector-button {
+  background-color: #E56C55;
+  color: white; 
+  height: 25px;
+}
+
+ input[type="file"]::file-selector-button:hover {
+  background-color: #b9442c;
+}
+
+.add-pets-buttons button {
+  background-color: #E56C55;
+  color: white; 
+  height: 25px;
+  width: 97.5px;
+  margin-right: 5px;
+}
+
+.add-pets-buttons button:hover {
+  background-color: #b9442c;
+}
+
+.pet-input-form {
+  margin-top: 10px;
+}
+
+.textarea {
+  margin-top: 10px;
+}
+
+.pet-description-label {
+  vertical-align: top;
+}
+

@@ -138,6 +138,8 @@ const ProfileEditor = ({navigate}) => {
   } else {
       return (
         <div className="profile-editor">
+          <div className="profile-editor-container">
+          <h2>Edit human profile</h2>
           <form className="editor-form" onSubmit={handleSubmit}>
             <label className="form_label" htmlFor="email">Email</label>
             <input className="form_field" id="email" name="email" type="text" value={updatedUser.email} onChange={handleInputChange} />
@@ -149,6 +151,7 @@ const ProfileEditor = ({navigate}) => {
             <input className="form_field" id="postcode" name="postcode" type="text" value={updatedUser.postcode} onChange={handleInputChange} />
             <label className="form_label" htmlFor="password">Password</label>
             <input className="form_field" id="password" name="password" type="password" value={updatedUser.password} onChange={handleInputChange} />
+            <h2>Edit pet profiles</h2>
             <div className="user-pets">
               {updatedUser.pets.map((pet, index) => (
                 <PetForm 
@@ -159,11 +162,14 @@ const ProfileEditor = ({navigate}) => {
                   handleImageUpload={handleImageUpload} 
                   handlePetProfileImageEdit={handlePetProfileImageEdit}
                 />
-              ))};
+              ))}
             </div>
-            <button className="add-pet" onClick={handleAddPetClick}>Add pet</button>
-            <button type="submit">Save</button>
+            <div className="add-pets-buttons">
+              <button type="file" onClick={handleAddPetClick}>Add pet</button>
+              <button type="submit">Save</button>
+            </div>
           </form>
+          </div>
         </div>
       );
   }
