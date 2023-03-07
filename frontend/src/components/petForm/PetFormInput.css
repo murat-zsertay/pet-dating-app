@@ -18,7 +18,7 @@
   display: flex;
   border: #b9442c;
   border-style: solid;
-  margin: 5px;
+  margin-bottom: 10px;
   flex: 1;
 }
 
@@ -38,14 +38,15 @@
   height: 200px;
 }
 
-.pet-form-image-container button {
+button {
   background-color: #E56C55;
   color: white; 
   height: 25px;
-  width: 200px
+  width: 200px;
+  margin-right: 5px;
 }
 
-.pet-form-image-container button:hover {
+button:hover {
   background-color: #b9442c;
 }
 
