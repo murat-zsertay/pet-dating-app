@@ -37,7 +37,7 @@
     "multer-storage-cloudinary": "^4.0.0",
     "nodemon": "^2.0.15",
     "pm2": "^5.2.2",
-    "superagent": "^8.0.0",
+    "superagent": "^10.2.1",
     "supertest": "^6.2.4"
   },
   "devDependencies": {
